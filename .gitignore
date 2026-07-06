@@ -15,3 +15,10 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+#Ignore Build Files
+Builds/*
+.exe
+.x86_64
+.html
+.wasm
