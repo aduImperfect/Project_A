@@ -49,6 +49,9 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
+		return
+
 	if not is_moving:
 		if horiz_speed < -horiz_speed_min_diff:
 			horiz_speed += _delta * horiz_speed_dec
@@ -129,8 +132,11 @@ func _input(_event: InputEvent) -> void:
 
 func _player_death() -> void:
 	if position.y > 150.0:
-		position = playerStartPos
+		print("Current Level: ", LevelsDatabase.currLevel + 1)
+		position = Vector2(0.0, 0.0)
+		owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
 		up_speed = 0.0
 		horiz_speed = 0.0
 		is_moving = false
 		is_jumping = false
+		print("Player Died!")

@@ -18,3 +18,5 @@ debug_color = Color(0.6577451, 0.32236987, 1, 0.41960785)
 z_index = -2
 scale = Vector2(0.025, 0.025)
 texture = ExtResource("1_paeek")
+
+[connection signal="body_entered" from="GoalA2D" to="GoalA2D" method="_on_body_entered"]
