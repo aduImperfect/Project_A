@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var up_speed : float = 0.0
 @export var horiz_speed : float = 0.0
+@export var max_run_speed : float = 0.0
 
 @export var max_up_speed : float = 0.0
 @export var max_horiz_speed : float = 0.0
@@ -20,6 +21,7 @@ extends CharacterBody2D
 @export var is_moving : bool = false
 @export var is_jumping : bool = false
 @export var grounded : bool = true
+@export var is_running : bool = true
 
 @export var playerStartPos : Vector2
 @export var SPEED = 300.0
@@ -35,7 +37,8 @@ func _ready() -> void:
 	up_speed = 0.0
 	horiz_speed = 0.0
 	max_up_speed = 500.0
-	max_horiz_speed = 250.0
+	max_horiz_speed = 150.0
+	max_run_speed = 300.0
 	up_speed_dec = 100.0
 	horiz_speed_dec = 100.0
 	up_speed_min = 0.0
@@ -110,25 +113,32 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _input(_event: InputEvent) -> void:
-	if _event is InputEventKey and _event.keycode == KEY_LEFT:
-		if _event.is_pressed():
-			horiz_speed = -max_horiz_speed
-			is_moving = true
-		else:
-			is_moving = false
+	#var leftP : bool = false
+	#var rightP : bool = false
+	if _event.is_action_pressed("ui_player_left"):
+		horiz_speed = -max_horiz_speed
+		#leftP = true
+		is_moving = true
+	elif _event.is_action_pressed("ui_player_right"):
+		horiz_speed = max_horiz_speed
+		#rightP = true
+		is_moving = true
+	else:
+		is_moving = false
 
-	if _event is InputEventKey and _event.keycode == KEY_RIGHT:
-		if _event.is_pressed():
-			horiz_speed = max_horiz_speed
-			is_moving = true
-		else:
-			is_moving = false
+	if _event.is_action_pressed("ui_player_run"):
+		if horiz_speed < 0.0:
+			horiz_speed = -max_run_speed
+		elif horiz_speed > 0.0:
+			horiz_speed = max_run_speed
+		is_running = true
+	else:
+		is_running = false
 
-	if _event is InputEventKey and ((_event.keycode == KEY_UP) || (_event.keycode == KEY_SPACE)):
-		if _event.is_pressed():
-			is_jumping = true
-		else:
-			is_jumping = false
+	if _event.is_action_pressed("ui_player_jump"):
+		is_jumping = true
+	else:
+		is_jumping = false
 
 func _player_death() -> void:
 	if position.y > 150.0:
