@@ -22,3 +22,6 @@ Builds/*
 .x86_64
 .html
 .wasm
+.apk
+.ipa
+.app
