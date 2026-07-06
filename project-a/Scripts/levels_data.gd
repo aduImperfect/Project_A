@@ -31,10 +31,13 @@ static func _load_level_scenes() -> void:
 		push_error("LevelsDatabase: Could not open res://Levels directory.")
 		return
 
+	var level_regex := RegEx.new()
+	level_regex.compile("^level_(\\d{2})\\.tscn$")
+
 	dir.list_dir_begin()
 	var file_name := dir.get_next()
 	while file_name != "":
-		if not dir.current_is_dir() and file_name.ends_with(".tscn"):
+		if not dir.current_is_dir() and level_regex.search(file_name):
 			LEVEL_SCENES.append("res://Levels/%s" % file_name)
 		file_name = dir.get_next()
 	dir.list_dir_end()
