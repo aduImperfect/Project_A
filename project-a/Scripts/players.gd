@@ -14,4 +14,4 @@ func _process(_delta: float) -> void:
 	pass
 
 static func _set_player_info() -> void:
-	numPlayers = 2
+	numPlayers = 3
