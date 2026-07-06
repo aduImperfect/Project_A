@@ -17,7 +17,7 @@ data_*/
 mono_crash.*.json
 
 #Ignore Build Files
-Builds/*
+Builds/
 *.exe
 *.x86_64
 *.html
