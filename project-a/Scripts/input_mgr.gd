@@ -37,8 +37,8 @@ func _ready() -> void:
 	up_speed = 0.0
 	horiz_speed = 0.0
 	max_up_speed = 500.0
-	max_horiz_speed = 150.0
-	max_run_speed = 300.0
+	max_horiz_speed = 100.0
+	max_run_speed = 250.0
 	up_speed_dec = 100.0
 	horiz_speed_dec = 100.0
 	up_speed_min = 0.0
@@ -76,6 +76,32 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_action_pressed("ui_player_left"):
+		horiz_speed = -max_horiz_speed
+		is_moving = true
+	elif Input.is_action_pressed("ui_player_right"):
+		horiz_speed = max_horiz_speed
+		is_moving = true
+	else:
+		is_moving = false
+
+	if Input.is_action_pressed("ui_player_jump"):
+		is_jumping = true
+	else:
+		is_jumping = false
+
+	if Input.is_action_pressed("ui_player_run"):
+		if is_moving:
+			if horiz_speed < 0.0:
+				horiz_speed = -max_run_speed
+			elif horiz_speed > 0.0:
+				horiz_speed = max_run_speed
+			is_running = true
+		else:
+			is_running = false
+	else:
+		is_running = false
+
 	position.x += _delta * horiz_speed
 	position.y -= _delta * up_speed
 
@@ -113,32 +139,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func _input(_event: InputEvent) -> void:
-	#var leftP : bool = false
-	#var rightP : bool = false
-	if _event.is_action_pressed("ui_player_left"):
-		horiz_speed = -max_horiz_speed
-		#leftP = true
-		is_moving = true
-	elif _event.is_action_pressed("ui_player_right"):
-		horiz_speed = max_horiz_speed
-		#rightP = true
-		is_moving = true
-	else:
-		is_moving = false
-
-	if _event.is_action_pressed("ui_player_run"):
-		if horiz_speed < 0.0:
-			horiz_speed = -max_run_speed
-		elif horiz_speed > 0.0:
-			horiz_speed = max_run_speed
-		is_running = true
-	else:
-		is_running = false
-
-	if _event.is_action_pressed("ui_player_jump"):
-		is_jumping = true
-	else:
-		is_jumping = false
+	pass
 
 func _player_death() -> void:
 	if position.y > 150.0:
