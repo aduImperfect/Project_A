@@ -23,7 +23,6 @@ extends CharacterBody2D
 @export var grounded : bool = true
 @export var is_running : bool = true
 
-@export var playerStartPos : Vector2
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
 @export var WALL_SLIDE_SPEED = 100.0
@@ -31,6 +30,14 @@ extends CharacterBody2D
 # --- Wall Jump Mechanics ---
 @export var wall_jump_lock_timer = 0.0
 @export var WALL_JUMP_LOCK_TIME = 0.10 # Time in seconds player control is locked
+
+# Export this variable to change it in the Inspector for each player node
+@export var player_id: int = 0
+
+@export var jump_action: String
+@export var move_left_action: String
+@export var move_right_action: String
+@export var run_action: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -48,8 +55,13 @@ func _ready() -> void:
 	is_moving = false
 	is_jumping = false
 	grounded = true
-	playerStartPos = position
-	
+
+	# Dynamically generate the action strings based on the player ID
+	jump_action = "ui_jump_p" + str(player_id)
+	move_left_action = "ui_left_p" + str(player_id)
+	move_right_action = "ui_right_p" + str(player_id)
+	run_action = "ui_run_p" + str(player_id)
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
@@ -76,21 +88,21 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_pressed("ui_player_left"):
+	if Input.is_action_pressed(move_left_action):
 		horiz_speed = -max_horiz_speed
 		is_moving = true
-	elif Input.is_action_pressed("ui_player_right"):
+	elif Input.is_action_pressed(move_right_action):
 		horiz_speed = max_horiz_speed
 		is_moving = true
 	else:
 		is_moving = false
 
-	if Input.is_action_pressed("ui_player_jump"):
+	if Input.is_action_pressed(jump_action):
 		is_jumping = true
 	else:
 		is_jumping = false
 
-	if Input.is_action_pressed("ui_player_run"):
+	if Input.is_action_pressed(run_action):
 		if is_moving:
 			if horiz_speed < 0.0:
 				horiz_speed = -max_run_speed

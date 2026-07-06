@@ -1,27 +1,44 @@
 extends Area2D
 
+@export var playersEnteredGoal : Array[bool] = []
+
+@export var initial_setup : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if initial_setup == false:
+		for k in PlayersHelper.playerNodes.size():
+			playersEnteredGoal.append(false)
+		initial_setup = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
 		return
 
-	if body.name.contains("Player"):
-		#print("Goal at: " + owner.owner.name + " reached!")
+	for k in PlayersHelper.playerNodes.size():
+		if body.owner.name == PlayersHelper.playerNodes[k].name:
+			print("Goal at: " + owner.owner.name + " reached by Player: " + body.owner.name)
+			playersEnteredGoal[k] = true
+			break
+
+	var allPlayersEntered : bool = (playersEnteredGoal.size() > 0)
+	for k in playersEnteredGoal.size():
+		if playersEnteredGoal[k] == false:
+			allPlayersEntered = false
+			break
+
+	#Only progress to next level if all players reached!
+	if allPlayersEntered:
 		LevelsDatabase.currLevel += 1
 
 		if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
 			#print("Game Complete")
 			return
 
-		print(LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position)
-		body.position = Vector2(0.0, 0.0)
-		body.owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
+		for k in PlayersHelper.playerNodes.size():
+			PlayersHelper.playerNodes[k].get_child(0).position = Vector2(0.0, 0.0)
+			PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position

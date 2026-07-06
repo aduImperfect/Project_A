@@ -8,6 +8,7 @@
 [node name="Goal" type="Node2D" unique_id=1634378711]
 
 [node name="GoalA2D" type="Area2D" parent="." unique_id=1055000855]
+collision_mask = 3
 script = ExtResource("1_s0pnd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalA2D" unique_id=672286988]

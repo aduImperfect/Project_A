@@ -9,9 +9,8 @@
 metadata/_edit_vertical_guides_ = [122.0]
 
 [node name="PlayerCB2D" type="CharacterBody2D" parent="." unique_id=1609562546]
+collision_layer = 2
 script = ExtResource("1_cvnsp")
-
-[node name="PlayerCam" type="Camera2D" parent="PlayerCB2D" unique_id=910380141]
 
 [node name="PlayerCS2D" type="CollisionShape2D" parent="PlayerCB2D" unique_id=2060292915]
 shape = SubResource("RectangleShape2D_m6x6n")

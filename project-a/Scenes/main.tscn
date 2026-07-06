@@ -1,8 +1,12 @@
 [gd_scene format=3 uid="uid://c1skm251qmouu"]
 
 [ext_resource type="Script" uid="uid://cadhbg6w7dywe" path="res://Scripts/level_gen.gd" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://cdr6kd3xwvfmo" path="res://Scenes/camera.gd" id="2_bo1nx"]
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 
 [node name="LevelGen" type="Node2D" parent="." unique_id=1618441754]
 script = ExtResource("1_jjgbg")
+
+[node name="MainCam" type="Camera2D" parent="." unique_id=1030402117]
+script = ExtResource("2_bo1nx")

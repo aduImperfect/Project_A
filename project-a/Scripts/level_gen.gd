@@ -1,23 +1,22 @@
 extends Node2D
 
-const PLAYER_SCENE = preload("res://Scenes/player.tscn")
 const BACKGROUND_SCENE = preload("res://Scenes/background.tscn")
 
 @export var xBackCenter : float = 0.0
 @export var yBackCenter : float = 0.0
 
-@export var playerNode : Node2D
 @export var backgroundNode : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	xBackCenter = 550.0
 	yBackCenter = 350.0
+	PlayersHelper._set_player_info()
 
 	LevelsDatabase._set_values()
 	_spawn_background()
 	_spawn_levels()
-	_spawn_player()
+	_spawn_players()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -35,17 +34,18 @@ func _spawn_levels() -> void:
 	for k in LevelsDatabase.numLevels:
 		var level_instance = load(LevelsDatabase.LEVEL_SCENES[k]).instantiate()
 		level_instance.global_position.x = LevelsDatabase.xLevelCenter + (j * LevelsDatabase.xLevelOffset)
-		level_instance.global_position.y = LevelsDatabase.yLevelCenter + (k * LevelsDatabase.yLevelOffset)
+		level_instance.global_position.y = LevelsDatabase.yLevelCenter + ((k % LevelsDatabase.maxHeight) * LevelsDatabase.yLevelOffset)
 		add_child(level_instance)
 		LevelsDatabase.levelNodes.append(level_instance)
 
-		if j < (LevelsDatabase.maxHeight - 1):
+		if (k != 0) && ((k % LevelsDatabase.maxHeight) == 0):
 			j += 1
-		else:
-			j = 0
 
-func _spawn_player() -> void:
-	var player_instance = PLAYER_SCENE.instantiate()
-	player_instance.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
-	add_child(player_instance)
-	playerNode = player_instance
+func _spawn_players() -> void:
+	for k in PlayersHelper.numPlayers:
+		var player_instance = PlayersHelper.PLAYER_SCENE.instantiate()
+		player_instance.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
+		player_instance.name = "Player_" + str(k)
+		player_instance.get_child(0).player_id = k
+		add_child(player_instance)
+		PlayersHelper.playerNodes.append(player_instance)
