@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bh6uvx12b0b31"]
+
+[ext_resource type="Script" uid="uid://bcv73or5ilujc" path="res://Scripts/input_mgr.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://bur6u54nrglkq" path="res://Textures/Player.png" id="1_v0iea"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6x6n"]
+
+[node name="Player" type="Node2D" unique_id=660980076]
+metadata/_edit_vertical_guides_ = [122.0]
+
+[node name="PlayerCB2D" type="CharacterBody2D" parent="." unique_id=1609562546]
+script = ExtResource("1_cvnsp")
+
+[node name="PlayerCam" type="Camera2D" parent="PlayerCB2D" unique_id=910380141]
+
+[node name="PlayerCS2D" type="CollisionShape2D" parent="PlayerCB2D" unique_id=2060292915]
+shape = SubResource("RectangleShape2D_m6x6n")
+debug_color = Color(0.58187073, 0.382447, 1, 0.41960785)
+
+[node name="Player" type="Sprite2D" parent="PlayerCB2D" unique_id=2145661472]
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("1_v0iea")
