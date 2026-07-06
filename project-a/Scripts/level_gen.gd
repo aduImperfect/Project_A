@@ -13,6 +13,11 @@ func _ready() -> void:
 	yBackCenter = 350.0
 	PlayersHelper._set_player_info()
 
+	var ghost_container := Node2D.new()
+	ghost_container.name = "Ghosts"
+	add_child(ghost_container)
+	PlayersHelper._set_ghost_container(ghost_container)
+
 	LevelsDatabase._set_values()
 	_spawn_background()
 	_spawn_levels()

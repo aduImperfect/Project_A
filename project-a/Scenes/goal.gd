@@ -40,5 +40,7 @@ func _on_body_entered(body: Node2D) -> void:
 			return
 
 		for k in PlayersHelper.playerNodes.size():
+			PlayersHelper.clear_ghosts_for_player(k)
 			PlayersHelper.playerNodes[k].get_child(0).position = Vector2(0.0, 0.0)
 			PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
+			PlayersHelper.playerNodes[k].get_child(0)._start_new_run()

@@ -39,6 +39,10 @@ extends CharacterBody2D
 @export var move_right_action: String
 @export var run_action: String
 
+# --- Ghost recording ---
+var ghost_frames : PackedVector2Array = PackedVector2Array()
+var run_start_global : Vector2 = Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	up_speed = 0.0
@@ -56,12 +60,13 @@ func _ready() -> void:
 	is_jumping = false
 	grounded = true
 
-	# Dynamically generate the action strings based on the player ID
 	jump_action = "ui_jump_p" + str(player_id)
 	move_left_action = "ui_left_p" + str(player_id)
 	move_right_action = "ui_right_p" + str(player_id)
 	run_action = "ui_run_p" + str(player_id)
 
+	_start_new_run()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
@@ -150,16 +155,27 @@ func _physics_process(_delta: float) -> void:
 
 	move_and_slide()
 
+	ghost_frames.append(position)
+
 func _input(_event: InputEvent) -> void:
 	pass
 
 func _player_death() -> void:
 	if position.y > 250.0:
 		#print("Current Level: ", LevelsDatabase.currLevel + 1)
+		if ghost_frames.size() > 0:
+			PlayersHelper.record_ghost_run(player_id, run_start_global, ghost_frames)
+
 		position = Vector2(0.0, 0.0)
 		owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
 		up_speed = 0.0
 		horiz_speed = 0.0
 		is_moving = false
 		is_jumping = false
+
+		_start_new_run()
 		#print("Player Died!")
+
+func _start_new_run() -> void:
+	ghost_frames = PackedVector2Array()
+	run_start_global = owner.global_position
