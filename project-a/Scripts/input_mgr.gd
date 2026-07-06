@@ -142,7 +142,7 @@ func _input(_event: InputEvent) -> void:
 	pass
 
 func _player_death() -> void:
-	if position.y > 150.0:
+	if position.y > 250.0:
 		#print("Current Level: ", LevelsDatabase.currLevel + 1)
 		position = Vector2(0.0, 0.0)
 		owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://buexajo2k2e1l"]
+
+[ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_76ybr"]
+[ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_s8nj6"]
+[ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_vwg62"]
+
+[node name="Level3" type="Node2D" unique_id=1163223301]
+
+[node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_76ybr")]
+position = Vector2(268, 457)
+
+[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_s8nj6")]
+position = Vector2(1781, 598)
+
+[node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_vwg62")]
+position = Vector2(920, -132)
+scale = Vector2(44.03, 1)
+
+[node name="Ground_W_L_1" parent="." unique_id=16964396 instance=ExtResource("3_vwg62")]
+position = Vector2(20, 248)
+scale = Vector2(1, 20)
+
+[node name="Ground_W_R_1" parent="." unique_id=1804239981 instance=ExtResource("3_vwg62")]
+position = Vector2(1820, 248)
+scale = Vector2(1, 20)
+
+[node name="Ground_F_1" parent="." unique_id=1686414086 instance=ExtResource("3_vwg62")]
+position = Vector2(291, 628)
+scale = Vector2(10, 1)
+
+[node name="Ground_F_2" parent="." unique_id=553455818 instance=ExtResource("3_vwg62")]
+position = Vector2(1781, 628)
+
+[node name="Ground_P_1" parent="." unique_id=46212696 instance=ExtResource("3_vwg62")]
+position = Vector2(331, 28)
+scale = Vector2(10, 1)
+
+[node name="Ground_P_2" parent="." unique_id=1175326196 instance=ExtResource("3_vwg62")]
+position = Vector2(511, 348)
+scale = Vector2(1, 15)
+
+[node name="Ground_P_3" parent="." unique_id=1770590338 instance=ExtResource("3_vwg62")]
+position = Vector2(831, 82)
+scale = Vector2(1, 10)
+
+[node name="Ground_P_4" parent="." unique_id=1687364210 instance=ExtResource("3_vwg62")]
+position = Vector2(629, 102)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_5" parent="." unique_id=112058786 instance=ExtResource("3_vwg62")]
+position = Vector2(311, 428)
+scale = Vector2(1, 4)
+
+[node name="Ground_P_6" parent="." unique_id=113701352 instance=ExtResource("3_vwg62")]
+position = Vector2(191, 488)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_7" parent="." unique_id=248651494 instance=ExtResource("3_vwg62")]
+position = Vector2(240, 328)
+scale = Vector2(10, 1)
+
+[node name="Ground_P_8" parent="." unique_id=250783141 instance=ExtResource("3_vwg62")]
+position = Vector2(1116, -18)
+scale = Vector2(1, 5)
+
+[node name="Ground_P_9" parent="." unique_id=1673384892 instance=ExtResource("3_vwg62")]
+position = Vector2(991, 548)
+scale = Vector2(1, 5)
+
+[node name="Ground_P_10" parent="." unique_id=1069145512 instance=ExtResource("3_vwg62")]
+position = Vector2(871, 628)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_11" parent="." unique_id=638072151 instance=ExtResource("3_vwg62")]
+position = Vector2(1192, 207)
+scale = Vector2(2, 1)

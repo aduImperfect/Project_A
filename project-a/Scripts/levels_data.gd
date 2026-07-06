@@ -2,7 +2,7 @@ extends Node
 
 class_name LevelsDatabase
 
-const LEVEL_SCENES : Array[String] = ["res://Scenes/level_1.tscn", "res://Scenes/level_2.tscn"]
+const LEVEL_SCENES : Array[String] = ["res://Scenes/level_1.tscn", "res://Scenes/level_2.tscn", "res://Scenes/level_3.tscn"]
 static var levelNodes : Array[Node2D]
 
 static var xLevelOffset : float = 0.0
@@ -32,5 +32,5 @@ static func _set_values() -> void:
 	yLevelOffset = 2000.0
 
 	currLevel = 0
-	numLevels = 2
+	numLevels = 3
 	maxHeight = 10
