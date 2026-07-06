@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bh6uvx12b0b31"]
 
 [ext_resource type="Script" uid="uid://bcv73or5ilujc" path="res://Scripts/input_mgr.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://bur6u54nrglkq" path="res://Textures/Player.png" id="1_v0iea"]
+[ext_resource type="Texture2D" uid="uid://p7vh3qcoms10" path="res://Textures/Player1.png" id="2_cvnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6x6n"]
 
@@ -18,4 +18,4 @@ debug_color = Color(0.58187073, 0.382447, 1, 0.41960785)
 
 [node name="Player" type="Sprite2D" parent="PlayerCB2D" unique_id=2145661472]
 scale = Vector2(0.025, 0.025)
-texture = ExtResource("1_v0iea")
+texture = ExtResource("2_cvnsp")

@@ -25,7 +25,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	owner.get_child(2)
 
 func _spawn_background() -> void:
 	var background_instance = BACKGROUND_SCENE.instantiate()
@@ -52,5 +52,7 @@ func _spawn_players() -> void:
 		player_instance.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
 		player_instance.name = "Player_" + str(k)
 		player_instance.get_child(0).player_id = k
+		var playerSpr = player_instance.get_child(0).get_child(1) as Sprite2D
+		playerSpr.texture = load("res://Textures/Player" + str(k) + ".png")
 		add_child(player_instance)
 		PlayersHelper.playerNodes.append(player_instance)

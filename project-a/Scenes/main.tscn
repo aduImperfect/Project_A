@@ -10,3 +10,8 @@ script = ExtResource("1_jjgbg")
 
 [node name="MainCam" type="Camera2D" parent="." unique_id=1030402117]
 script = ExtResource("2_bo1nx")
+
+[node name="FPSCounter" type="TextEdit" parent="." unique_id=147885816]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "0.0"

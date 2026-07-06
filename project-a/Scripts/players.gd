@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 	pass
 
 static func _set_player_info() -> void:
-	numPlayers = 1
+	numPlayers = 2
 
 ## Call this once, from level_gen, before spawning players.
 static func _set_ghost_container(container: Node2D) -> void:
