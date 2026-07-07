@@ -1,3 +1,5 @@
+@tool
+
 extends CharacterBody2D
 
 @export var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -65,8 +67,23 @@ func _ready() -> void:
 	move_right_action = "ui_right_p" + str(player_id)
 	run_action = "ui_run_p" + str(player_id)
 
+	_add_input_actions_for_this_player()
+
+	#var inputActions : Array[StringName] = InputMap.get_actions()
+#
+	#print("-------------------------------")
+	#print(player_id)
+	#for k in inputActions.size():
+		#if (inputActions[k] == jump_action) || (inputActions[k] == move_left_action) || (inputActions[k] == move_right_action) || (inputActions[k] == run_action):
+			#print("Action Info: ")
+			#print(inputActions[k])
+			#var inpEvents : Array[InputEvent] = InputMap.action_get_events(inputActions[k])
+			#for j in inpEvents.size():
+				#print(inpEvents[j].as_text())
+	#print("-------------------------------")
+
 	_start_new_run()
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
@@ -179,3 +196,82 @@ func _player_death() -> void:
 func _start_new_run() -> void:
 	ghost_frames = PackedVector2Array()
 	run_start_global = owner.global_position
+
+func _add_input_actions_for_this_player() -> void:
+	# If its the last player - set the actions to be tied to keyboard!
+	if player_id == (PlayersHelper.numPlayers - 1):
+		if not InputMap.has_action(jump_action):
+			InputMap.add_action(jump_action)
+			var eventAction1 = InputEventKey.new()
+			eventAction1.keycode = Key.KEY_SPACE
+			InputMap.action_add_event(jump_action, eventAction1)
+			var eventAction2 = InputEventKey.new()
+			eventAction2.keycode = Key.KEY_UP
+			InputMap.action_add_event(jump_action, eventAction2)
+		if not InputMap.has_action(move_left_action):
+			InputMap.add_action(move_left_action)
+			var eventAction1 = InputEventKey.new()
+			eventAction1.keycode = Key.KEY_LEFT
+			InputMap.action_add_event(move_left_action, eventAction1)
+			var eventAction2 = InputEventKey.new()
+			eventAction2.keycode = Key.KEY_A
+			InputMap.action_add_event(move_left_action, eventAction2)
+		if not InputMap.has_action(move_right_action):
+			InputMap.add_action(move_right_action)
+			var eventAction1 = InputEventKey.new()
+			eventAction1.keycode = Key.KEY_RIGHT
+			InputMap.action_add_event(move_right_action, eventAction1)
+			var eventAction2 = InputEventKey.new()
+			eventAction2.keycode = Key.KEY_D
+			InputMap.action_add_event(move_right_action, eventAction2)
+		if not InputMap.has_action(run_action):
+			InputMap.add_action(run_action)
+			var eventAction1 = InputEventKey.new()
+			eventAction1.keycode = Key.KEY_SHIFT
+			InputMap.action_add_event(run_action, eventAction1)
+	else:
+	# Otherwise, set the actions tied to the joypad accordingly!
+		if not InputMap.has_action(jump_action):
+			InputMap.add_action(jump_action)
+			InputMap.action_set_deadzone(jump_action, 0.2)
+			var eventAction1 = InputEventJoypadButton.new()
+			eventAction1.button_index = JoyButton.JOY_BUTTON_DPAD_UP
+			eventAction1.device = player_id
+			InputMap.action_add_event(jump_action, eventAction1)
+			var eventAction2 = InputEventJoypadButton.new()
+			eventAction2.button_index = JoyButton.JOY_BUTTON_A
+			eventAction2.device = player_id
+			InputMap.action_add_event(jump_action, eventAction2)
+		if not InputMap.has_action(move_left_action):
+			InputMap.add_action(move_left_action)
+			InputMap.action_set_deadzone(move_left_action, 0.2)
+			var eventAction1 = InputEventJoypadButton.new()
+			eventAction1.button_index = JoyButton.JOY_BUTTON_DPAD_LEFT
+			eventAction1.device = player_id
+			InputMap.action_add_event(move_left_action, eventAction1)
+			var eventAction2 = InputEventJoypadMotion.new()
+			eventAction2.axis = JoyAxis.JOY_AXIS_LEFT_X
+			eventAction2.device = player_id
+			InputMap.action_add_event(move_left_action, eventAction2)
+		if not InputMap.has_action(move_right_action):
+			InputMap.add_action(move_right_action)
+			InputMap.action_set_deadzone(move_right_action, 0.2)
+			var eventAction1 = InputEventJoypadButton.new()
+			eventAction1.button_index = JoyButton.JOY_BUTTON_DPAD_RIGHT
+			eventAction1.device = player_id
+			InputMap.action_add_event(move_right_action, eventAction1)
+			var eventAction2 = InputEventJoypadMotion.new()
+			eventAction2.axis = JoyAxis.JOY_AXIS_RIGHT_X
+			eventAction2.device = player_id
+			InputMap.action_add_event(move_right_action, eventAction2)
+		if not InputMap.has_action(run_action):
+			InputMap.add_action(run_action)
+			InputMap.action_set_deadzone(run_action, 0.2)
+			var eventAction1 = InputEventJoypadButton.new()
+			eventAction1.button_index = JoyButton.JOY_BUTTON_X
+			eventAction1.device = player_id
+			InputMap.action_add_event(run_action, eventAction1)
+			var eventAction2 = InputEventJoypadMotion.new()
+			eventAction2.axis = JoyAxis.JOY_AXIS_TRIGGER_RIGHT
+			eventAction2.device = player_id
+			InputMap.action_add_event(run_action, eventAction2)
