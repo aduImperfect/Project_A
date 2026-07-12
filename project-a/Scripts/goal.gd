@@ -16,12 +16,12 @@ func _process(_delta: float) -> void:
 		initial_setup = true
 
 func _on_body_entered(body: Node2D) -> void:
-	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
+	if LevelsDatabase.currLevel >= LevelsDatabase.numLevels:
 		return
 
 	for k in PlayersHelper.playerNodes.size():
 		if body.owner.name == PlayersHelper.playerNodes[k].name:
-			print("Goal at: " + owner.owner.name + " reached by Player: " + body.owner.name)
+			#print("Goal at: " + owner.owner.name + " reached by Player: " + body.owner.name)
 			playersEnteredGoal[k] = true
 			break
 
@@ -33,16 +33,4 @@ func _on_body_entered(body: Node2D) -> void:
 
 	#Only progress to next level if all players reached!
 	if allPlayersEntered:
-		LevelsDatabase.currLevel += 1
-		InputsData.begin_delay = true
-		InputsData._reset_values()
-
-		if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
-			#print("Game Complete")
-			return
-
-		for k in PlayersHelper.playerNodes.size():
-			PlayersHelper.clear_ghosts_for_player(k)
-			PlayersHelper.playerNodes[k].get_child(0).position = Vector2(0.0, 0.0)
-			PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
-			PlayersHelper.playerNodes[k].get_child(0)._start_new_run()
+		LevelsDatabase._level_switcher()
