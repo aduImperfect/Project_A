@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b8yhu52nr3g0d"]
 
-[ext_resource type="Script" uid="uid://bq3kmaox7nv52" path="res://Scenes/ghost.gd" id="1_ghost"]
+[ext_resource type="Script" uid="uid://bq3kmaox7nv52" path="res://Scripts/ghost.gd" id="1_ghost"]
 [ext_resource type="Texture2D" uid="uid://bkwjtfev52nch" path="res://Textures/Player0.png" id="2_e3r4w"]
 
 [node name="Ghost" type="Node2D" unique_id=1955443560]

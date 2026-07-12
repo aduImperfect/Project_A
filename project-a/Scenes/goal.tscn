@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c2gstpkex2tx8"]
 
 [ext_resource type="Texture2D" uid="uid://dhx2ftic1jx3s" path="res://Textures/Goal.png" id="1_paeek"]
-[ext_resource type="Script" uid="uid://dkgfq0ia25iy5" path="res://Scenes/goal.gd" id="1_s0pnd"]
+[ext_resource type="Script" uid="uid://dkgfq0ia25iy5" path="res://Scripts/goal.gd" id="1_s0pnd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6x6n"]
 
