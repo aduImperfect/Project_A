@@ -2,8 +2,8 @@ class_name InputsData
 
 static var up_speed : float = 0.0
 static var horiz_speed : float = 0.0
-static var max_run_speed : float = 0.0
 
+static var max_run_speed : float = 0.0
 static var max_up_speed : float = 0.0
 static var max_horiz_speed : float = 0.0
 
