@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://djatmjw4uukb5" path="res://Scripts/fps_counter.gd" id="3_8gbba"]
 [ext_resource type="Script" uid="uid://8nsomulkwu6q" path="res://Scripts/move_speed_current.gd" id="4_jjvhh"]
 [ext_resource type="Script" uid="uid://dvkcoae6aw6mn" path="res://Scenes/max_move_speed_edit.gd" id="4_kry3j"]
+[ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://Scenes/jump_speed_current.gd" id="6_21xkr"]
+[ext_resource type="Script" uid="uid://bovd0x14v1lv5" path="res://Scenes/max_jump_speed_edit.gd" id="7_6bp64"]
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 
@@ -42,3 +44,21 @@ offset_top = -196.0
 offset_right = -404.0
 offset_bottom = -156.0
 script = ExtResource("4_kry3j")
+
+[node name="JumpSpeedCurrent" type="TextEdit" parent="MainCam" unique_id=1681127761]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -552.0
+offset_top = -139.0
+offset_right = -352.0
+offset_bottom = -99.0
+script = ExtResource("6_21xkr")
+
+[node name="MaxJumpSpeedEdit" type="TextEdit" parent="MainCam" unique_id=449315169]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -550.0
+offset_top = -85.0
+offset_right = -350.0
+offset_bottom = -45.0
+script = ExtResource("7_6bp64")
