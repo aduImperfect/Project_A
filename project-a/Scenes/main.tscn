@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cadhbg6w7dywe" path="res://Scripts/level_gen.gd" id="1_jjgbg"]
 [ext_resource type="Script" uid="uid://cdr6kd3xwvfmo" path="res://Scripts/camera.gd" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://djatmjw4uukb5" path="res://Scripts/fps_counter.gd" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://8nsomulkwu6q" path="res://Scripts/move_speed_edit.gd" id="4_jjvhh"]
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 
@@ -13,21 +14,21 @@ script = ExtResource("1_jjgbg")
 script = ExtResource("2_bo1nx")
 
 [node name="FPSCounter" type="TextEdit" parent="MainCam" unique_id=147885816]
+z_index = 100
 custom_minimum_size = Vector2(100, 100)
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -560.0
+offset_top = -305.0
+offset_right = -460.0
+offset_bottom = -205.0
 text = "0.0"
 script = ExtResource("3_8gbba")
 
-[node name="TextEdit" type="TextEdit" parent="MainCam" unique_id=67907275]
+[node name="MoveSpeedEdit" type="TextEdit" parent="MainCam" unique_id=67907275]
+z_index = 100
 custom_minimum_size = Vector2(100, 100)
-offset_right = 8.0
-offset_bottom = 8.0
-text = "RUN!"
-
-[node name="Control" type="Control" parent="MainCam" unique_id=223165594]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -557.0
+offset_top = -184.0
+offset_right = -457.0
+offset_bottom = -84.0
+text = "0"
+script = ExtResource("4_jjvhh")
