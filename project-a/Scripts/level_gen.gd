@@ -25,7 +25,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	owner.get_child(2)
+	#owner.get_child(2)
+	pass
 
 func _spawn_background() -> void:
 	var background_instance = BACKGROUND_SCENE.instantiate()

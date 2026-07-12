@@ -25,13 +25,13 @@ extends CharacterBody2D
 @export var grounded : bool = true
 @export var is_running : bool = true
 
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -400.0
-@export var WALL_SLIDE_SPEED = 100.0
-@export var WALL_JUMP_PUSHBACK = 400.0
+#@export var SPEED = 300.0
+#@export var JUMP_VELOCITY = -400.0
+@export var wall_slide_speed = 100.0
+@export var wall_jump_pushback = 400.0
 # --- Wall Jump Mechanics ---
 @export var wall_jump_lock_timer = 0.0
-@export var WALL_JUMP_LOCK_TIME = 0.10 # Time in seconds player control is locked
+@export var wall_jump_lock_time = 0.10 # Time in seconds player control is locked
 
 # Export this variable to change it in the Inspector for each player node
 @export var player_id: int = 0
@@ -49,9 +49,10 @@ var run_start_global : Vector2 = Vector2.ZERO
 func _ready() -> void:
 	up_speed = 0.0
 	horiz_speed = 0.0
-	max_up_speed = 500.0
+	max_up_speed = 400.0
 	max_horiz_speed = 100.0
-	max_run_speed = 250.0
+	#Max run speed set to 0
+	max_run_speed = 0.0
 	up_speed_dec = 100.0
 	horiz_speed_dec = 100.0
 	up_speed_min = 0.0
@@ -144,7 +145,8 @@ func _physics_process(_delta: float) -> void:
 
 	if is_on_floor():
 		if is_jumping:
-			velocity.y = JUMP_VELOCITY
+			velocity.y = -(max_up_speed)
+			pass
 		else:
 			pass
 		grounded = true
@@ -153,12 +155,12 @@ func _physics_process(_delta: float) -> void:
 		if is_on_wall():
 			if is_jumping:
 				# Wall Jump: Use wall normal to push away
-				velocity.x = get_wall_normal().x * WALL_JUMP_PUSHBACK
-				velocity.y = JUMP_VELOCITY
-				wall_jump_lock_timer = WALL_JUMP_LOCK_TIME
+				velocity.x = get_wall_normal().x * wall_jump_pushback
+				velocity.y = -(max_up_speed)
+				wall_jump_lock_timer = wall_jump_lock_time
 			if velocity.y > 0.0:
 				# 1. Handle Wall Sliding
-				velocity.y = min(velocity.y, WALL_SLIDE_SPEED)
+				velocity.y = min(velocity.y, wall_slide_speed)
 		#Gravity fall! Times 2!
 		velocity.y += gravity * _delta * 2
 		grounded = false

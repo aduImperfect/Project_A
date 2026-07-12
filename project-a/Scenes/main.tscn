@@ -11,7 +11,21 @@ script = ExtResource("1_jjgbg")
 [node name="MainCam" type="Camera2D" parent="." unique_id=1030402117]
 script = ExtResource("2_bo1nx")
 
-[node name="FPSCounter" type="TextEdit" parent="." unique_id=147885816]
+[node name="FPSCounter" type="TextEdit" parent="MainCam" unique_id=147885816]
+custom_minimum_size = Vector2(100, 100)
 offset_right = 8.0
 offset_bottom = 8.0
 text = "0.0"
+
+[node name="TextEdit" type="TextEdit" parent="MainCam" unique_id=67907275]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "RUN!"
+
+[node name="Control" type="Control" parent="MainCam" unique_id=223165594]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
