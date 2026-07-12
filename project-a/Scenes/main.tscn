@@ -126,6 +126,7 @@ offset_bottom = 292.0
 script = ExtResource("13_fdnlq")
 
 [node name="BeginDelayCurrent" type="TextEdit" parent="MainCam" unique_id=823944929]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 offset_left = -429.0
