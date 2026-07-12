@@ -56,3 +56,23 @@ static func _set_values() -> void:
 	currLevel = 0
 	numLevels = LEVEL_SCENES.size()
 	maxHeight = 10
+
+static func _level_switcher(newLevelNum : int = -1) -> void:
+	if newLevelNum < 0:
+		#Normal internal function of level switching incrementally.
+		LevelsDatabase.currLevel += 1
+	else:
+		#Setting level forcibly to switch version.
+		LevelsDatabase.currLevel = newLevelNum
+	InputsData.begin_delay = true
+	InputsData._reset_values()
+
+	if LevelsDatabase.currLevel >= LevelsDatabase.numLevels:
+		#print("Game Complete")
+		return
+
+	for k in PlayersHelper.playerNodes.size():
+		PlayersHelper.clear_ghosts_for_player(k)
+		PlayersHelper.playerNodes[k].get_child(0).position = Vector2(0.0, 0.0)
+		PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
+		PlayersHelper.playerNodes[k].get_child(0)._start_new_run()
