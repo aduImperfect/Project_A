@@ -73,3 +73,17 @@ scale = Vector2(4, 1)
 [node name="Ground_P_7" parent="." unique_id=396525521 instance=ExtResource("1_smnlx")]
 position = Vector2(1700, 52)
 scale = Vector2(5, 1)
+
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=1236002553]
+offset_left = 48.0
+offset_top = 291.0
+offset_right = 283.0
+offset_bottom = 332.0
+text = "Fix your movespeed & jump."
+
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=1867075084]
+offset_left = 1141.0
+offset_top = 291.0
+offset_right = 1282.0
+offset_bottom = 332.0
+text = "You're learning. "

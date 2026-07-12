@@ -55,3 +55,17 @@ scale = Vector2(5, 1)
 [node name="Ground_P_7" parent="." unique_id=852924870 instance=ExtResource("1_vk57k")]
 position = Vector2(141, 254)
 scale = Vector2(5, 1)
+
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=1773787374]
+offset_left = 57.0
+offset_top = 115.0
+offset_right = 297.0
+offset_bottom = 163.0
+text = "Max Movespeed is crap. Fix it."
+
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=1070965928]
+offset_left = 889.0
+offset_top = 115.0
+offset_right = 1129.0
+offset_bottom = 163.0
+text = "Congrats, you fixed it. *clap*"

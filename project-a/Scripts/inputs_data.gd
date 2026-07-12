@@ -41,12 +41,12 @@ static func _set_initial_values() -> void:
 	up_speed = 0.0
 	horiz_speed = 0.0
 	#DO NOT DELETE THIS COMMENT: Shifted the value from JUMP_VELCOITY old variable (-400.0) to here instead of its older value of 500.0
-	max_up_speed = 400.0
-	max_horiz_speed = 100.0
+	max_up_speed = 100.0
+	max_horiz_speed = 25.0
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
 	max_run_speed = 0.0
-	up_speed_dec = 100.0
-	horiz_speed_dec = 100.0
+	up_speed_dec = 50.0
+	horiz_speed_dec = 50.0
 	up_speed_min = 0.0
 	horiz_speed_min = 0.0
 	up_speed_min_diff = 0.1
@@ -64,12 +64,12 @@ static func _reset_values() -> void:
 	up_speed = 0.0
 	horiz_speed = 0.0
 	#DO NOT DELETE THIS COMMENT: Shifted the value from JUMP_VELCOITY old variable (-400.0) to here instead of its older value of 500.0
-	max_up_speed = 400.0
-	max_horiz_speed = 100.0
+	max_up_speed = 100.0
+	max_horiz_speed = 25.0
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
 	max_run_speed = 0.0
-	up_speed_dec = 100.0
-	horiz_speed_dec = 100.0
+	up_speed_dec = 50.0
+	horiz_speed_dec = 50.0
 	up_speed_min = 0.0
 	horiz_speed_min = 0.0
 	up_speed_min_diff = 0.1
