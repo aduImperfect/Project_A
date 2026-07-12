@@ -4,21 +4,21 @@ extends CharacterBody2D
 
 @export var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@export var up_speed : float = 0.0
-@export var horiz_speed : float = 0.0
-@export var max_run_speed : float = 0.0
-
-@export var max_up_speed : float = 0.0
-@export var max_horiz_speed : float = 0.0
-
-@export var up_speed_dec : float = 0.0
-@export var horiz_speed_dec : float = 0.0
-
-@export var up_speed_min : float = 0.0
-@export var horiz_speed_min : float = 0.0
-
-@export var up_speed_min_diff : float = 0.0
-@export var horiz_speed_min_diff : float = 0.0
+#@export var up_speed : float = 0.0
+#@export var horiz_speed : float = 0.0
+#@export var max_run_speed : float = 0.0
+#
+#@export var max_up_speed : float = 0.0
+#@export var max_horiz_speed : float = 0.0
+#
+#@export var up_speed_dec : float = 0.0
+#@export var horiz_speed_dec : float = 0.0
+#
+#@export var up_speed_min : float = 0.0
+#@export var horiz_speed_min : float = 0.0
+#
+#@export var up_speed_min_diff : float = 0.0
+#@export var horiz_speed_min_diff : float = 0.0
 
 @export var is_moving : bool = false
 @export var is_jumping : bool = false
@@ -27,11 +27,13 @@ extends CharacterBody2D
 
 #@export var SPEED = 300.0
 #@export var JUMP_VELOCITY = -400.0
-@export var wall_slide_speed = 100.0
-@export var wall_jump_pushback = 400.0
-# --- Wall Jump Mechanics ---
-@export var wall_jump_lock_timer = 0.0
-@export var wall_jump_lock_time = 0.10 # Time in seconds player control is locked
+#@export var wall_slide_speed = 100.0
+#@export var wall_jump_pushback = 400.0
+## --- Wall Jump Mechanics ---
+#@export var wall_jump_lock_timer = 0.0
+#@export var wall_jump_lock_time = 0.10 # Time in seconds player control is locked
+
+@export var text_edit_input : bool = false
 
 # Export this variable to change it in the Inspector for each player node
 @export var player_id: int = 0
@@ -47,18 +49,22 @@ var run_start_global : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	up_speed = 0.0
-	horiz_speed = 0.0
-	max_up_speed = 400.0
-	max_horiz_speed = 100.0
-	#Max run speed set to 0
-	max_run_speed = 0.0
-	up_speed_dec = 100.0
-	horiz_speed_dec = 100.0
-	up_speed_min = 0.0
-	horiz_speed_min = 0.0
-	up_speed_min_diff = 0.1
-	horiz_speed_min_diff = 0.1
+	#up_speed = 0.0
+	#horiz_speed = 0.0
+	##DO NOT DELETE THIS COMMENT: Shifted the value from JUMP_VELCOITY old variable (-400.0) to here instead of its older value of 500.0
+	#max_up_speed = 400.0
+	#max_horiz_speed = 100.0
+	##DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
+	#max_run_speed = 0.0
+	#up_speed_dec = 100.0
+	#horiz_speed_dec = 100.0
+	#up_speed_min = 0.0
+	#horiz_speed_min = 0.0
+	#up_speed_min_diff = 0.1
+	#horiz_speed_min_diff = 0.1
+
+	InputsData._set_initial_values()
+
 	is_moving = false
 	is_jumping = false
 	grounded = true
@@ -87,35 +93,41 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if text_edit_input:
+		return
+
 	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
 		return
 
 	if not is_moving:
-		if horiz_speed < -horiz_speed_min_diff:
-			horiz_speed += _delta * horiz_speed_dec
-		elif  horiz_speed > horiz_speed_min_diff:
-			horiz_speed -= _delta * horiz_speed_dec
+		if InputsData.horiz_speed < -InputsData.horiz_speed_min_diff:
+			InputsData.horiz_speed += _delta * InputsData.horiz_speed_dec
+		elif InputsData.horiz_speed > InputsData.horiz_speed_min_diff:
+			InputsData.horiz_speed -= _delta * InputsData.horiz_speed_dec
 		else:
-			horiz_speed = horiz_speed_min
+			InputsData.horiz_speed = InputsData.horiz_speed_min
 
 	if is_jumping and grounded:
-		up_speed = max_up_speed
+		InputsData.up_speed = InputsData.max_up_speed
 		grounded = false
 	elif not grounded:
-		if up_speed > up_speed_min_diff:
-			up_speed -= _delta * up_speed_dec
+		if InputsData.up_speed > InputsData.up_speed_min_diff:
+			InputsData.up_speed -= _delta * InputsData.up_speed_dec
 		else:
-			up_speed = up_speed_min
+			InputsData.up_speed = InputsData.up_speed_min
 
 	_player_death()
 
 
 func _physics_process(_delta: float) -> void:
+	if text_edit_input:
+		return
+
 	if Input.is_action_pressed(move_left_action):
-		horiz_speed = -max_horiz_speed
+		InputsData.horiz_speed = -InputsData.max_horiz_speed
 		is_moving = true
 	elif Input.is_action_pressed(move_right_action):
-		horiz_speed = max_horiz_speed
+		InputsData.horiz_speed = InputsData.max_horiz_speed
 		is_moving = true
 	else:
 		is_moving = false
@@ -127,47 +139,47 @@ func _physics_process(_delta: float) -> void:
 
 	if Input.is_action_pressed(run_action):
 		if is_moving:
-			if horiz_speed < 0.0:
-				horiz_speed = -max_run_speed
-			elif horiz_speed > 0.0:
-				horiz_speed = max_run_speed
+			if InputsData.horiz_speed < 0.0:
+				InputsData.horiz_speed = -InputsData.max_run_speed
+			elif InputsData.horiz_speed > 0.0:
+				InputsData.horiz_speed = InputsData.max_run_speed
 			is_running = true
 		else:
 			is_running = false
 	else:
 		is_running = false
 
-	position.x += _delta * horiz_speed
-	position.y -= _delta * up_speed
+	position.x += _delta * InputsData.horiz_speed
+	position.y -= _delta * InputsData.up_speed
 
-	if wall_jump_lock_timer > 0:
-		wall_jump_lock_timer -= _delta
+	if InputsData.wall_jump_lock_timer > 0:
+		InputsData.wall_jump_lock_timer -= _delta
 
 	if is_on_floor():
 		if is_jumping:
-			velocity.y = -(max_up_speed)
+			velocity.y = -(InputsData.max_up_speed)
 			pass
 		else:
 			pass
 		grounded = true
-		up_speed = up_speed_min
+		InputsData.up_speed = InputsData.up_speed_min
 	else:
 		if is_on_wall():
 			if is_jumping:
 				# Wall Jump: Use wall normal to push away
-				velocity.x = get_wall_normal().x * wall_jump_pushback
-				velocity.y = -(max_up_speed)
-				wall_jump_lock_timer = wall_jump_lock_time
+				velocity.x = get_wall_normal().x * InputsData.wall_jump_pushback
+				velocity.y = -(InputsData.max_up_speed)
+				InputsData.wall_jump_lock_timer = InputsData.wall_jump_lock_time
 			if velocity.y > 0.0:
 				# 1. Handle Wall Sliding
-				velocity.y = min(velocity.y, wall_slide_speed)
+				velocity.y = min(velocity.y, InputsData.wall_slide_speed)
 		#Gravity fall! Times 2!
 		velocity.y += gravity * _delta * 2
 		grounded = false
 
 	# 3. Handle Horizontal Movement (with control lock)
-	if wall_jump_lock_timer <= 0:
-		velocity.x = horiz_speed
+	if InputsData.wall_jump_lock_timer <= 0:
+		velocity.x = InputsData.horiz_speed
 	else:
 		# Air control during wall jump lock (optional, keeps inertia)
 		velocity.x = move_toward(velocity.x, 0, 50)
@@ -179,6 +191,24 @@ func _physics_process(_delta: float) -> void:
 func _input(_event: InputEvent) -> void:
 	pass
 
+func is_any_text_focused(node: Node) -> bool:
+	if node is TextEdit or node is LineEdit:
+		if node.has_focus():
+			return true
+	
+	for child in node.get_children():
+		if is_any_text_focused(child):
+			return true
+			
+	return false
+
+func _unhandled_input(_event: InputEvent) -> void:
+	# Checks the entire scene tree for an active text input
+	if is_any_text_focused(get_tree().root):
+		text_edit_input = true
+	else:
+		text_edit_input = false
+
 func _player_death() -> void:
 	if position.y > 250.0:
 		#print("Current Level: ", LevelsDatabase.currLevel + 1)
@@ -187,8 +217,8 @@ func _player_death() -> void:
 
 		position = Vector2(0.0, 0.0)
 		owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
-		up_speed = 0.0
-		horiz_speed = 0.0
+		InputsData.up_speed = 0.0
+		InputsData.horiz_speed = 0.0
 		is_moving = false
 		is_jumping = false
 
