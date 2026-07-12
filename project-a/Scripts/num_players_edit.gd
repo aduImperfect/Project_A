@@ -2,7 +2,7 @@ extends TextEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "Wall Jump Pushback: " + str(InputsData.wall_jump_pushback)
+	text = "Num Players: " + str(PlayersHelper.numPlayers)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -11,11 +11,14 @@ func _process(_delta: float) -> void:
 	regex.compile("-?\\d+\\.?\\d+") 
 
 	var result = regex.search(text)
-	var first_float : float = 0.0
+	var first_int : int = 0
 	if result:
-		first_float = result.get_string().to_float()
+		first_int = result.get_string().to_int()
 
-	InputsData.wall_jump_pushback = first_float
+	if InputsData.begin_delay:
+		text = "Num Players: " + str(PlayersHelper.numPlayers)
+	else:
+		PlayersHelper.numPlayers = first_int
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

@@ -34,7 +34,8 @@ func _on_body_entered(body: Node2D) -> void:
 	#Only progress to next level if all players reached!
 	if allPlayersEntered:
 		LevelsDatabase.currLevel += 1
-		InputsData._set_initial_values()
+		InputsData.begin_delay = true
+		InputsData._reset_values()
 
 		if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
 			#print("Game Complete")

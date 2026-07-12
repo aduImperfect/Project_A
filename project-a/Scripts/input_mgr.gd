@@ -93,6 +93,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if InputsData.begin_delay:
+		#InputsData._reset_values()
+		InputsData.delayed_reset_acc += _delta
+		if InputsData.delayed_reset_acc > InputsData.delayed_reset_max:
+			InputsData.delayed_reset_acc = 0.0
+			InputsData.begin_delay = false
+
 	if text_edit_input:
 		return
 

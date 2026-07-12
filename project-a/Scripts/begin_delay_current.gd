@@ -2,20 +2,11 @@ extends TextEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "Wall Jump Lock Time: " + str(InputsData.wall_jump_lock_time)
+	editable = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var regex = RegEx.new()
-	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile("-?\\d+\\.?\\d+") 
-
-	var result = regex.search(text)
-	var first_float : float = 0.0
-	if result:
-		first_float = result.get_string().to_float()
-
-	InputsData.wall_jump_lock_time = first_float
+	text = "Begin Delay: " + str(InputsData.begin_delay)
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus
