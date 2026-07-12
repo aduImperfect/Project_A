@@ -19,7 +19,8 @@ func _process(_delta: float) -> void:
 	if InputsData.begin_delay:
 		text = "Current Level: " + str(LevelsDatabase.currLevel)
 	else:
-		LevelsDatabase.currLevel = int(first_float)
+		pass
+		#LevelsDatabase.currLevel = int(first_float)
 		#Only switch if current level value has been changed!
 		#if floor(first_float) != LevelsDatabase.currLevel:
 			#LevelsDatabase._level_switcher(floor(first_float))
