@@ -63,6 +63,13 @@ offset_bottom = 103.0
 text = "Think hard about your
  numbers here."
 
+[node name="LevelObjective3" type="TextEdit" parent="." unique_id=1816929586]
+offset_left = 1151.0
+offset_top = 564.0
+offset_right = 1265.0
+offset_bottom = 599.0
+text = "Hah, you fell."
+
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=1596129767]
 offset_left = 1619.0
 offset_top = 514.0

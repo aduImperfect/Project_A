@@ -36,8 +36,8 @@ position = Vector2(711, 405)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_5" parent="." unique_id=350770238 instance=ExtResource("3_vwg62")]
-position = Vector2(1102, 313)
-scale = Vector2(5, 1)
+position = Vector2(1225, 313)
+scale = Vector2(8, 1)
 
 [node name="Ground_P_8" parent="." unique_id=1710634279 instance=ExtResource("3_vwg62")]
 position = Vector2(1678, 137)

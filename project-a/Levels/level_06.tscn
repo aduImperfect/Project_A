@@ -10,7 +10,7 @@
 position = Vector2(69, 594)
 
 [node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_ladoa")]
-position = Vector2(1755, -9)
+position = Vector2(1511.9999, 408)
 
 [node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_mrdki")]
 position = Vector2(920, -132)
@@ -40,18 +40,8 @@ position = Vector2(274, 481.00003)
 rotation = 1.5707964
 scale = Vector2(5, 1)
 
-[node name="Ground_P_6" parent="." unique_id=408997801 instance=ExtResource("3_mrdki")]
-position = Vector2(1384, 309)
-rotation = 1.5707964
-scale = Vector2(5, 1)
-
-[node name="Ground_P_11" parent="." unique_id=218343512 instance=ExtResource("3_mrdki")]
-position = Vector2(1129, 142)
-rotation = 1.5707964
-scale = Vector2(5, 1)
-
 [node name="Ground_P_5" parent="." unique_id=350770238 instance=ExtResource("3_mrdki")]
-position = Vector2(1598.0001, 22)
+position = Vector2(1355, 439)
 scale = Vector2(10, 1)
 
 [node name="Ground_P_8" parent="." unique_id=1710634279 instance=ExtResource("3_mrdki")]
@@ -60,10 +50,6 @@ scale = Vector2(5, 1)
 
 [node name="Ground_P_9" parent="." unique_id=1592483928 instance=ExtResource("3_mrdki")]
 position = Vector2(629, 358)
-scale = Vector2(5, 1)
-
-[node name="Ground_P_10" parent="." unique_id=2114689232 instance=ExtResource("3_mrdki")]
-position = Vector2(1042, 474)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_7" parent="." unique_id=248651494 instance=ExtResource("3_mrdki")]
@@ -79,19 +65,18 @@ offset_bottom = 569.0
 text = "Wall jumping practice!
 Think Megaman X or 
 Hollow Knight (post claws)."
+metadata/_edit_use_anchors_ = true
 
-[node name="LevelObjective2" type="TextEdit" parent="." unique_id=1499840322]
-offset_left = 1265.0
-offset_top = 498.0
-offset_right = 1504.0
-offset_bottom = 560.0
-text = "Might need to modify
-pushback here."
+[node name="LevelObjective_02" type="TextEdit" parent="." unique_id=778533617]
+offset_left = 961.0
+offset_top = 128.0
+offset_right = 1211.0
+offset_bottom = 169.0
+text = "You still have to run and jump."
 
-[node name="LevelEnd" type="TextEdit" parent="." unique_id=1830785741]
-offset_left = 1524.0
-offset_top = 60.0
-offset_right = 1748.0
-offset_bottom = 125.0
-text = "Congrats. You designed 2D
-platforming."
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=1625177850]
+offset_left = 1421.0
+offset_top = 324.0
+offset_right = 1571.0
+offset_bottom = 365.0
+text = "You're improving."
