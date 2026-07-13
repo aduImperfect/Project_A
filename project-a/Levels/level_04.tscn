@@ -32,20 +32,20 @@ scale = Vector2(10, 1)
 position = Vector2(1781, 628)
 
 [node name="Ground_P_4" parent="." unique_id=603075016 instance=ExtResource("3_3mdkx")]
-position = Vector2(709.00006, 483)
+position = Vector2(596.00006, 483)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_5" parent="." unique_id=473936102 instance=ExtResource("3_3mdkx")]
 position = Vector2(1095, 483)
-scale = Vector2(5, 1)
+scale = Vector2(8, 1)
 
 [node name="Ground_P_8" parent="." unique_id=894913734 instance=ExtResource("3_3mdkx")]
 position = Vector2(1700, 483)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_7" parent="." unique_id=2079323390 instance=ExtResource("3_3mdkx")]
-position = Vector2(324, 483)
-scale = Vector2(5, 1)
+position = Vector2(264, 483)
+scale = Vector2(3, 1)
 
 [node name="LevelObjective" type="TextEdit" parent="." unique_id=591409077]
 offset_left = 57.0
