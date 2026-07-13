@@ -46,3 +46,26 @@ scale = Vector2(5, 1)
 [node name="Ground_P_7" parent="." unique_id=248651494 instance=ExtResource("3_4t8un")]
 position = Vector2(324, 483)
 scale = Vector2(5, 1)
+
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=210773694]
+offset_left = 85.0
+offset_top = 236.0
+offset_right = 254.0
+offset_bottom = 305.0
+text = "Jump & move good.
+But with DANGER."
+
+[node name="LevelObjective2" type="TextEdit" parent="." unique_id=698498951]
+offset_left = 859.0
+offset_top = 34.0
+offset_right = 1079.0
+offset_bottom = 103.0
+text = "Think hard about your
+ numbers here."
+
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=1596129767]
+offset_left = 1619.0
+offset_top = 514.0
+offset_right = 1787.0
+offset_bottom = 545.0
+text = "Damn, you made it."

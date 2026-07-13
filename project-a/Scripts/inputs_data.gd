@@ -51,10 +51,10 @@ static func _set_initial_values() -> void:
 	horiz_speed_min = 0.0
 	up_speed_min_diff = 0.1
 	horiz_speed_min_diff = 0.1
-	wall_slide_speed = 100.0
-	wall_jump_pushback = 400.0
+	wall_slide_speed = 900.0
+	wall_jump_pushback = 40.0
 	wall_jump_lock_timer = 0.0
-	wall_jump_lock_time = 0.10 # Time in seconds player control is locked
+	wall_jump_lock_time = 0.0 # Time in seconds player control is locked
 
 	begin_delay = false
 	delayed_reset_max = 0.5
@@ -74,7 +74,7 @@ static func _reset_values() -> void:
 	horiz_speed_min = 0.0
 	up_speed_min_diff = 0.1
 	horiz_speed_min_diff = 0.1
-	wall_slide_speed = 100.0
-	wall_jump_pushback = 400.0
+	wall_slide_speed = 900.0
+	wall_jump_pushback = 40.0
 	wall_jump_lock_timer = 0.0
-	wall_jump_lock_time = 0.10 # Time in seconds player control is locked
+	wall_jump_lock_time = 0.0 # Time in seconds player control is locked

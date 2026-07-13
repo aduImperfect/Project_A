@@ -10,7 +10,7 @@
 position = Vector2(69, 594)
 
 [node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_s8nj6")]
-position = Vector2(1692, 107)
+position = Vector2(1768, 107)
 
 [node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_vwg62")]
 position = Vector2(920, -132)
@@ -32,15 +32,15 @@ scale = Vector2(10, 1)
 position = Vector2(1781, 628)
 
 [node name="Ground_P_4" parent="." unique_id=1687364210 instance=ExtResource("3_vwg62")]
-position = Vector2(750, 369)
+position = Vector2(711, 405)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_5" parent="." unique_id=350770238 instance=ExtResource("3_vwg62")]
-position = Vector2(1145, 263)
+position = Vector2(1102, 313)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_8" parent="." unique_id=1710634279 instance=ExtResource("3_vwg62")]
-position = Vector2(1602, 137)
+position = Vector2(1678, 137)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_7" parent="." unique_id=248651494 instance=ExtResource("3_vwg62")]
@@ -54,3 +54,26 @@ scale = Vector2(14, 1)
 [node name="Ground_P_12" parent="." unique_id=893139727 instance=ExtResource("3_vwg62")]
 position = Vector2(1361, 628)
 scale = Vector2(20, 1)
+
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=512979000]
+offset_left = 60.0
+offset_top = 363.0
+offset_right = 223.0
+offset_bottom = 401.0
+text = "Jump good practice."
+
+[node name="LevelObjective2" type="TextEdit" parent="." unique_id=792819468]
+offset_left = 918.0
+offset_top = 114.0
+offset_right = 1135.0
+offset_bottom = 208.0
+text = "If you fall, that's ok. 
+It's intended. Update your 
+numbers."
+
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=1581963938]
+offset_left = 1724.0
+offset_top = 33.0
+offset_right = 1780.0
+offset_bottom = 69.0
+text = "Nice."

@@ -36,7 +36,7 @@ position = Vector2(709.00006, 483)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_5" parent="." unique_id=473936102 instance=ExtResource("3_3mdkx")]
-position = Vector2(1158, 483)
+position = Vector2(1095, 483)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_8" parent="." unique_id=894913734 instance=ExtResource("3_3mdkx")]
@@ -46,3 +46,24 @@ scale = Vector2(5, 1)
 [node name="Ground_P_7" parent="." unique_id=2079323390 instance=ExtResource("3_3mdkx")]
 position = Vector2(324, 483)
 scale = Vector2(5, 1)
+
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=591409077]
+offset_left = 57.0
+offset_top = 366.0
+offset_right = 360.0
+offset_bottom = 401.0
+text = "Jump good practice but with DANGER!"
+
+[node name="LevelObjective2" type="TextEdit" parent="." unique_id=128485132]
+offset_left = 1367.0
+offset_top = 609.0
+offset_right = 1482.0
+offset_bottom = 644.0
+text = "Hah, you fell."
+
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=5469685]
+offset_left = 1637.0
+offset_top = 347.0
+offset_right = 1796.0
+offset_bottom = 385.0
+text = "You're improving."
