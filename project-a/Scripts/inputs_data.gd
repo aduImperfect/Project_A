@@ -45,8 +45,8 @@ static func _set_initial_values() -> void:
 	max_horiz_speed = 25.0
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
 	max_run_speed = 0.0
-	up_speed_dec = 250.0
-	horiz_speed_dec = 250.0
+	up_speed_dec = 500.0
+	horiz_speed_dec = 500.0
 	up_speed_min = 0.0
 	horiz_speed_min = 0.0
 	up_speed_min_diff = 0.1
@@ -68,8 +68,8 @@ static func _reset_values() -> void:
 	max_horiz_speed = 25.0
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
 	max_run_speed = 0.0
-	up_speed_dec = 250.0
-	horiz_speed_dec = 250.0
+	up_speed_dec = 500.0
+	horiz_speed_dec = 500.0
 	up_speed_min = 0.0
 	horiz_speed_min = 0.0
 	up_speed_min_diff = 0.1
