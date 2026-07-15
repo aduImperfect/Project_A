@@ -53,7 +53,7 @@ static func _set_values() -> void:
 	xLevelOffset = 3000.0
 	yLevelOffset = 2000.0
 
-	currLevel = 0
+	#currLevel = 0
 	numLevels = LEVEL_SCENES.size()
 	maxHeight = 10
 
@@ -77,5 +77,5 @@ static func _level_switcher(newLevelNum : int = -1) -> void:
 		PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
 		PlayersHelper.playerNodes[k].get_child(0)._start_new_run()
 
-	SaveLoadHelper.player_numbers = PlayersHelper.numPlayers
+	#SaveLoadHelper.player_numbers = PlayersHelper.numPlayers
 	SaveLoadHelper.save_game()
