@@ -4,34 +4,10 @@ extends CharacterBody2D
 
 @export var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-#@export var up_speed : float = 0.0
-#@export var horiz_speed : float = 0.0
-#@export var max_run_speed : float = 0.0
-#
-#@export var max_up_speed : float = 0.0
-#@export var max_horiz_speed : float = 0.0
-#
-#@export var up_speed_dec : float = 0.0
-#@export var horiz_speed_dec : float = 0.0
-#
-#@export var up_speed_min : float = 0.0
-#@export var horiz_speed_min : float = 0.0
-#
-#@export var up_speed_min_diff : float = 0.0
-#@export var horiz_speed_min_diff : float = 0.0
-
 @export var is_moving : bool = false
 @export var is_jumping : bool = false
 @export var grounded : bool = true
 @export var is_running : bool = true
-
-#@export var SPEED = 300.0
-#@export var JUMP_VELOCITY = -400.0
-#@export var wall_slide_speed = 100.0
-#@export var wall_jump_pushback = 400.0
-## --- Wall Jump Mechanics ---
-#@export var wall_jump_lock_timer = 0.0
-#@export var wall_jump_lock_time = 0.10 # Time in seconds player control is locked
 
 @export var text_edit_input : bool = false
 
@@ -49,20 +25,6 @@ var run_start_global : Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#up_speed = 0.0
-	#horiz_speed = 0.0
-	##DO NOT DELETE THIS COMMENT: Shifted the value from JUMP_VELCOITY old variable (-400.0) to here instead of its older value of 500.0
-	#max_up_speed = 400.0
-	#max_horiz_speed = 100.0
-	##DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
-	#max_run_speed = 0.0
-	#up_speed_dec = 100.0
-	#horiz_speed_dec = 100.0
-	#up_speed_min = 0.0
-	#horiz_speed_min = 0.0
-	#up_speed_min_diff = 0.1
-	#horiz_speed_min_diff = 0.1
-
 	InputsData._set_initial_values()
 
 	is_moving = false
@@ -94,7 +56,6 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if InputsData.begin_delay:
-		#InputsData._reset_values()
 		InputsData.delayed_reset_acc += _delta
 		if InputsData.delayed_reset_acc > InputsData.delayed_reset_max:
 			InputsData.delayed_reset_acc = 0.0
@@ -107,21 +68,21 @@ func _process(_delta: float) -> void:
 		return
 
 	if not is_moving:
-		if InputsData.horiz_speed < -InputsData.horiz_speed_min_diff:
-			InputsData.horiz_speed += _delta * InputsData.horiz_speed_dec
-		elif InputsData.horiz_speed > InputsData.horiz_speed_min_diff:
-			InputsData.horiz_speed -= _delta * InputsData.horiz_speed_dec
+		if InputsData.move_speed < -InputsData.move_speed_min_diff:
+			InputsData.move_speed += _delta * InputsData.move_speed_dec
+		elif InputsData.move_speed > InputsData.move_speed_min_diff:
+			InputsData.move_speed -= _delta * InputsData.move_speed_dec
 		else:
-			InputsData.horiz_speed = InputsData.horiz_speed_min
+			InputsData.move_speed = InputsData.min_move_speed
 
 	if is_jumping and grounded:
-		InputsData.up_speed = InputsData.max_up_speed
+		InputsData.jump_speed = InputsData.max_jump_speed
 		grounded = false
 	elif not grounded:
-		if InputsData.up_speed > InputsData.up_speed_min_diff:
-			InputsData.up_speed -= _delta * InputsData.up_speed_dec
+		if InputsData.jump_speed > InputsData.jump_speed_min_diff:
+			InputsData.jump_speed -= _delta * InputsData.jump_speed_dec
 		else:
-			InputsData.up_speed = InputsData.up_speed_min
+			InputsData.jump_speed = InputsData.min_jump_speed
 
 	_player_death()
 
@@ -131,10 +92,10 @@ func _physics_process(_delta: float) -> void:
 		return
 
 	if Input.is_action_pressed(move_left_action):
-		InputsData.horiz_speed = -InputsData.max_horiz_speed
+		InputsData.move_speed = -InputsData.max_move_speed
 		is_moving = true
 	elif Input.is_action_pressed(move_right_action):
-		InputsData.horiz_speed = InputsData.max_horiz_speed
+		InputsData.move_speed = InputsData.max_move_speed
 		is_moving = true
 	else:
 		is_moving = false
@@ -146,36 +107,36 @@ func _physics_process(_delta: float) -> void:
 
 	if Input.is_action_pressed(run_action):
 		if is_moving:
-			if InputsData.horiz_speed < 0.0:
-				InputsData.horiz_speed = -InputsData.max_run_speed
-			elif InputsData.horiz_speed > 0.0:
-				InputsData.horiz_speed = InputsData.max_run_speed
+			if InputsData.move_speed < 0.0:
+				InputsData.move_speed = -InputsData.max_run_speed
+			elif InputsData.move_speed > 0.0:
+				InputsData.move_speed = InputsData.max_run_speed
 			is_running = true
 		else:
 			is_running = false
 	else:
 		is_running = false
 
-	position.x += _delta * InputsData.horiz_speed
-	position.y -= _delta * InputsData.up_speed
+	position.x += _delta * InputsData.move_speed
+	position.y -= _delta * InputsData.jump_speed
 
 	if InputsData.wall_jump_lock_timer > 0:
 		InputsData.wall_jump_lock_timer -= _delta
 
 	if is_on_floor():
 		if is_jumping:
-			velocity.y = -(InputsData.max_up_speed)
+			velocity.y = -(InputsData.max_jump_speed)
 			pass
 		else:
 			pass
 		grounded = true
-		InputsData.up_speed = InputsData.up_speed_min
+		InputsData.jump_speed = InputsData.min_jump_speed
 	else:
 		if is_on_wall():
 			if is_jumping:
 				# Wall Jump: Use wall normal to push away
 				velocity.x = get_wall_normal().x * InputsData.wall_jump_pushback
-				velocity.y = -(InputsData.max_up_speed)
+				velocity.y = -(InputsData.max_jump_speed)
 				InputsData.wall_jump_lock_timer = InputsData.wall_jump_lock_time
 			if velocity.y > 0.0:
 				# 1. Handle Wall Sliding
@@ -186,7 +147,7 @@ func _physics_process(_delta: float) -> void:
 
 	# 3. Handle Horizontal Movement (with control lock)
 	if InputsData.wall_jump_lock_timer <= 0:
-		velocity.x = InputsData.horiz_speed
+		velocity.x = InputsData.move_speed
 	else:
 		# Air control during wall jump lock (optional, keeps inertia)
 		velocity.x = move_toward(velocity.x, 0, 50)
@@ -224,8 +185,8 @@ func _player_death() -> void:
 
 		position = Vector2(0.0, 0.0)
 		owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
-		InputsData.up_speed = 0.0
-		InputsData.horiz_speed = 0.0
+		InputsData.jump_speed = 0.0
+		InputsData.move_speed = 0.0
 		is_moving = false
 		is_jumping = false
 

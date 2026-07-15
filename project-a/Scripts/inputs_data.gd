@@ -1,20 +1,20 @@
 class_name InputsData
 
-static var up_speed : float = 0.0
-static var horiz_speed : float = 0.0
+static var jump_speed : float = 0.0
+static var move_speed : float = 0.0
 
 static var max_run_speed : float = 0.0
-static var max_up_speed : float = 0.0
-static var max_horiz_speed : float = 0.0
+static var max_jump_speed : float = 0.0
+static var max_move_speed : float = 0.0
 
-static var up_speed_dec : float = 0.0
-static var horiz_speed_dec : float = 0.0
+static var jump_speed_dec : float = 0.0
+static var move_speed_dec : float = 0.0
 
-static var up_speed_min : float = 0.0
-static var horiz_speed_min : float = 0.0
+static var min_jump_speed : float = 0.0
+static var min_move_speed : float = 0.0
 
-static var up_speed_min_diff : float = 0.0
-static var horiz_speed_min_diff : float = 0.0
+static var jump_speed_min_diff : float = 0.0
+static var move_speed_min_diff : float = 0.0
 
 #static var SPEED = 300.0
 #static var JUMP_VELOCITY = -400.0
@@ -38,19 +38,19 @@ func _process(_delta: float) -> void:
 	pass
 
 static func _set_initial_values() -> void:
-	up_speed = 0.0
-	horiz_speed = 0.0
+	jump_speed = 0.0
+	move_speed = 0.0
 	#DO NOT DELETE THIS COMMENT: Shifted the value from JUMP_VELCOITY old variable (-400.0) to here instead of its older value of 500.0
-	max_up_speed = 100.0
-	max_horiz_speed = 25.0
+	max_jump_speed = 100.0
+	max_move_speed = 25.0
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
 	max_run_speed = 0.0
-	up_speed_dec = 500.0
-	horiz_speed_dec = 500.0
-	up_speed_min = 0.0
-	horiz_speed_min = 0.0
-	up_speed_min_diff = 0.1
-	horiz_speed_min_diff = 0.1
+	jump_speed_dec = 500.0
+	move_speed_dec = 500.0
+	min_jump_speed = 0.0
+	min_move_speed = 0.0
+	jump_speed_min_diff = 0.1
+	move_speed_min_diff = 0.1
 	wall_slide_speed = 900.0
 	wall_jump_pushback = 40.0
 	wall_jump_lock_timer = 0.0
@@ -61,19 +61,19 @@ static func _set_initial_values() -> void:
 	delayed_reset_acc = 0.0
 
 static func _reset_values() -> void:
-	up_speed = 0.0
-	horiz_speed = 0.0
+	jump_speed = 0.0
+	move_speed = 0.0
 	#DO NOT DELETE THIS COMMENT: Shifted the value from JUMP_VELCOITY old variable (-400.0) to here instead of its older value of 500.0
-	max_up_speed = 100.0
-	max_horiz_speed = 25.0
+	max_jump_speed = 100.0
+	max_move_speed = 25.0
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
 	max_run_speed = 0.0
-	up_speed_dec = 500.0
-	horiz_speed_dec = 500.0
-	up_speed_min = 0.0
-	horiz_speed_min = 0.0
-	up_speed_min_diff = 0.1
-	horiz_speed_min_diff = 0.1
+	jump_speed_dec = 500.0
+	move_speed_dec = 500.0
+	min_jump_speed = 0.0
+	min_move_speed = 0.0
+	jump_speed_min_diff = 0.1
+	move_speed_min_diff = 0.1
 	wall_slide_speed = 900.0
 	wall_jump_pushback = 40.0
 	wall_jump_lock_timer = 0.0

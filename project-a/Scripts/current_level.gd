@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 		#Only switch if current level value has been changed!
 		#if floor(first_float) != LevelsDatabase.currLevel:
 			#LevelsDatabase._level_switcher(floor(first_float))
-	text = "Current Level: " + str(LevelsDatabase.currLevel)
+	text = "Current Level: " + str(LevelsDatabase.currLevel + 1)
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

@@ -6,7 +6,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	text = "Jump Speed: " + str(InputsData.up_speed)
+	text = "Jump Speed: " + str(InputsData.jump_speed)
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

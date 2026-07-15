@@ -2,7 +2,7 @@ extends TextEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "Max Move Speed: " + str(InputsData.max_horiz_speed)
+	text = "Max Move Speed: " + str(InputsData.max_move_speed)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -16,9 +16,9 @@ func _process(_delta: float) -> void:
 		first_float = result.get_string().to_float()
 
 	if InputsData.begin_delay:
-		text = "Max Move Speed: " + str(InputsData.max_horiz_speed)
+		text = "Max Move Speed: " + str(InputsData.max_move_speed)
 	else:
-		InputsData.max_horiz_speed = first_float
+		InputsData.max_move_speed = first_float
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus
