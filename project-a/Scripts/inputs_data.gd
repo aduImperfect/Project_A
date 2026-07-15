@@ -106,6 +106,7 @@ static func _reset_values() -> void:
 	wall_jump_lock_time = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("lock_time", 1) # Time in seconds player control is locked
 	print("Wall Jump Lock Time: ", wall_jump_lock_time)
 
+	#begin delay has not been set to false here ON PURPOSE. DO NOT ADD IT HERE as it will break level switching reset of data!
 	delayed_reset_max = 1.0
 	delayed_reset_acc = 0.0
 
