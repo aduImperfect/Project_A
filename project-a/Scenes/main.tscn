@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://Scripts/wall_jump_lock_time_edit.gd" id="12_6iyac"]
 [ext_resource type="Script" uid="uid://cw2d4o5d40a0m" path="res://Scripts/num_players_edit.gd" id="13_fdnlq"]
 [ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://Scripts/begin_delay_current.gd" id="14_jkdf5"]
-[ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scenes/current_level_edit.gd" id="15_wsu2k"]
+[ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scripts/current_level_edit.gd" id="15_wsu2k"]
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 

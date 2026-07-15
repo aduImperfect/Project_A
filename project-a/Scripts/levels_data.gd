@@ -76,3 +76,6 @@ static func _level_switcher(newLevelNum : int = -1) -> void:
 		PlayersHelper.playerNodes[k].get_child(0).position = Vector2(0.0, 0.0)
 		PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
 		PlayersHelper.playerNodes[k].get_child(0)._start_new_run()
+
+	SaveLoadHelper.player_numbers = PlayersHelper.numPlayers
+	SaveLoadHelper.save_game()

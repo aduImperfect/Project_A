@@ -11,7 +11,9 @@ const BACKGROUND_SCENE = preload("res://Scenes/background.tscn")
 func _ready() -> void:
 	xBackCenter = 550.0
 	yBackCenter = 350.0
-	PlayersHelper._set_player_info()
+
+	SaveLoadHelper.load_game()
+	PlayersHelper._set_player_info(SaveLoadHelper.player_numbers)
 
 	var ghost_container := Node2D.new()
 	ghost_container.name = "Ghosts"
@@ -22,6 +24,7 @@ func _ready() -> void:
 	_spawn_background()
 	_spawn_levels()
 	_spawn_players()
+	SaveLoadHelper.save_game()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
