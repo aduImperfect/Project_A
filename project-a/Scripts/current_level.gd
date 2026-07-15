@@ -2,28 +2,30 @@ extends TextEdit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "Current Level: " + str(LevelsDatabase.currLevel)
+	editable = false
+	#text = "Current Level: " + str(LevelsDatabase.currLevel)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	var regex = RegEx.new()
-	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile("-?\\d+\\.?\\d+") 
-
-	var result = regex.search(text)
-	var first_float : float = 0.0
-	if result:
-		first_float = result.get_string().to_float()
-		print(first_float)
-
-	if InputsData.begin_delay:
-		text = "Current Level: " + str(LevelsDatabase.currLevel)
-	else:
-		pass
+	#var regex = RegEx.new()
+	## Regex pattern matches an optional negative sign followed by digits and a decimal point
+	#regex.compile("-?\\d+\\.?\\d+") 
+#
+	#var result = regex.search(text)
+	#var first_float : float = 0.0
+	#if result:
+		#first_float = result.get_string().to_float()
+		#print(first_float)
+#
+	#if InputsData.begin_delay:
+		#text = "Current Level: " + str(LevelsDatabase.currLevel)
+	#else:
+		#pass
 		#LevelsDatabase.currLevel = int(first_float)
 		#Only switch if current level value has been changed!
 		#if floor(first_float) != LevelsDatabase.currLevel:
 			#LevelsDatabase._level_switcher(floor(first_float))
+	text = "Current Level: " + str(LevelsDatabase.currLevel)
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

@@ -13,7 +13,7 @@ func _ready() -> void:
 	yBackCenter = 350.0
 
 	SaveLoadHelper.load_game()
-	PlayersHelper._set_player_info(SaveLoadHelper.player_numbers)
+	#PlayersHelper._set_player_info(SaveLoadHelper.player_numbers)
 
 	var ghost_container := Node2D.new()
 	ghost_container.name = "Ghosts"
