@@ -4,6 +4,15 @@ class_name SaveLoadHelper
 const DATA_DIR = "user://Data"
 const SAVE_PATH = "user://Data/save_game.json"
 
+static var fileExist : bool = false
+static var initialVars : bool = false
+
+static func _file_checker() -> void:
+	if not FileAccess.file_exists(SAVE_PATH):
+		fileExist = false
+	else:
+		fileExist = true
+
 # 1. SAVE FUNCTION
 static func save_game() -> void:
 	# Build a plain Dictionary with your variables
@@ -51,8 +60,10 @@ static func save_game() -> void:
 		file.close()
 		print("Game Saved!")
 		print("JSON file successfully created/updated at: ", ProjectSettings.globalize_path(SAVE_PATH))
+		fileExist = true
 	else:
 		print("Failed to create file. Error code: ", FileAccess.get_open_error())
+		fileExist = false
 
 
 
@@ -62,6 +73,7 @@ static func load_game() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
 		print("No save file found.")
 		print("Failed to open file to load!")
+		fileExist = false
 		return
 
 	# Open the file for reading
@@ -99,3 +111,6 @@ static func load_game() -> void:
 		InputsData.wall_jump_lock_timer = int(save_data.get("wall_jump_lock_timer", 1))
 		InputsData.wall_jump_lock_time = int(save_data.get("wall_jump_lock_time", 1))
 		print("Game Loaded!")
+		fileExist = true
+	else:
+		fileExist = false

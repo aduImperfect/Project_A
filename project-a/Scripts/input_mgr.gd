@@ -23,9 +23,20 @@ extends CharacterBody2D
 var ghost_frames : PackedVector2Array = PackedVector2Array()
 var run_start_global : Vector2 = Vector2.ZERO
 
+@export var initializationAccumulationTime : float = 0.0
+@export var initializationAccumulationTimer : float = 0.0
+@export var initializationCommplete : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	InputsData._set_initial_values()
+	initializationAccumulationTime = 0.0
+	initializationAccumulationTimer = 1.0
+	initializationCommplete = false
+
+func _initialize() -> void:
+	#If first time consideration of initialization from code needs to be given priority!
+	if SaveLoadHelper.initialVars:
+		InputsData._set_initial_values()
 
 	is_moving = false
 	is_jumping = false
@@ -53,8 +64,19 @@ func _ready() -> void:
 
 	_start_new_run()
 
+	if player_id == (PlayersHelper.numPlayers - 1):
+		initializationCommplete = true
+		SaveLoadHelper.save_game()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if initializationCommplete == false:
+		initializationAccumulationTime += _delta
+		if initializationAccumulationTime > initializationAccumulationTimer:
+			initializationAccumulationTime = 0.0
+			_initialize()
+		return
+
 	if InputsData.begin_delay:
 		InputsData.delayed_reset_acc += _delta
 		if InputsData.delayed_reset_acc > InputsData.delayed_reset_max:
@@ -88,6 +110,9 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if initializationCommplete == false:
+		return
+
 	if text_edit_input:
 		return
 
