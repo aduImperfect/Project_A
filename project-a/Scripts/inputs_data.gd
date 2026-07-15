@@ -26,6 +26,8 @@ static var delayed_reset_max : float
 static var delayed_reset_acc : float
 static var begin_delay : bool
 
+static var current_player_input_text : String
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -56,6 +58,8 @@ static func _set_initial_values() -> void:
 	begin_delay = false
 	delayed_reset_max = 1.0
 	delayed_reset_acc = 0.0
+
+	current_player_input_text = ""
 
 static func _reset_values() -> void:
 	print("--------------------")

@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cw2d4o5d40a0m" path="res://Scripts/num_players.gd" id="13_fdnlq"]
 [ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://Scripts/begin_delay_current.gd" id="14_jkdf5"]
 [ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scripts/current_level.gd" id="15_wsu2k"]
+[ext_resource type="Script" uid="uid://db053svsam2we" path="res://Scripts/current_input.gd" id="16_k12tt"]
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 
@@ -142,3 +143,12 @@ offset_top = -305.0
 offset_right = -13.0
 offset_bottom = -265.0
 script = ExtResource("15_wsu2k")
+
+[node name="CurrentInput" type="TextEdit" parent="MainCam" unique_id=1879290928]
+z_index = 100
+custom_minimum_size = Vector2(300, 60)
+offset_left = -322.0
+offset_top = 252.0
+offset_right = -122.0
+offset_bottom = 292.0
+script = ExtResource("16_k12tt")

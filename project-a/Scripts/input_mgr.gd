@@ -188,7 +188,8 @@ func _physics_process(_delta: float) -> void:
 	ghost_frames.append(position)
 
 func _input(_event: InputEvent) -> void:
-	pass
+	if _event.is_pressed():
+		InputsData.current_player_input_text = _event.as_text()
 
 func is_any_text_focused(node: Node) -> bool:
 	if node is TextEdit or node is LineEdit:
