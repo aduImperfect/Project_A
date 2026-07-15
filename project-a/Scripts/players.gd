@@ -4,7 +4,7 @@ const PLAYER_SCENE = preload("res://Scenes/player.tscn")
 const GHOST_SCENE = preload("res://Scenes/ghost.tscn")
 
 static var playerNodes : Array[Node2D] = []
-static var numPlayers : int = 0
+static var playersCount : int = 0
 
 # Where ghost nodes get added as children (set by level_gen.gd)
 static var ghostContainer : Node2D = null
@@ -18,8 +18,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-static func _set_player_info(num : int = 1) -> void:
-	numPlayers = num
+static func _set_player_info() -> void:
+	print("--------------------")
+	if SaveLoadHelper.fileExist:
+		playersCount = SaveLoadHelper.save_data.get("game", 1).get("playersCount", 1)
+		print("Players Count: ", playersCount)
+	else:
+		#Make sure the base default value is set to 1.
+		playersCount = 1
+	print("--------------------")
 
 ## Call this once, from level_gen, before spawning players.
 static func _set_ghost_container(container: Node2D) -> void:

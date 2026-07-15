@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 		initial_setup = true
 
 func _on_body_entered(body: Node2D) -> void:
-	if LevelsDatabase.currLevel >= LevelsDatabase.numLevels:
+	if LevelsDatabase.currLevel >= LevelsDatabase.levelsCount:
 		return
 
 	for k in PlayersHelper.playerNodes.size():

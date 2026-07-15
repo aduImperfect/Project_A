@@ -8,7 +8,7 @@ static var levelNodes : Array[Node2D]
 static var xLevelOffset : float = 0.0
 static var yLevelOffset : float = 0.0
 
-static var numLevels : int = 0
+static var levelsCount : int = 0
 static var maxHeight : int = 0
 
 static var xLevelCenter : float = 0.0
@@ -53,11 +53,19 @@ static func _set_values() -> void:
 	xLevelOffset = 3000.0
 	yLevelOffset = 2000.0
 
-	#currLevel = 0
-	numLevels = LEVEL_SCENES.size()
+	if SaveLoadHelper.fileExist:
+		currLevel = SaveLoadHelper.save_data.get("game", 1).get("level", 1).get("current", 1) - 1
+	else:
+		#Value starts at 0 not 1 for the array!
+		currLevel = 0
+
+	levelsCount = LEVEL_SCENES.size()
 	maxHeight = 10
 
 static func _level_switcher(newLevelNum : int = -1) -> void:
+	print("---------------")
+	print("Level Switched to: ", newLevelNum)
+
 	if newLevelNum < 0:
 		#Normal internal function of level switching incrementally.
 		LevelsDatabase.currLevel += 1
@@ -67,7 +75,7 @@ static func _level_switcher(newLevelNum : int = -1) -> void:
 	InputsData.begin_delay = true
 	InputsData._reset_values()
 
-	if LevelsDatabase.currLevel >= LevelsDatabase.numLevels:
+	if LevelsDatabase.currLevel >= LevelsDatabase.levelsCount:
 		#print("Game Complete")
 		return
 
@@ -77,5 +85,5 @@ static func _level_switcher(newLevelNum : int = -1) -> void:
 		PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
 		PlayersHelper.playerNodes[k].get_child(0)._start_new_run()
 
-	#SaveLoadHelper.player_numbers = PlayersHelper.numPlayers
 	SaveLoadHelper.save_game()
+	print("---------------")

@@ -126,7 +126,6 @@ offset_bottom = 292.0
 script = ExtResource("13_fdnlq")
 
 [node name="BeginDelayCurrent" type="TextEdit" parent="MainCam" unique_id=823944929]
-visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 offset_left = -429.0
@@ -138,8 +137,8 @@ script = ExtResource("14_jkdf5")
 [node name="CurrentLevel" type="TextEdit" parent="MainCam" unique_id=983531605]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
-offset_left = -445.0
-offset_top = -306.0
-offset_right = -245.0
-offset_bottom = -266.0
+offset_left = -213.0
+offset_top = -305.0
+offset_right = -13.0
+offset_bottom = -265.0
 script = ExtResource("15_wsu2k")

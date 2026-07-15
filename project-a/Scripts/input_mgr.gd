@@ -30,13 +30,17 @@ var run_start_global : Vector2 = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	initializationAccumulationTime = 0.0
-	initializationAccumulationTimer = 1.0
+	initializationAccumulationTimer = 0.25
 	initializationCommplete = false
 
 func _initialize() -> void:
 	#If first time consideration of initialization from code needs to be given priority!
-	if SaveLoadHelper.initialVars:
-		InputsData._set_initial_values()
+	#Lazy check only during first player initialization starting as the InputsData are common static values currently!
+	if player_id == 0:
+		if SaveLoadHelper.fileExist:
+			InputsData._reset_values()
+		else:
+			InputsData._set_initial_values()
 
 	is_moving = false
 	is_jumping = false
@@ -64,7 +68,8 @@ func _initialize() -> void:
 
 	_start_new_run()
 
-	if player_id == (PlayersHelper.numPlayers - 1):
+	#Lazy check only during last player initialization finishing as the InputsData are common static values currently!
+	if player_id == (PlayersHelper.playersCount - 1):
 		initializationCommplete = true
 		SaveLoadHelper.save_game()
 
@@ -77,7 +82,8 @@ func _process(_delta: float) -> void:
 			_initialize()
 		return
 
-	if InputsData.begin_delay:
+	#Only accumulate delay once for all players and not playerCount times!
+	if InputsData.begin_delay && player_id == 0:
 		InputsData.delayed_reset_acc += _delta
 		if InputsData.delayed_reset_acc > InputsData.delayed_reset_max:
 			InputsData.delayed_reset_acc = 0.0
@@ -86,7 +92,7 @@ func _process(_delta: float) -> void:
 	if text_edit_input:
 		return
 
-	if LevelsDatabase.currLevel == LevelsDatabase.numLevels:
+	if LevelsDatabase.currLevel == LevelsDatabase.levelsCount:
 		return
 
 	if not is_moving:
@@ -224,7 +230,7 @@ func _start_new_run() -> void:
 
 func _add_input_actions_for_this_player() -> void:
 	# If its the last player - set the actions to be tied to keyboard!
-	if player_id == (PlayersHelper.numPlayers - 1):
+	if player_id == (PlayersHelper.playersCount - 1):
 		if not InputMap.has_action(jump_action):
 			InputMap.add_action(jump_action)
 			var eventAction1 = InputEventKey.new()

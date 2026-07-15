@@ -1,11 +1,26 @@
 extends TextEdit
 
+var timerAccumulation : float = 0.0
+var timerMax : float = 0.0
+var timerReached : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text = "Wall Jump Lock Time: " + str(InputsData.wall_jump_lock_time)
+	timerAccumulation = 0.0
+	timerMax = 0.5
+	timerReached = false
+	text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if timerReached == false:
+		timerAccumulation += _delta
+		if timerAccumulation > timerMax:
+			timerAccumulation = 0.0
+			text = "Wall Jump Lock Time: " + str(InputsData.wall_jump_lock_time)
+			timerReached = true
+		return
+
 	var regex = RegEx.new()
 	# Regex pattern matches an optional negative sign followed by digits and a decimal point
 	regex.compile("-?\\d+\\.?\\d+") 
@@ -16,7 +31,7 @@ func _process(_delta: float) -> void:
 		first_float = result.get_string().to_float()
 
 	if InputsData.begin_delay:
-		text = "Wall Jump Lock Time: " + str(InputsData.wall_jump_lock_time)
+		timerReached = false
 	else:
 		InputsData.wall_jump_lock_time = first_float
 

@@ -16,11 +16,9 @@ func _ready() -> void:
 
 	if SaveLoadHelper.fileExist:
 		SaveLoadHelper.load_game()
-		SaveLoadHelper.initialVars = false
-	else:
-		#Force set value to 1 if no save data exists!
-		PlayersHelper._set_player_info()
-		SaveLoadHelper.initialVars = true
+
+	#If a file exists then use the loaded information otherwise internally it sets to 1.
+	PlayersHelper._set_player_info()
 
 	var ghost_container := Node2D.new()
 	ghost_container.name = "Ghosts"
@@ -31,6 +29,7 @@ func _ready() -> void:
 	_spawn_background()
 	_spawn_levels()
 	_spawn_players()
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -46,7 +45,7 @@ func _spawn_background() -> void:
 
 func _spawn_levels() -> void:
 	var j : int = 0
-	for k in LevelsDatabase.numLevels:
+	for k in LevelsDatabase.levelsCount:
 		var level_instance = load(LevelsDatabase.LEVEL_SCENES[k]).instantiate()
 		level_instance.global_position.x = LevelsDatabase.xLevelCenter + (j * LevelsDatabase.xLevelOffset)
 		level_instance.global_position.y = LevelsDatabase.yLevelCenter + ((k % LevelsDatabase.maxHeight) * LevelsDatabase.yLevelOffset)
@@ -57,7 +56,7 @@ func _spawn_levels() -> void:
 			j += 1
 
 func _spawn_players() -> void:
-	for k in PlayersHelper.numPlayers:
+	for k in PlayersHelper.playersCount:
 		var player_instance = PlayersHelper.PLAYER_SCENE.instantiate()
 		player_instance.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
 		player_instance.name = "Player_" + str(k)
