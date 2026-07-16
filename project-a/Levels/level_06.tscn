@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_br6mg"]
 [ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_ydpeq"]
 [ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_4t8un"]
+[ext_resource type="PackedScene" uid="uid://c7kw2s1jyomna" path="res://Scenes/death.tscn" id="4_ladoa"]
 
 [node name="Level_06" type="Node2D" unique_id=1762506268]
 
@@ -67,3 +68,7 @@ offset_top = 516.0
 offset_right = 1792.0
 offset_bottom = 554.0
 text = "Keep Going. (°ロ°)☝"
+
+[node name="Death" parent="." unique_id=1296578022 instance=ExtResource("4_ladoa")]
+position = Vector2(920, 750)
+scale = Vector2(100, 1)

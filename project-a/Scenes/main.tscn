@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://Scripts/jump_speed_current.gd" id="6_21xkr"]
 [ext_resource type="Script" uid="uid://bovd0x14v1lv5" path="res://Scripts/max_jump_speed_edit.gd" id="7_6bp64"]
 [ext_resource type="Script" uid="uid://cew4elyv2w054" path="res://Scripts/max_run_speed_edit.gd" id="8_344ge"]
-[ext_resource type="Script" uid="uid://wg0a1ib1civn" path="res://Scenes/jump_speed_decrement_edit.gd" id="8_b3802"]
+[ext_resource type="Script" uid="uid://wg0a1ib1civn" path="res://Scripts/jump_speed_decrement_edit.gd" id="8_b3802"]
 [ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://Scripts/wall_slide_speed_edit.gd" id="9_ynf5e"]
 [ext_resource type="Script" uid="uid://dnmmooax6vny1" path="res://Scripts/wall_jump_pushback_edit.gd" id="10_hptm8"]
 [ext_resource type="Script" uid="uid://bf4q8h6u3cypq" path="res://Scripts/wall_jump_lock_timer.gd" id="11_d1ilt"]

@@ -52,20 +52,6 @@ func _initialize() -> void:
 	run_action = "ui_run_p" + str(player_id)
 
 	_add_input_actions_for_this_player()
-
-	#var inputActions : Array[StringName] = InputMap.get_actions()
-#
-	#print("-------------------------------")
-	#print(player_id)
-	#for k in inputActions.size():
-		#if (inputActions[k] == jump_action) || (inputActions[k] == move_left_action) || (inputActions[k] == move_right_action) || (inputActions[k] == run_action):
-			#print("Action Info: ")
-			#print(inputActions[k])
-			#var inpEvents : Array[InputEvent] = InputMap.action_get_events(inputActions[k])
-			#for j in inpEvents.size():
-				#print(inpEvents[j].as_text())
-	#print("-------------------------------")
-
 	_start_new_run()
 
 	#Lazy check only during last player initialization finishing as the InputsData are common static values currently!
@@ -112,7 +98,7 @@ func _process(_delta: float) -> void:
 		else:
 			InputsData.jump_speed = InputsData.min_jump_speed
 
-	_player_death()
+	#_player_death()
 
 
 func _physics_process(_delta: float) -> void:
@@ -209,20 +195,20 @@ func _unhandled_input(_event: InputEvent) -> void:
 	else:
 		text_edit_input = false
 
-func _player_death() -> void:
-	if position.y > 250.0:
-		#print("Current Level: ", LevelsDatabase.currLevel + 1)
-		if ghost_frames.size() > 0:
-			PlayersHelper.record_ghost_run(player_id, run_start_global, ghost_frames)
-
-		position = Vector2(0.0, 0.0)
-		owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
-		InputsData.jump_speed = 0.0
-		InputsData.move_speed = 0.0
-		is_moving = false
-		is_jumping = false
-
-		_start_new_run()
+#func _player_death() -> void:
+	#if position.y > 250.0:
+		##print("Current Level: ", LevelsDatabase.currLevel + 1)
+		#if ghost_frames.size() > 0:
+			#PlayersHelper.record_ghost_run(player_id, run_start_global, ghost_frames)
+#
+		#position = Vector2(0.0, 0.0)
+		#owner.global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
+		#InputsData.jump_speed = 0.0
+		#InputsData.move_speed = 0.0
+		#is_moving = false
+		#is_jumping = false
+#
+		#_start_new_run()
 		#print("Player Died!")
 
 func _start_new_run() -> void:
