@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://buexajo2k2e1l"]
+[gd_scene format=3 uid="uid://b3vdxntldsk5l"]
 
 [ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_6jcah"]
 [ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_02yu1"]
 [ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_xov60"]
 
-[node name="Level_03" type="Node2D" unique_id=1163223301]
+[node name="Level_05" type="Node2D" unique_id=1163223301]
 
 [node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_6jcah")]
 position = Vector2(69, 594)
@@ -69,7 +69,6 @@ offset_right = 1198.0
 offset_bottom = 175.0
 text = "If you fall, that's ok. It's intended. 
                         ♪~ ᕕ(ᐛ)ᕗ"
-scroll_vertical = 0.03703703703703698
 
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=1581963938]
 offset_left = 1724.0
