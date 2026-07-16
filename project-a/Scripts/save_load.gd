@@ -3,6 +3,8 @@ class_name SaveLoadHelper
 # Always use "user://" because "res://" is read-only in exported games
 const DATA_DIR = "user://Data"
 const SAVE_PATH = "user://Data/save_game.json"
+const SAVE_PATH_WITHOUT_TYPE = "user://Data/save_game"
+const TYPE = ".json"
 
 static var fileExist : bool = false
 
@@ -83,6 +85,26 @@ static func save_game() -> void:
 	else:
 		print("Failed to create file. Error code: ", FileAccess.get_open_error())
 		fileExist = false
+
+	#Backup save data into a file with current datetime.
+	var datetime_dict = Time.get_datetime_dict_from_system()
+
+	var additiveString : String = "_backup_" + str(datetime_dict.year) + "_" + str(datetime_dict.month) + "_" + str(datetime_dict.day) + "_" + str(datetime_dict.hour) + "_" + str(datetime_dict.minute) + "_" + str(datetime_dict.second)
+
+	var BACKUP_SAVE_PATH : String = SAVE_PATH_WITHOUT_TYPE + additiveString + TYPE
+
+	# Open a copy file for writing
+	var backupSaveFile = FileAccess.open(BACKUP_SAVE_PATH, FileAccess.WRITE)
+
+	if file:
+		# Convert the Dictionary to a JSON string
+		var temp_json_string_save = JSON.stringify(save_data)
+		# Write it to the file
+		backupSaveFile.store_line(temp_json_string_save)
+		backupSaveFile.close()
+		print("Copy File Saved!")
+	else:
+		print("Failed to create copy file. Error code: ", FileAccess.get_open_error())
 
 	print("--------------------")
 
