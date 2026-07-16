@@ -48,7 +48,9 @@ static func save_game() -> void:
 	save_data = {
 		"game": {
 			"level": {
-				"current": LevelsDatabase.currLevel + 1,
+				#It needs to always force set to 1 (the starting level) instead of the current level + 1 for making sure the default stays at default!
+				#"current": LevelsDatabase.currLevel + 1,
+				"current": 1,
 			},
 			"player_count": PlayersHelper.playersCount
 		},
