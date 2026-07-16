@@ -19,30 +19,6 @@ static func _file_checker() -> void:
 
 # 1. SAVE FUNCTION
 static func save_game() -> void:
-	# Build a plain Dictionary with your variables
-	# Note: Godot types like Vector2 must be broken down into primitive numbers
-	#var save_data = {
-		##Players Data
-		#"players_count": PlayersHelper.playersCount,
-		##Levels Data
-		#"Levels_count" : LevelsDatabase.levelsCount,
-		#"current_level" : LevelsDatabase.currLevel + 1,
-		##Inputs Data
-		#"minimum_jump_speed" : InputsData.min_jump_speed,
-		#"minimum_move_speed" : InputsData.min_move_speed,
-		#"maximum_jump_speed" : InputsData.max_jump_speed,
-		#"maximum_move_speed" : InputsData.max_move_speed,
-		#"maximum_run_speed" : InputsData.max_run_speed,
-		#"jump_speed_decrement" : InputsData.jump_speed_dec,
-		#"move_speed_decrement" : InputsData.move_speed_dec,
-		#"jump_speed_minimum_difference" : InputsData.jump_speed_min_diff,
-		#"move_speed_minimum_difference" : InputsData.move_speed_min_diff,
-		#"wall_slide_speed" : InputsData.wall_slide_speed,
-		#"wall_jump_pushback" : InputsData.wall_jump_pushback,
-		#"wall_jump_lock_timer" : InputsData.wall_jump_lock_timer,
-		#"wall_jump_lock_time" : InputsData.wall_jump_lock_time,
-	#}
-
 	print("--------------------")
 
 	save_data = {
@@ -138,27 +114,6 @@ static func load_game() -> void:
 		if save_data == null:
 			print("Error parsing JSON string.")
 			return
-
-		# Apply the loaded values back to your variables
-		#Players Data
-		#PlayersHelper.numPlayers = int(save_data.get("nummber_of_players", 1))
-		##Levels Data
-		#LevelsDatabase.numLevels = int(save_data.get("nummber_of_levels", 1))
-		#LevelsDatabase.currLevel = int(save_data.get("current_level", 1)) - 1
-		##Inputs Data
-		#InputsData.min_jump_speed = int(save_data.get("minimum_jump_speed", 1))
-		#InputsData.min_move_speed = int(save_data.get("minimum_move_speed", 1))
-		#InputsData.max_jump_speed = int(save_data.get("maximum_jump_speed", 1))
-		#InputsData.max_move_speed = int(save_data.get("maximum_move_speed", 1))
-		#InputsData.max_run_speed = int(save_data.get("maximum_run_speed", 1))
-		#InputsData.jump_speed_dec = int(save_data.get("jump_speed_decrement", 1))
-		#InputsData.move_speed_dec = int(save_data.get("move_speed_decrement", 1))
-		#InputsData.jump_speed_min_diff = int(save_data.get("jump_speed_minimum_difference", 1))
-		#InputsData.move_speed_min_diff = int(save_data.get("move_speed_minimum_difference", 1))
-		#InputsData.wall_slide_speed = int(save_data.get("wall_slide_speed", 1))
-		#InputsData.wall_jump_pushback = int(save_data.get("wall_jump_pushback", 1))
-		#InputsData.wall_jump_lock_timer = int(save_data.get("wall_jump_lock_timer", 1))
-		#InputsData.wall_jump_lock_time = int(save_data.get("wall_jump_lock_time", 1))
 
 		print("Game Loaded!")
 		fileExist = true
