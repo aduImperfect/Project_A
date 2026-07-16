@@ -28,6 +28,9 @@ static var begin_delay : bool
 
 static var current_player_input_text : String
 
+# Tracks the active input device
+static var is_using_gamepad: bool
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -60,6 +63,7 @@ static func _set_initial_values() -> void:
 	delayed_reset_acc = 0.0
 
 	current_player_input_text = ""
+	is_using_gamepad = false
 
 static func _reset_values() -> void:
 	print("--------------------")

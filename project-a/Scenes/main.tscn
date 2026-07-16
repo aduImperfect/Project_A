@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://Scripts/begin_delay_current.gd" id="14_jkdf5"]
 [ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scripts/current_level_edit.gd" id="15_wsu2k"]
 [ext_resource type="Script" uid="uid://db053svsam2we" path="res://Scripts/current_input.gd" id="16_k12tt"]
+[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://Scenes/gamepad_in_use.gd" id="18_b3802"]
 
 [sub_resource type="GDScript" id="GDScript_h1bgf"]
 script/source = "extends TextEdit
@@ -216,3 +217,12 @@ offset_top = 252.0
 offset_right = -122.0
 offset_bottom = 292.0
 script = ExtResource("16_k12tt")
+
+[node name="GamepadInUse" type="TextEdit" parent="MainCam" unique_id=878832506]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -229.0
+offset_top = 195.0
+offset_right = -129.0
+offset_bottom = 235.0
+script = ExtResource("18_b3802")
