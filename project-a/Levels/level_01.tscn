@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bwyjm4umuvtgs"]
+[gd_scene format=3 uid="uid://d1fd0qf5pl5af"]
 
 [ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_8ffim"]
@@ -59,13 +59,14 @@ scale = Vector2(5, 1)
 [node name="LevelObjective" type="TextEdit" parent="." unique_id=1773787374]
 offset_left = 57.0
 offset_top = 115.0
-offset_right = 297.0
+offset_right = 348.0
 offset_bottom = 163.0
-text = "Max Movespeed is crap. Fix it."
+text = "Max Movespeed is crap. Fix it. ಠ_ಠ"
 
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=1070965928]
-offset_left = 889.0
-offset_top = 115.0
-offset_right = 1129.0
-offset_bottom = 163.0
-text = "Congrats, you fixed it. *clap*"
+offset_left = 893.0
+offset_top = 90.0
+offset_right = 1133.0
+offset_bottom = 161.0
+text = "Congrats, you fixed it. *clap*
+༼ つ ◕_◕ ༽つ"

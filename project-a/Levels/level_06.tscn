@@ -1,82 +1,69 @@
-[gd_scene format=3 uid="uid://c77r7x2qkwv7r"]
+[gd_scene format=3 uid="uid://inyt8k34jy5c"]
 
-[ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_258xh"]
-[ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_ladoa"]
-[ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_mrdki"]
+[ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_br6mg"]
+[ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_ydpeq"]
+[ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_4t8un"]
 
-[node name="Level_06" type="Node2D" unique_id=1163223301]
+[node name="Level_04" type="Node2D" unique_id=1762506268]
 
-[node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_258xh")]
+[node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_br6mg")]
 position = Vector2(69, 594)
 
-[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_ladoa")]
-position = Vector2(1511.9999, 408)
+[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_ydpeq")]
+position = Vector2(1787, 453)
 
-[node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_mrdki")]
+[node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_4t8un")]
 position = Vector2(920, -132)
 scale = Vector2(44.03, 1)
 
-[node name="Ground_W_L_1" parent="." unique_id=16964396 instance=ExtResource("3_mrdki")]
+[node name="Ground_W_L_1" parent="." unique_id=810051558 instance=ExtResource("3_4t8un")]
 position = Vector2(20, 248)
 scale = Vector2(1, 20)
 
-[node name="Ground_W_R_1" parent="." unique_id=1804239981 instance=ExtResource("3_mrdki")]
+[node name="Ground_W_R_1" parent="." unique_id=44279467 instance=ExtResource("3_4t8un")]
 position = Vector2(1820, 248)
 scale = Vector2(1, 20)
 
-[node name="Ground_F_1" parent="." unique_id=1686414086 instance=ExtResource("3_mrdki")]
+[node name="Ground_F_1" parent="." unique_id=1632604068 instance=ExtResource("3_4t8un")]
 position = Vector2(240, 628)
 scale = Vector2(10, 1)
 
-[node name="Ground_F_3" parent="." unique_id=1014622520 instance=ExtResource("3_mrdki")]
-position = Vector2(639, 628)
-scale = Vector2(10, 1)
-
-[node name="Ground_F_2" parent="." unique_id=553455818 instance=ExtResource("3_mrdki")]
+[node name="Ground_F_2" parent="." unique_id=1151708799 instance=ExtResource("3_4t8un")]
 position = Vector2(1781, 628)
 
-[node name="Ground_P_4" parent="." unique_id=1687364210 instance=ExtResource("3_mrdki")]
-position = Vector2(274, 481.00003)
-rotation = 1.5707964
+[node name="Ground_P_4" parent="." unique_id=603075016 instance=ExtResource("3_4t8un")]
+position = Vector2(596.00006, 483)
 scale = Vector2(5, 1)
 
-[node name="Ground_P_5" parent="." unique_id=350770238 instance=ExtResource("3_mrdki")]
-position = Vector2(1355, 439)
-scale = Vector2(10, 1)
+[node name="Ground_P_5" parent="." unique_id=473936102 instance=ExtResource("3_4t8un")]
+position = Vector2(1095, 483)
+scale = Vector2(8, 1)
 
-[node name="Ground_P_8" parent="." unique_id=1710634279 instance=ExtResource("3_mrdki")]
-position = Vector2(355, 287)
+[node name="Ground_P_8" parent="." unique_id=894913734 instance=ExtResource("3_4t8un")]
+position = Vector2(1700, 483)
 scale = Vector2(5, 1)
 
-[node name="Ground_P_9" parent="." unique_id=1592483928 instance=ExtResource("3_mrdki")]
-position = Vector2(629, 358)
-scale = Vector2(5, 1)
+[node name="Ground_P_7" parent="." unique_id=2079323390 instance=ExtResource("3_4t8un")]
+position = Vector2(264, 483)
+scale = Vector2(3, 1)
 
-[node name="Ground_P_7" parent="." unique_id=248651494 instance=ExtResource("3_mrdki")]
-position = Vector2(79, 366)
-rotation = 1.5707964
-scale = Vector2(5, 1)
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=591409077]
+offset_left = 57.0
+offset_top = 349.0
+offset_right = 360.0
+offset_bottom = 384.0
+text = "Jump good practice but with DANGER!"
 
-[node name="LevelObjective" type="TextEdit" parent="." unique_id=911074108]
-offset_left = 320.0
-offset_top = 470.0
-offset_right = 538.0
-offset_bottom = 569.0
-text = "Wall jumping practice!
-Think Megaman X or 
-Hollow Knight (post claws)."
-metadata/_edit_use_anchors_ = true
+[node name="LevelObjective2" type="TextEdit" parent="." unique_id=128485132]
+offset_left = 1147.0
+offset_top = 671.0
+offset_right = 1297.0
+offset_bottom = 706.0
+text = "Hah, you fell. ಠ⌣ಠ"
 
-[node name="LevelObjective_02" type="TextEdit" parent="." unique_id=778533617]
-offset_left = 961.0
-offset_top = 128.0
-offset_right = 1211.0
-offset_bottom = 169.0
-text = "You still have to run and jump."
-
-[node name="LevelEnd" type="TextEdit" parent="." unique_id=1625177850]
-offset_left = 1421.0
-offset_top = 324.0
-offset_right = 1571.0
-offset_bottom = 365.0
-text = "You're improving."
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=5469685]
+offset_left = 1631.0
+offset_top = 516.0
+offset_right = 1792.0
+offset_bottom = 554.0
+text = "Keep Going. (°ロ°)☝"

@@ -44,8 +44,8 @@ static func _set_initial_values() -> void:
 	max_move_speed = 25.0
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
 	max_run_speed = 0.0
-	jump_speed_dec = 500.0
-	move_speed_dec = 500.0
+	jump_speed_dec = 900.0
+	move_speed_dec = 900.0
 	min_jump_speed = 0.0
 	min_move_speed = 0.0
 	jump_speed_min_diff = 0.1

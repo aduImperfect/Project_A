@@ -1,78 +1,79 @@
-[gd_scene format=3 uid="uid://b3vdxntldsk5l"]
+[gd_scene format=3 uid="uid://buexajo2k2e1l"]
 
-[ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_br6mg"]
-[ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_ydpeq"]
-[ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_4t8un"]
+[ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_6jcah"]
+[ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_02yu1"]
+[ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_xov60"]
 
-[node name="Level_05" type="Node2D" unique_id=1163223301]
+[node name="Level_03" type="Node2D" unique_id=1163223301]
 
-[node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_br6mg")]
+[node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_6jcah")]
 position = Vector2(69, 594)
 
-[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_ydpeq")]
-position = Vector2(1787, 453)
+[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_02yu1")]
+position = Vector2(1788, 107)
 
-[node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_4t8un")]
+[node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_xov60")]
 position = Vector2(920, -132)
 scale = Vector2(44.03, 1)
 
-[node name="Ground_W_L_1" parent="." unique_id=16964396 instance=ExtResource("3_4t8un")]
+[node name="Ground_W_L_1" parent="." unique_id=16964396 instance=ExtResource("3_xov60")]
 position = Vector2(20, 248)
 scale = Vector2(1, 20)
 
-[node name="Ground_W_R_1" parent="." unique_id=1804239981 instance=ExtResource("3_4t8un")]
+[node name="Ground_W_R_1" parent="." unique_id=1804239981 instance=ExtResource("3_xov60")]
 position = Vector2(1820, 248)
 scale = Vector2(1, 20)
 
-[node name="Ground_F_1" parent="." unique_id=1686414086 instance=ExtResource("3_4t8un")]
+[node name="Ground_F_1" parent="." unique_id=1686414086 instance=ExtResource("3_xov60")]
 position = Vector2(240, 628)
 scale = Vector2(10, 1)
 
-[node name="Ground_F_2" parent="." unique_id=553455818 instance=ExtResource("3_4t8un")]
+[node name="Ground_F_2" parent="." unique_id=553455818 instance=ExtResource("3_xov60")]
 position = Vector2(1781, 628)
 
-[node name="Ground_P_4" parent="." unique_id=1687364210 instance=ExtResource("3_4t8un")]
-position = Vector2(604.00006, 384)
+[node name="Ground_P_4" parent="." unique_id=1687364210 instance=ExtResource("3_xov60")]
+position = Vector2(711, 405)
 scale = Vector2(5, 1)
 
-[node name="Ground_P_5" parent="." unique_id=350770238 instance=ExtResource("3_4t8un")]
-position = Vector2(928, 247)
+[node name="Ground_P_5" parent="." unique_id=350770238 instance=ExtResource("3_xov60")]
+position = Vector2(1225, 313)
+scale = Vector2(8, 1)
+
+[node name="Ground_P_8" parent="." unique_id=1710634279 instance=ExtResource("3_xov60")]
+position = Vector2(1698, 137)
 scale = Vector2(5, 1)
 
-[node name="Ground_P_8" parent="." unique_id=1710634279 instance=ExtResource("3_4t8un")]
-position = Vector2(1700, 483)
+[node name="Ground_P_7" parent="." unique_id=248651494 instance=ExtResource("3_xov60")]
+position = Vector2(364, 483)
 scale = Vector2(5, 1)
 
-[node name="Ground_P_7" parent="." unique_id=248651494 instance=ExtResource("3_4t8un")]
-position = Vector2(324, 483)
-scale = Vector2(5, 1)
+[node name="Ground_P_10" parent="." unique_id=1069145512 instance=ExtResource("3_xov60")]
+position = Vector2(683.00006, 628)
+scale = Vector2(14, 1)
 
-[node name="LevelObjective" type="TextEdit" parent="." unique_id=210773694]
-offset_left = 85.0
-offset_top = 236.0
-offset_right = 254.0
-offset_bottom = 305.0
-text = "Jump & move good.
-But with DANGER."
+[node name="Ground_P_12" parent="." unique_id=893139727 instance=ExtResource("3_xov60")]
+position = Vector2(1361, 628)
+scale = Vector2(20, 1)
 
-[node name="LevelObjective2" type="TextEdit" parent="." unique_id=698498951]
-offset_left = 859.0
-offset_top = 34.0
-offset_right = 1079.0
-offset_bottom = 103.0
-text = "Think hard about your
- numbers here."
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=512979000]
+offset_left = 60.0
+offset_top = 363.0
+offset_right = 223.0
+offset_bottom = 401.0
+text = "Jump good practice."
 
-[node name="LevelObjective3" type="TextEdit" parent="." unique_id=1816929586]
-offset_left = 1151.0
-offset_top = 564.0
-offset_right = 1265.0
-offset_bottom = 599.0
-text = "Hah, you fell."
+[node name="LevelObjective2" type="TextEdit" parent="." unique_id=792819468]
+offset_left = 918.0
+offset_top = 114.0
+offset_right = 1198.0
+offset_bottom = 175.0
+text = "If you fall, that's ok. It's intended. 
+                        ♪~ ᕕ(ᐛ)ᕗ"
+scroll_vertical = 0.03703703703703698
 
-[node name="LevelEnd" type="TextEdit" parent="." unique_id=1596129767]
-offset_left = 1619.0
-offset_top = 514.0
-offset_right = 1787.0
-offset_bottom = 545.0
-text = "Damn, you made it."
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=1581963938]
+offset_left = 1724.0
+offset_top = 33.0
+offset_right = 1780.0
+offset_bottom = 69.0
+text = "Nice."
