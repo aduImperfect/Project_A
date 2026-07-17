@@ -36,6 +36,11 @@ static func save_game() -> void:
 			"camera": {
 				"smoothing_speed": CameraHelper.smoothing_speed
 			},
+			"audio": {
+				"volume": {
+					"master": AudioDatabase.audioMasterVolume
+				}
+			}
 		},
 		"character": {
 			"jump_speed": {

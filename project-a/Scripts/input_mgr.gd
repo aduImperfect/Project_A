@@ -49,6 +49,12 @@ func _initialize() -> void:
 		else:
 			CameraHelper._set_initial_camera_values_sp()
 
+		#if SaveLoadHelper.fileExist:
+			#AudioDatabase._reset_volume_values()
+		#else:
+			#AudioDatabase._inital_volume_values()
+
+
 	is_moving = false
 	is_jumping = false
 	grounded = true

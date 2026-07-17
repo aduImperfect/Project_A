@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://db053svsam2we" path="res://Scripts/current_input.gd" id="15_c1erm"]
 [ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://Scripts/gamepad_in_use.gd" id="16_enppw"]
 [ext_resource type="Script" uid="uid://df7h7pelquxfc" path="res://Scripts/cam_smoothing_edit.gd" id="17_enppw"]
+[ext_resource type="Script" uid="uid://c5wu1pch8h8yt" path="res://Scenes/master_volume_h_slider_edit.gd" id="18_kx34a"]
+[ext_resource type="Script" uid="uid://c2q57gipas4qi" path="res://Scenes/master_volume_h_slider_title.gd" id="18_wc7ih"]
 
 [sub_resource type="GDScript" id="GDScript_0o3wc"]
 script/source = "extends TextEdit
@@ -232,3 +234,24 @@ offset_top = 72.0
 offset_right = -340.0
 offset_bottom = 112.0
 script = ExtResource("17_enppw")
+
+[node name="MasterVolumeHSliderTitle" type="TextEdit" parent="." unique_id=1472250107]
+z_index = 100
+custom_minimum_size = Vector2(150, 40)
+offset_left = -314.0
+offset_top = 96.0
+offset_right = -164.0
+offset_bottom = 136.0
+text = "Master Volume"
+script = ExtResource("18_wc7ih")
+
+[node name="MasterVolumeHSliderEdit" type="HSlider" parent="." unique_id=1652831052]
+z_index = 100
+custom_minimum_size = Vector2(150, 20)
+offset_left = -315.0
+offset_top = 151.0
+offset_right = -165.0
+offset_bottom = 171.0
+max_value = 1.0
+step = 0.01
+script = ExtResource("18_kx34a")
