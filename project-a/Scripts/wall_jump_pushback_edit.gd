@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 		timerAccumulation += _delta
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
-			text = "Wall Jump Pushback: " + str(InputsData.wall_jump_pushback)
+			#text = "Wall Jump Pushback: " + str(InputsData.wall_jump_pushback)
 			timerReached = true
 		return
 
@@ -26,14 +26,15 @@ func _process(_delta: float) -> void:
 	regex.compile("-?\\d+\\.?\\d+") 
 
 	var result = regex.search(text)
-	var first_float : float = 0.0
+	var _first_float : float = 0.0
 	if result:
-		first_float = result.get_string().to_float()
+		_first_float = result.get_string().to_float()
 
 	if InputsData.begin_delay:
 		timerReached = false
 	else:
-		InputsData.wall_jump_pushback = first_float
+		#InputsData.wall_jump_pushback = _first_float
+		pass
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

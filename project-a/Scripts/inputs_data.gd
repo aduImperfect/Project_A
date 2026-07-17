@@ -16,11 +16,12 @@ static var min_move_speed : float
 static var jump_speed_min_diff : float
 static var move_speed_min_diff : float
 
-static var wall_slide_speed
-static var wall_jump_pushback
-# --- Wall Jump Mechanics ---
-static var wall_jump_lock_timer
-static var wall_jump_lock_time # Time in seconds player control is locked
+#CLOSED OFF AND NOT BEING USED AT PRESENT!
+#static var wall_slide_speed
+#static var wall_jump_pushback
+## --- Wall Jump Mechanics ---
+#static var wall_jump_lock_timer
+#static var wall_jump_lock_time # Time in seconds player control is locked
 
 static var delayed_reset_max : float
 static var delayed_reset_acc : float
@@ -53,10 +54,10 @@ static func _set_initial_values() -> void:
 	min_move_speed = 0.0
 	jump_speed_min_diff = 0.1
 	move_speed_min_diff = 0.1
-	wall_slide_speed = 900.0
-	wall_jump_pushback = 40.0
-	wall_jump_lock_timer = 0.0
-	wall_jump_lock_time = 0.0 # Time in seconds player control is locked
+	#wall_slide_speed = 900.0
+	#wall_jump_pushback = 40.0
+	#wall_jump_lock_timer = 0.0
+	#wall_jump_lock_time = 0.0 # Time in seconds player control is locked
 
 	begin_delay = false
 	delayed_reset_max = 1.0
@@ -102,17 +103,17 @@ static func _reset_values() -> void:
 	move_speed_min_diff = SaveLoadHelper.save_data.get("character", 1).get("move_speed", 1).get("min_diff", 1)
 	print("Move Speed Min Diff: ", move_speed_min_diff)
 
-	wall_slide_speed = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("wall_slide_speed", 1)
-	print("Wall Slide Speed: ", wall_slide_speed)
-
-	wall_jump_pushback = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("pushback", 1)
-	print("Wall Jump Pushback: ", wall_jump_pushback)
-
-	wall_jump_lock_timer = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("lock_timer", 1)
-	print("Wall Jump Lock Timer: ", wall_jump_lock_timer)
-
-	wall_jump_lock_time = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("lock_time", 1) # Time in seconds player control is locked
-	print("Wall Jump Lock Time: ", wall_jump_lock_time)
+	#wall_slide_speed = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("wall_slide_speed", 1)
+	#print("Wall Slide Speed: ", wall_slide_speed)
+#
+	#wall_jump_pushback = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("pushback", 1)
+	#print("Wall Jump Pushback: ", wall_jump_pushback)
+#
+	#wall_jump_lock_timer = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("lock_timer", 1)
+	#print("Wall Jump Lock Timer: ", wall_jump_lock_timer)
+#
+	#wall_jump_lock_time = SaveLoadHelper.save_data.get("character", 1).get("wall_jump", 1).get("lock_time", 1) # Time in seconds player control is locked
+	#print("Wall Jump Lock Time: ", wall_jump_lock_time)
 
 	#begin delay has not been set to false here ON PURPOSE. DO NOT ADD IT HERE as it will break level switching reset of data!
 	delayed_reset_max = 1.0

@@ -6,7 +6,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	text = "Wall Jump Lock Timer: " + str(InputsData.wall_jump_lock_timer)
+	#text = "Wall Jump Lock Timer: " + str(InputsData.wall_jump_lock_timer)
+	pass
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

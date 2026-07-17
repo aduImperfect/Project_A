@@ -39,12 +39,12 @@ static func save_game() -> void:
 				"decrement": InputsData.jump_speed_dec,
 				"min_diff": InputsData.jump_speed_min_diff
 			},
-			"wall_jump": {
-				"lock_time": InputsData.wall_jump_lock_time,
-				"lock_timer": InputsData.wall_jump_lock_timer,
-				"pushback": InputsData.wall_jump_pushback,
-				"wall_slide_speed": InputsData.wall_slide_speed
-			},
+			#"wall_jump": {
+				#"lock_time": InputsData.wall_jump_lock_time,
+				#"lock_timer": InputsData.wall_jump_lock_timer,
+				#"pushback": InputsData.wall_jump_pushback,
+				#"wall_slide_speed": InputsData.wall_slide_speed
+			#},
 			"move_speed": {
 				"max": InputsData.max_move_speed,
 				"min": InputsData.min_move_speed,

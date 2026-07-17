@@ -146,6 +146,7 @@ offset_bottom = 8.0
 script = ExtResource("8_344ge")
 
 [node name="WallSlideSpeedEdit" type="TextEdit" parent="MainCam" unique_id=105856906]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 offset_left = -546.0
@@ -155,6 +156,7 @@ offset_bottom = 66.0
 script = ExtResource("9_ynf5e")
 
 [node name="WallJumpPushbackEdit" type="TextEdit" parent="MainCam" unique_id=2119501809]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 offset_left = -546.0
@@ -164,6 +166,7 @@ offset_bottom = 127.0
 script = ExtResource("10_hptm8")
 
 [node name="WallJumpLockTimer" type="TextEdit" parent="MainCam" unique_id=1759760722]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 offset_left = -544.0
@@ -173,6 +176,7 @@ offset_bottom = 180.0
 script = ExtResource("11_d1ilt")
 
 [node name="WallJumpLockTimeEdit" type="TextEdit" parent="MainCam" unique_id=1317598599]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 offset_left = -544.0
@@ -185,9 +189,9 @@ script = ExtResource("12_6iyac")
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 offset_left = -543.0
-offset_top = 252.0
+offset_top = 18.0
 offset_right = -343.0
-offset_bottom = 292.0
+offset_bottom = 58.0
 script = ExtResource("13_fdnlq")
 
 [node name="CurrentLevelEdit" type="TextEdit" parent="MainCam" unique_id=983531605]
@@ -211,18 +215,18 @@ script = ExtResource("14_jkdf5")
 
 [node name="CurrentInput" type="TextEdit" parent="MainCam" unique_id=1879290928]
 z_index = 100
-custom_minimum_size = Vector2(300, 60)
-offset_left = -322.0
-offset_top = 252.0
-offset_right = -122.0
-offset_bottom = 292.0
+custom_minimum_size = Vector2(399, 80)
+offset_left = -557.0
+offset_top = 233.0
+offset_right = -158.0
+offset_bottom = 313.0
 script = ExtResource("16_k12tt")
 
 [node name="GamepadInUse" type="TextEdit" parent="MainCam" unique_id=878832506]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
-offset_left = -229.0
-offset_top = 195.0
-offset_right = -129.0
-offset_bottom = 235.0
+offset_left = -554.0
+offset_top = 182.0
+offset_right = -354.0
+offset_bottom = 222.0
 script = ExtResource("18_b3802")
