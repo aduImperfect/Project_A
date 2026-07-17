@@ -11,6 +11,7 @@ func _ready():
 
 func _process(delta):
 	if PlayersHelper.playerNodes.is_empty():
+		print("No players to play!")
 		return
 
 	# 1. Find the center point

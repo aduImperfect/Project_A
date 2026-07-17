@@ -1,0 +1,224 @@
+[gd_scene format=3 uid="uid://dl4i8yvjvkeqn"]
+
+[ext_resource type="Script" uid="uid://djatmjw4uukb5" path="res://Scripts/fps_counter.gd" id="1_147pp"]
+[ext_resource type="Script" uid="uid://8nsomulkwu6q" path="res://Scripts/move_speed_current.gd" id="2_enppw"]
+[ext_resource type="Script" uid="uid://cqmeae25j884s" path="res://Scripts/move_speed_decrement_edit.gd" id="3_kx34a"]
+[ext_resource type="Script" uid="uid://dvkcoae6aw6mn" path="res://Scripts/max_move_speed_edit.gd" id="4_wc7ih"]
+[ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://Scripts/jump_speed_current.gd" id="5_3q4g7"]
+[ext_resource type="Script" uid="uid://bovd0x14v1lv5" path="res://Scripts/max_jump_speed_edit.gd" id="6_qoud8"]
+[ext_resource type="Script" uid="uid://cew4elyv2w054" path="res://Scripts/max_run_speed_edit.gd" id="7_yj67u"]
+[ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://Scripts/wall_slide_speed_edit.gd" id="8_ih6jt"]
+[ext_resource type="Script" uid="uid://dnmmooax6vny1" path="res://Scripts/wall_jump_pushback_edit.gd" id="9_i3k6o"]
+[ext_resource type="Script" uid="uid://bf4q8h6u3cypq" path="res://Scripts/wall_jump_lock_timer.gd" id="10_ueqbn"]
+[ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://Scripts/wall_jump_lock_time_edit.gd" id="11_l0p4r"]
+[ext_resource type="Script" uid="uid://cw2d4o5d40a0m" path="res://Scripts/num_players.gd" id="12_kcbrv"]
+[ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scripts/current_level_edit.gd" id="13_e4h4u"]
+[ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://Scripts/begin_delay_current.gd" id="14_8i0sk"]
+[ext_resource type="Script" uid="uid://db053svsam2we" path="res://Scripts/current_input.gd" id="15_c1erm"]
+[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://Scenes/gamepad_in_use.gd" id="16_ry14t"]
+
+[sub_resource type="GDScript" id="GDScript_0o3wc"]
+script/source = "extends TextEdit
+
+var timerAccumulation : float = 0.0
+var timerMax : float = 0.0
+var timerReached : bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	timerAccumulation = 0.0
+	timerMax = 0.5
+	timerReached = false
+	text = \"\"
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta: float) -> void:
+	if timerReached == false:
+		timerAccumulation += _delta
+		if timerAccumulation > timerMax:
+			timerAccumulation = 0.0
+			text = \"Jump Speed Dec: \" + str(InputsData.jump_speed_dec)
+			timerReached = true
+		return
+
+	var regex = RegEx.new()
+	# Regex pattern matches an optional negative sign followed by digits and a decimal point
+	regex.compile(\"-?\\\\d+\\\\.?\\\\d+\") 
+
+	var result = regex.search(text)
+	var first_float : float = 0.0
+	if result:
+		first_float = result.get_string().to_float()
+
+	if InputsData.begin_delay:
+		timerReached = false
+	else:
+		InputsData.jump_speed_dec = first_float
+
+func _input(event: InputEvent):
+	# Check if a mouse button is clicked while the node has focus
+	if has_focus() and event is InputEventMouseButton and event.pressed:
+		# If the click position is outside the node's rectangle
+		if not get_global_rect().has_point(event.position):
+			release_focus()
+"
+
+[node name="MainUi" type="Node2D" unique_id=473959145]
+
+[node name="FPSCounter" type="TextEdit" parent="." unique_id=601955518]
+z_index = 100
+custom_minimum_size = Vector2(100, 40)
+offset_left = -560.0
+offset_top = -305.0
+offset_right = -460.0
+offset_bottom = -285.0
+script = ExtResource("1_147pp")
+
+[node name="MoveSpeedCurrent" type="TextEdit" parent="." unique_id=154121554]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -557.0
+offset_top = -251.0
+offset_right = -457.0
+offset_bottom = -211.0
+script = ExtResource("2_enppw")
+
+[node name="MoveSpeedDecrementEdit" type="TextEdit" parent="." unique_id=1692520237]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -343.0
+offset_top = -251.0
+offset_right = -143.0
+offset_bottom = -211.0
+script = ExtResource("3_kx34a")
+
+[node name="MaxMoveSpeedEdit" type="TextEdit" parent="." unique_id=862662329]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -554.0
+offset_top = -196.0
+offset_right = -404.0
+offset_bottom = -156.0
+script = ExtResource("4_wc7ih")
+
+[node name="JumpSpeedCurrent" type="TextEdit" parent="." unique_id=1057249460]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -552.0
+offset_top = -139.0
+offset_right = -352.0
+offset_bottom = -99.0
+script = ExtResource("5_3q4g7")
+
+[node name="JumpSpeedDecrementEdit" type="TextEdit" parent="." unique_id=1644206962]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -340.0
+offset_top = -139.0
+offset_right = -140.0
+offset_bottom = -99.0
+script = SubResource("GDScript_0o3wc")
+
+[node name="MaxJumpSpeedEdit" type="TextEdit" parent="." unique_id=1245757916]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -550.0
+offset_top = -85.0
+offset_right = -350.0
+offset_bottom = -45.0
+script = ExtResource("6_qoud8")
+
+[node name="MaxRunSpeedEdit" type="TextEdit" parent="." unique_id=1879324692]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -547.0
+offset_top = -32.0
+offset_right = -347.0
+offset_bottom = 8.0
+script = ExtResource("7_yj67u")
+
+[node name="WallSlideSpeedEdit" type="TextEdit" parent="." unique_id=1729114497]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+offset_left = -546.0
+offset_top = 26.0
+offset_right = -346.0
+offset_bottom = 66.0
+script = ExtResource("8_ih6jt")
+
+[node name="WallJumpPushbackEdit" type="TextEdit" parent="." unique_id=417973689]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+offset_left = -546.0
+offset_top = 87.0
+offset_right = -346.0
+offset_bottom = 127.0
+script = ExtResource("9_i3k6o")
+
+[node name="WallJumpLockTimer" type="TextEdit" parent="." unique_id=728292712]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+offset_left = -544.0
+offset_top = 140.0
+offset_right = -344.0
+offset_bottom = 180.0
+script = ExtResource("10_ueqbn")
+
+[node name="WallJumpLockTimeEdit" type="TextEdit" parent="." unique_id=1271128809]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+offset_left = -544.0
+offset_top = 196.0
+offset_right = -344.0
+offset_bottom = 236.0
+script = ExtResource("11_l0p4r")
+
+[node name="NumPlayers" type="TextEdit" parent="." unique_id=2083542118]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -543.0
+offset_top = 18.0
+offset_right = -343.0
+offset_bottom = 58.0
+script = ExtResource("12_kcbrv")
+
+[node name="CurrentLevelEdit" type="TextEdit" parent="." unique_id=596001624]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -446.0
+offset_top = -305.0
+offset_right = -246.0
+offset_bottom = -265.0
+script = ExtResource("13_e4h4u")
+
+[node name="BeginDelayCurrent" type="TextEdit" parent="." unique_id=851112648]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -227.0
+offset_top = -305.0
+offset_right = -27.0
+offset_bottom = -265.0
+script = ExtResource("14_8i0sk")
+
+[node name="CurrentInput" type="TextEdit" parent="." unique_id=1524028920]
+z_index = 100
+custom_minimum_size = Vector2(399, 80)
+offset_left = -557.0
+offset_top = 233.0
+offset_right = -158.0
+offset_bottom = 313.0
+script = ExtResource("15_c1erm")
+
+[node name="GamepadInUse" type="TextEdit" parent="." unique_id=1735564947]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+offset_left = -554.0
+offset_top = 182.0
+offset_right = -354.0
+offset_bottom = 222.0
+script = ExtResource("16_ry14t")

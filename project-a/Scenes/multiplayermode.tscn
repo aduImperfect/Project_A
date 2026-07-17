@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b68qws5q1bf1p"]
+
+[ext_resource type="Script" uid="uid://cdr6kd3xwvfmo" path="res://Scripts/camera_multiplayer.gd" id="1_2lkk3"]
+[ext_resource type="PackedScene" uid="uid://difmoi1dld25r" path="res://Scenes/background.tscn" id="2_1icgi"]
+[ext_resource type="PackedScene" uid="uid://dl4i8yvjvkeqn" path="res://Scenes/mainui.tscn" id="3_gutp0"]
+
+[node name="MultiPlayerMode" type="Node2D" unique_id=1898326181]
+
+[node name="MPCam" type="Camera2D" parent="." unique_id=120547439]
+script = ExtResource("1_2lkk3")
+
+[node name="Background" parent="MPCam" unique_id=1958889540 instance=ExtResource("2_1icgi")]
+
+[node name="MainUi" parent="MPCam" unique_id=473959145 instance=ExtResource("3_gutp0")]
