@@ -41,6 +41,13 @@ func _initialize() -> void:
 			InputsData._reset_values()
 		else:
 			InputsData._set_initial_values()
+		#BELOW PORTION NEEDS TO BE SET IN ITS OWN CAMERA MGR FUNCTION!
+		#FORCED CURRENTLY INTO SINGLE PLAYER MODE FOR CAMERA!
+		#Being set here to make sure it gets the proper UI update!
+		if SaveLoadHelper.fileExist:
+			CameraHelper._reset_values_sp()
+		else:
+			CameraHelper._set_initial_camera_values_sp()
 
 	is_moving = false
 	is_jumping = false

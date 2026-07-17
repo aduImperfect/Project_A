@@ -74,6 +74,7 @@ static func _level_switcher(newLevelNum : int = -1) -> void:
 		LevelsDatabase.currLevel = newLevelNum
 	InputsData.begin_delay = true
 	InputsData._reset_values()
+	CameraHelper._reset_values_sp()
 
 	if LevelsDatabase.currLevel >= LevelsDatabase.levelsCount:
 		#print("Game Complete")

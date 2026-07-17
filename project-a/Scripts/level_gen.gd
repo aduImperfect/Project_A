@@ -29,7 +29,6 @@ func _ready() -> void:
 	_spawn_levels()
 	_spawn_players()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	#owner.get_child(2)

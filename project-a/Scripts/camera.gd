@@ -14,3 +14,12 @@ static func _set_initial_camera_values_mp() -> void:
 	max_zoom = Vector2(0.5, 0.5)
 	margin = Vector2(100, 100) # Space around the players in pixels
 	smoothing_speed = 5.0
+
+static func _reset_values_sp() -> void:
+	smoothing_speed = SaveLoadHelper.save_data.get("game", 1).get("camera", 1).get("smoothing_speed", 1)
+	print("Camera Smoothing Speed: ", smoothing_speed)
+
+static func _reset_values_mp() -> void:
+	#To add the other ones here!
+	smoothing_speed = SaveLoadHelper.save_data.get("game", 1).get("camera", 1).get("smoothing_speed", 1)
+	print("Camera Smoothing Speed: ", smoothing_speed)

@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 static func _set_player_info() -> void:
 	print("--------------------")
 	if SaveLoadHelper.fileExist:
-		playersCount = SaveLoadHelper.save_data.get("game", 1).get("player_count", 1)
+		playersCount = SaveLoadHelper.save_data.get("game", 1).get("player", 1).get("count", 1)
 		print("Players Count: ", playersCount)
 	else:
 		#Make sure the base default value is set to 1.

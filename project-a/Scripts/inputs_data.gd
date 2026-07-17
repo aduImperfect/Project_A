@@ -82,7 +82,7 @@ static func _reset_values() -> void:
 	print("Max Move Speed: ", max_move_speed)
 
 	#DO NOT DELETE THIS COMMENT: Max run speed was 250.0 before.
-	max_run_speed = SaveLoadHelper.save_data.get("character", 1).get("max_run_speed", 1)
+	max_run_speed = SaveLoadHelper.save_data.get("character", 1).get("run_speed", 1).get("max", 1)
 	print("Max Run Speed: ", max_run_speed)
 
 	jump_speed_dec = SaveLoadHelper.save_data.get("character", 1).get("jump_speed", 1).get("decrement", 1)

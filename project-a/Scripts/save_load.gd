@@ -30,7 +30,12 @@ static func save_game() -> void:
 				#"current": LevelsDatabase.currLevel + 1,
 				"current": 1,
 			},
-			"player_count": PlayersHelper.playersCount
+			"player": {
+				"count": PlayersHelper.playersCount,
+			},
+			"camera": {
+				"smoothing_speed": CameraHelper.smoothing_speed
+			},
 		},
 		"character": {
 			"jump_speed": {
@@ -51,8 +56,10 @@ static func save_game() -> void:
 				"decrement": InputsData.move_speed_dec,
 				"min_diff": InputsData.move_speed_min_diff
 			},
-			"max_run_speed": InputsData.max_run_speed
-		}
+			"run_speed": {
+				"max": InputsData.max_run_speed
+			}
+		},
 	}
 
 	print("SAVE DATA VALUE ON SAVE: ", save_data)
