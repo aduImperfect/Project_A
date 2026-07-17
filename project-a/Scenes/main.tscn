@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://c1skm251qmouu"]
 
 [ext_resource type="Script" uid="uid://cadhbg6w7dywe" path="res://Scripts/level_gen.gd" id="1_jjgbg"]
+[ext_resource type="Script" uid="uid://bcuvu8mh1jh8u" path="res://Scripts/audio_mgr.gd" id="2_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bx8dt6gjprmjj" path="res://Scenes/singleplayermode.tscn" id="2_bo1nx"]
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 
 [node name="LevelGen" type="Node2D" parent="." unique_id=1618441754]
 script = ExtResource("1_jjgbg")
+
+[node name="AudioMgr" type="Node2D" parent="." unique_id=562412432]
+script = ExtResource("2_8gbba")
 
 [node name="SinglePlayerMode" parent="." unique_id=1264525211 instance=ExtResource("2_bo1nx")]

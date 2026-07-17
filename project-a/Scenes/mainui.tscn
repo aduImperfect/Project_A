@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scripts/current_level_edit.gd" id="13_e4h4u"]
 [ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://Scripts/begin_delay_current.gd" id="14_8i0sk"]
 [ext_resource type="Script" uid="uid://db053svsam2we" path="res://Scripts/current_input.gd" id="15_c1erm"]
-[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://Scenes/gamepad_in_use.gd" id="16_ry14t"]
-[ext_resource type="Script" uid="uid://df7h7pelquxfc" path="res://Scenes/cam_smoothing_edit.gd" id="17_enppw"]
+[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://Scripts/gamepad_in_use.gd" id="16_enppw"]
+[ext_resource type="Script" uid="uid://df7h7pelquxfc" path="res://Scripts/cam_smoothing_edit.gd" id="17_enppw"]
 
 [sub_resource type="GDScript" id="GDScript_0o3wc"]
 script/source = "extends TextEdit
@@ -222,7 +222,7 @@ offset_left = -542.0
 offset_top = 138.0
 offset_right = -342.0
 offset_bottom = 178.0
-script = ExtResource("16_ry14t")
+script = ExtResource("16_enppw")
 
 [node name="CamSmoothingEdit" type="TextEdit" parent="." unique_id=1992169720]
 z_index = 100

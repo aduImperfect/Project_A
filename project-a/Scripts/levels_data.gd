@@ -16,14 +16,6 @@ static var yLevelCenter : float = 0.0
 
 static var currLevel : int = 0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
 static func _load_level_scenes() -> void:
 	LEVEL_SCENES.clear()
 	var dir := DirAccess.open("res://Levels")
@@ -61,6 +53,7 @@ static func _set_values() -> void:
 
 	levelsCount = LEVEL_SCENES.size()
 	maxHeight = 10
+	print("All Levels Loaded!")
 
 static func _level_switcher(newLevelNum : int = -1) -> void:
 	print("---------------")

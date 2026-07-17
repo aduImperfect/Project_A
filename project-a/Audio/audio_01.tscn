@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://vaetqouy0nor"]
+
+[ext_resource type="AudioStream" uid="uid://cybsil45oxko" path="res://Audio/Audio_01_Background_Spinopel_Chicken_Coop.mp3" id="1_ki3i4"]
+[ext_resource type="Script" uid="uid://do3oeuxq0shvl" path="res://Scripts/audio_01_background_player.gd" id="2_1vcs7"]
+
+[node name="Audio_01_Background" type="Node2D" unique_id=452486865]
+
+[node name="AP2D" type="AudioStreamPlayer2D" parent="." unique_id=141595553]
+stream = ExtResource("1_ki3i4")
+script = ExtResource("2_1vcs7")
