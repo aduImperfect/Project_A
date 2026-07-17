@@ -6,5 +6,5 @@
 
 [node name="Background" type="Sprite2D" parent="." unique_id=2123913812]
 z_index = -10
-scale = Vector2(100, 100)
+scale = Vector2(1.6, 0.9)
 texture = ExtResource("1_sn1xx")

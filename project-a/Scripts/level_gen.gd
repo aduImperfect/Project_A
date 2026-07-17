@@ -1,17 +1,16 @@
 extends Node2D
 
-const BACKGROUND_SCENE = preload("res://Scenes/background.tscn")
+#const BACKGROUND_SCENE = preload("res://Scenes/background.tscn")
 
-@export var xBackCenter : float = 0.0
-@export var yBackCenter : float = 0.0
+#@export var xBackCenter : float = 0.0
+#@export var yBackCenter : float = 0.0
 
-@export var backgroundNode : Node2D
+#@export var backgroundNode : Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	xBackCenter = 550.0
-	yBackCenter = 350.0
-
+	#xBackCenter = 550.0
+	#yBackCenter = 350.0
 	SaveLoadHelper._file_checker()
 
 	if SaveLoadHelper.fileExist:
@@ -26,7 +25,7 @@ func _ready() -> void:
 	PlayersHelper._set_ghost_container(ghost_container)
 
 	LevelsDatabase._set_values()
-	_spawn_background()
+	#_spawn_background()
 	_spawn_levels()
 	_spawn_players()
 
@@ -36,12 +35,12 @@ func _process(_delta: float) -> void:
 	#owner.get_child(2)
 	pass
 
-func _spawn_background() -> void:
-	var background_instance = BACKGROUND_SCENE.instantiate()
-	background_instance.global_position.x = xBackCenter
-	background_instance.global_position.y = yBackCenter
-	add_child(background_instance)
-	backgroundNode = background_instance
+#func _spawn_background() -> void:
+	#var background_instance = BACKGROUND_SCENE.instantiate()
+	#background_instance.global_position.x = xBackCenter
+	#background_instance.global_position.y = yBackCenter
+	#add_child(background_instance)
+	#backgroundNode = background_instance
 
 func _spawn_levels() -> void:
 	var j : int = 0
