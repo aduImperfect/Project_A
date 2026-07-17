@@ -2,14 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cadhbg6w7dywe" path="res://Scripts/level_gen.gd" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://bx8dt6gjprmjj" path="res://Scenes/singleplayermode.tscn" id="2_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://b68qws5q1bf1p" path="res://Scenes/multiplayermode.tscn" id="3_8gbba"]
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 
 [node name="LevelGen" type="Node2D" parent="." unique_id=1618441754]
 script = ExtResource("1_jjgbg")
-
-[node name="MultiPlayerMode" parent="." unique_id=1898326181 instance=ExtResource("3_8gbba")]
-visible = false
 
 [node name="SinglePlayerMode" parent="." unique_id=1264525211 instance=ExtResource("2_bo1nx")]
