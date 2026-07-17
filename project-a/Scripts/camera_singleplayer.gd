@@ -1,12 +1,9 @@
 extends Camera2D
 
-# Camera settings
-@export var smoothing_speed = 5.0
-
 func _ready():
-	pass
+	CameraHelper._set_initial_camera_values_sp()
 
-func _process(delta):
+func _process(_delta : float):
 	if PlayersHelper.playerNodes.is_empty():
 		print("No players to play!")
 		return
@@ -20,4 +17,4 @@ func _process(delta):
 	center += PlayersHelper.playerNodes[0].get_child(0).global_position
 
 	# Smoothly move and zoom
-	global_position = global_position.lerp(center, smoothing_speed * delta)
+	global_position = global_position.lerp(center, CameraHelper.smoothing_speed * _delta)
