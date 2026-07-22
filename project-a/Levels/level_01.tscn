@@ -8,12 +8,16 @@
 [node name="Level_01" type="Node2D" unique_id=234875700]
 
 [node name="Start" parent="." unique_id=1470424718 instance=ExtResource("3_xfk5q")]
-position = Vector2(73, 221)
+position = Vector2(73, 21)
 
-[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_8ffim")]
-position = Vector2(1018, 224)
+[node name="Goal2" parent="Start" unique_id=1634378711 instance=ExtResource("2_8ffim")]
+position = Vector2(1236, 462)
 
-[node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("1_vk57k")]
+[node name="Ground_P_9" parent="Start" unique_id=1751980 instance=ExtResource("1_vk57k")]
+position = Vector2(1045, 492)
+scale = Vector2(10, 1)
+
+[node name="Ground_C_1" parent="." unique_id=1529564929 instance=ExtResource("1_vk57k")]
 position = Vector2(920, -132)
 scale = Vector2(44.03, 1)
 
@@ -25,53 +29,110 @@ scale = Vector2(1, 20)
 position = Vector2(1820, 248)
 scale = Vector2(1, 20)
 
+[node name="Ground_W_R_2" parent="." unique_id=965764360 instance=ExtResource("1_vk57k")]
+position = Vector2(1287, 69)
+scale = Vector2(1, 9)
+
 [node name="Ground_F_1" parent="." unique_id=199922042 instance=ExtResource("1_vk57k")]
-position = Vector2(440.00003, 628)
-scale = Vector2(20, 1)
+position = Vector2(242, 628)
+scale = Vector2(10, 1)
 
 [node name="Ground_F_2" parent="." unique_id=87018978 instance=ExtResource("1_vk57k")]
 position = Vector2(1500, 628)
 scale = Vector2(15, 1)
 
 [node name="Ground_P_1" parent="." unique_id=1453319394 instance=ExtResource("1_vk57k")]
-position = Vector2(1700, 533)
+position = Vector2(777.00006, 229)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_2" parent="." unique_id=692740273 instance=ExtResource("1_vk57k")]
-position = Vector2(936, 254)
+position = Vector2(936, 54)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_4" parent="." unique_id=1627510295 instance=ExtResource("1_vk57k")]
-position = Vector2(736.00006, 254)
+position = Vector2(736.00006, 54)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_5" parent="." unique_id=1827352975 instance=ExtResource("1_vk57k")]
-position = Vector2(536, 254)
+position = Vector2(536, 54)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_6" parent="." unique_id=2083270353 instance=ExtResource("1_vk57k")]
-position = Vector2(336, 254)
+position = Vector2(336, 54)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_7" parent="." unique_id=852924870 instance=ExtResource("1_vk57k")]
-position = Vector2(141, 254)
+position = Vector2(141, 54)
 scale = Vector2(5, 1)
 
 [node name="LevelObjective" type="TextEdit" parent="." unique_id=1773787374]
 offset_left = 57.0
-offset_top = 115.0
+offset_top = -85.0
 offset_right = 348.0
-offset_bottom = 163.0
+offset_bottom = -37.0
 text = "Max Movespeed is crap. Fix it. ಠ_ಠ"
+editable = false
 
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=1070965928]
-offset_left = 893.0
-offset_top = 90.0
-offset_right = 1133.0
-offset_bottom = 161.0
+offset_left = 1024.0
+offset_top = -109.0
+offset_right = 1264.0
+offset_bottom = -38.0
 text = "Congrats, you fixed it. *clap*
 ༼ つ ◕_◕ ༽つ"
+editable = false
 
 [node name="Death" parent="." unique_id=1296578022 instance=ExtResource("4_1cq4g")]
 position = Vector2(920, 750)
 scale = Vector2(100, 1)
+
+[node name="Ground_P_3" parent="." unique_id=893045837 instance=ExtResource("1_vk57k")]
+position = Vector2(967, 229)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_10" parent="." unique_id=1844753471 instance=ExtResource("1_vk57k")]
+position = Vector2(1167, 229)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_8" parent="." unique_id=198942170 instance=ExtResource("1_vk57k")]
+position = Vector2(340, 309)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_9" parent="." unique_id=1022875421 instance=ExtResource("1_vk57k")]
+position = Vector2(577, 229)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_11" parent="." unique_id=317605988 instance=ExtResource("1_vk57k")]
+position = Vector2(220, 268)
+rotation = 1.5707964
+scale = Vector2(3, 1)
+
+[node name="Ground_P_12" parent="." unique_id=2127352619 instance=ExtResource("1_vk57k")]
+position = Vector2(458, 269)
+rotation = 1.5707964
+scale = Vector2(3, 1)
+
+[node name="LevelObjective2" type="TextEdit" parent="." unique_id=985274139]
+offset_left = 833.0
+offset_top = 251.0
+offset_right = 1115.0
+offset_bottom = 292.0
+text = "Fix your movespeed & jump. (ง'̀-'́)ง"
+
+[node name="Ground_P_15" parent="." unique_id=265919292 instance=ExtResource("1_vk57k")]
+position = Vector2(540, 513)
+scale = Vector2(6, 1)
+
+[node name="LevelEnd2" type="TextEdit" parent="." unique_id=357667467]
+offset_left = 1381.0
+offset_top = 384.0
+offset_right = 1560.0
+offset_bottom = 425.0
+text = "You're learning. ಠ╭╮ಠ"
+
+[node name="LevelObjective3" type="TextEdit" parent="." unique_id=948582256]
+offset_left = 96.0
+offset_top = 652.0
+offset_right = 391.0
+offset_bottom = 700.0
+text = "Get the move speed just right. (ง'̀-'́)ง"
