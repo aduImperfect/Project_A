@@ -24,13 +24,33 @@
 
 [sub_resource type="Theme" id="Theme_wc7ih"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wc7ih"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_reab8"]
+bg_color = Color(0, 0, 0, 1)
+border_width_bottom = 4
+border_color = Color(0.15375453, 0, 0.04204286, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yj67u"]
+bg_color = Color(0.15522438, 0, 0.03077373, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih6jt"]
+bg_color = Color(1.5642495e-07, 0.17640498, 0.24634543, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoud8"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3q4g7"]
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="FoldableGroup" id="FoldableGroup_3q4g7"]
 allow_folding_all = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc2pf"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+draw_center = false
 
 [sub_resource type="GDScript" id="GDScript_0o3wc"]
 script/source = "extends TextEdit
@@ -78,7 +98,10 @@ func _input(event: InputEvent):
 			release_focus()
 "
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_reab8"]
+
 [node name="MainUi" type="Node2D" unique_id=473959145]
+z_index = 9
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=768113886]
 light_mask = 0
@@ -97,95 +120,98 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 7.0
 mouse_filter = 1
 theme = SubResource("Theme_wc7ih")
-theme_override_styles/title_panel = SubResource("StyleBoxFlat_wc7ih")
+theme_override_styles/title_panel = SubResource("StyleBoxFlat_reab8")
+theme_override_styles/title_hover_panel = SubResource("StyleBoxFlat_yj67u")
+theme_override_styles/title_collapsed_panel = SubResource("StyleBoxFlat_ih6jt")
+theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_qoud8")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3q4g7")
 title = "DASHBOARD"
 title_position = 1
 foldable_group = SubResource("FoldableGroup_3q4g7")
 
-[node name="Panel" type="Panel" parent="FoldableContainer" unique_id=210677958]
+[node name="ScrollContainer" type="ScrollContainer" parent="FoldableContainer" unique_id=186175641]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fc2pf")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="FoldableContainer/Panel" unique_id=2022433440]
-layout_mode = 0
-offset_right = 1242.0
-offset_bottom = 240.0
+[node name="HSplitContainer" type="HSplitContainer" parent="FoldableContainer/ScrollContainer" unique_id=2022433440]
+layout_mode = 2
+size_flags_horizontal = 3
 split_offsets = PackedInt32Array(200, 607, 819)
 split_offset = 200
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/Panel/HSplitContainer" unique_id=373042873]
+[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/ScrollContainer/HSplitContainer" unique_id=373042873]
 layout_mode = 2
 
-[node name="MaxMoveSpeedEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer" unique_id=862662329]
+[node name="MaxMoveSpeedEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer" unique_id=862662329]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("4_wc7ih")
 metadata/_edit_use_anchors_ = true
 
-[node name="MoveSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer" unique_id=1692520237]
+[node name="MoveSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer" unique_id=1692520237]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("3_kx34a")
 metadata/_edit_use_anchors_ = true
 
-[node name="MaxRunSpeedEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer" unique_id=1879324692]
+[node name="MaxRunSpeedEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer" unique_id=1879324692]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("7_yj67u")
 metadata/_edit_use_anchors_ = true
 
-[node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer" unique_id=1992169720]
+[node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer" unique_id=1992169720]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("17_enppw")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/Panel/HSplitContainer" unique_id=947268821]
+[node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/ScrollContainer/HSplitContainer" unique_id=947268821]
 layout_mode = 2
 
-[node name="MaxJumpSpeedEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer5" unique_id=1245757916]
+[node name="MaxJumpSpeedEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer5" unique_id=1245757916]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("6_qoud8")
 metadata/_edit_use_anchors_ = true
 
-[node name="JumpSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer5" unique_id=1644206962]
+[node name="JumpSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer5" unique_id=1644206962]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = SubResource("GDScript_0o3wc")
 metadata/_edit_use_anchors_ = true
 
-[node name="WallJumpLockTimeEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer5" unique_id=1271128809]
+[node name="WallJumpLockTimeEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer5" unique_id=1271128809]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 script = ExtResource("11_l0p4r")
 
-[node name="WallJumpPushbackEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer5" unique_id=417973689]
+[node name="WallJumpPushbackEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer5" unique_id=417973689]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 script = ExtResource("9_i3k6o")
 
-[node name="WallSlideSpeedEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer5" unique_id=1729114497]
+[node name="WallSlideSpeedEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer5" unique_id=1729114497]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 script = ExtResource("8_ih6jt")
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/Panel/HSplitContainer" unique_id=1216369138]
+[node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/ScrollContainer/HSplitContainer" unique_id=1216369138]
 layout_mode = 2
 
-[node name="MasterVolumeHSliderTitle" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer4" unique_id=1472250107]
+[node name="MasterVolumeHSliderTitle" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer4" unique_id=1472250107]
 z_index = 100
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
@@ -193,7 +219,7 @@ text = "Master Volume"
 script = ExtResource("18_wc7ih")
 metadata/_edit_use_anchors_ = true
 
-[node name="MasterVolumeHSliderEdit" type="HSlider" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer4" unique_id=1652831052]
+[node name="MasterVolumeHSliderEdit" type="HSlider" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer4" unique_id=1652831052]
 z_index = 100
 custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
@@ -202,68 +228,73 @@ step = 0.01
 script = ExtResource("18_kx34a")
 metadata/_edit_use_anchors_ = true
 
-[node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer4" unique_id=1057249460]
+[node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer4" unique_id=1057249460]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("5_3q4g7")
 metadata/_edit_use_anchors_ = true
 
-[node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer4" unique_id=154121554]
+[node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer4" unique_id=154121554]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("2_enppw")
 metadata/_edit_use_anchors_ = true
 
-[node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer4" unique_id=851112648]
+[node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer4" unique_id=851112648]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("14_8i0sk")
 
-[node name="WallJumpLockTimer" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer4" unique_id=728292712]
+[node name="WallJumpLockTimer" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer4" unique_id=728292712]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 script = ExtResource("10_ueqbn")
 
-[node name="CurrentLevelEdit" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer4" unique_id=596001624]
+[node name="CurrentLevelEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer4" unique_id=596001624]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("13_e4h4u")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="FoldableContainer/Panel/HSplitContainer" unique_id=974409604]
+[node name="VBoxContainer3" type="VBoxContainer" parent="FoldableContainer/ScrollContainer/HSplitContainer" unique_id=974409604]
 layout_mode = 2
 
-[node name="CurrentInput" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer3" unique_id=1524028920]
+[node name="CurrentInput" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer3" unique_id=1524028920]
 z_index = 100
 custom_minimum_size = Vector2(399, 80)
 layout_mode = 2
 script = ExtResource("15_c1erm")
 metadata/_edit_use_anchors_ = true
 
-[node name="NumPlayers" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer3" unique_id=2083542118]
+[node name="NumPlayers" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer3" unique_id=2083542118]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("12_kcbrv")
 metadata/_edit_use_anchors_ = true
 
-[node name="FPSCounter" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer3" unique_id=601955518]
+[node name="FPSCounter" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer3" unique_id=601955518]
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 script = ExtResource("1_147pp")
 metadata/_edit_use_anchors_ = true
 
-[node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/Panel/HSplitContainer/VBoxContainer3" unique_id=1735564947]
+[node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer3" unique_id=1735564947]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("16_enppw")
 metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="FoldableContainer" unique_id=210677958]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_reab8")
