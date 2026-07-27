@@ -34,7 +34,10 @@ border_blend = true
 bg_color = Color(0.15522438, 0, 0.03077373, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih6jt"]
-bg_color = Color(1.5642495e-07, 0.17640498, 0.24634543, 1)
+bg_color = Color(9.024516e-08, 0.081855975, 0.07061016, 1)
+border_width_bottom = 4
+border_color = Color(4.0911138e-07, 0.31408224, 0.097161554, 1)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qoud8"]
 bg_color = Color(0, 0, 0, 1)
@@ -98,8 +101,6 @@ func _input(event: InputEvent):
 			release_focus()
 "
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_reab8"]
-
 [node name="MainUi" type="Node2D" unique_id=473959145]
 z_index = 9
 
@@ -109,10 +110,10 @@ material = SubResource("CanvasItemMaterial_3q4g7")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -579.0
-offset_top = 47.0
+offset_left = -578.0
+offset_top = 41.0
 offset_right = 581.0
-offset_bottom = 330.0
+offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -120,6 +121,7 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 7.0
 mouse_filter = 1
 theme = SubResource("Theme_wc7ih")
+theme_override_font_sizes/font_size = 33
 theme_override_styles/title_panel = SubResource("StyleBoxFlat_reab8")
 theme_override_styles/title_hover_panel = SubResource("StyleBoxFlat_yj67u")
 theme_override_styles/title_collapsed_panel = SubResource("StyleBoxFlat_ih6jt")
@@ -146,6 +148,7 @@ layout_mode = 2
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+tab_input_mode = false
 script = ExtResource("4_wc7ih")
 metadata/_edit_use_anchors_ = true
 
@@ -153,6 +156,7 @@ metadata/_edit_use_anchors_ = true
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+tab_input_mode = false
 script = ExtResource("3_kx34a")
 metadata/_edit_use_anchors_ = true
 
@@ -160,6 +164,7 @@ metadata/_edit_use_anchors_ = true
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+tab_input_mode = false
 script = ExtResource("7_yj67u")
 metadata/_edit_use_anchors_ = true
 
@@ -167,6 +172,7 @@ metadata/_edit_use_anchors_ = true
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+tab_input_mode = false
 script = ExtResource("17_enppw")
 metadata/_edit_use_anchors_ = true
 
@@ -177,6 +183,7 @@ layout_mode = 2
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+tab_input_mode = false
 script = ExtResource("6_qoud8")
 metadata/_edit_use_anchors_ = true
 
@@ -184,6 +191,7 @@ metadata/_edit_use_anchors_ = true
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
+tab_input_mode = false
 script = SubResource("GDScript_0o3wc")
 metadata/_edit_use_anchors_ = true
 
@@ -216,6 +224,7 @@ z_index = 100
 custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Master Volume"
+editable = false
 script = ExtResource("18_wc7ih")
 metadata/_edit_use_anchors_ = true
 
@@ -293,8 +302,3 @@ custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("16_enppw")
 metadata/_edit_use_anchors_ = true
-
-[node name="Panel" type="Panel" parent="FoldableContainer" unique_id=210677958]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxTexture_reab8")
