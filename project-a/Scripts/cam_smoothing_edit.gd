@@ -9,6 +9,7 @@ func _ready() -> void:
 	timerAccumulation = 0.0
 	timerMax = 0.5
 	timerReached = false
+	#editable = false
 	text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,24 +18,23 @@ func _process(_delta: float) -> void:
 		timerAccumulation += _delta
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
-			#text = "Wall Jump Pushback: " + str(InputsData.wall_jump_pushback)
+			text = "Camera Smoothing: " + str(CameraHelper.smoothing_speed)
 			timerReached = true
 		return
 
 	var regex = RegEx.new()
 	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile("-?\\d+\\.?\\d+") 
+	regex.compile("-?\\d+\\.?\\d+")
 
 	var result = regex.search(text)
-	var _first_float : float = 0.0
+	var first_float : float = 0.0
 	if result:
-		_first_float = result.get_string().to_float()
+		first_float = result.get_string().to_float()
 
 	if InputsData.begin_delay:
 		timerReached = false
 	else:
-		#InputsData.wall_jump_pushback = _first_float
-		pass
+		CameraHelper.smoothing_speed = first_float
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

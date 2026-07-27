@@ -41,6 +41,19 @@ func _initialize() -> void:
 			InputsData._reset_values()
 		else:
 			InputsData._set_initial_values()
+		#BELOW PORTION NEEDS TO BE SET IN ITS OWN CAMERA MGR FUNCTION!
+		#FORCED CURRENTLY INTO SINGLE PLAYER MODE FOR CAMERA!
+		#Being set here to make sure it gets the proper UI update!
+		if SaveLoadHelper.fileExist:
+			CameraHelper._reset_values_sp()
+		else:
+			CameraHelper._set_initial_camera_values_sp()
+
+		#if SaveLoadHelper.fileExist:
+			#AudioDatabase._reset_volume_values()
+		#else:
+			#AudioDatabase._inital_volume_values()
+
 
 	is_moving = false
 	is_jumping = false
@@ -137,8 +150,8 @@ func _physics_process(_delta: float) -> void:
 	position.x += _delta * InputsData.move_speed
 	position.y -= _delta * InputsData.jump_speed
 
-	if InputsData.wall_jump_lock_timer > 0:
-		InputsData.wall_jump_lock_timer -= _delta
+	#if InputsData.wall_jump_lock_timer > 0:
+		#InputsData.wall_jump_lock_timer -= _delta
 
 	if is_on_floor():
 		if is_jumping:
@@ -149,28 +162,27 @@ func _physics_process(_delta: float) -> void:
 		grounded = true
 		InputsData.jump_speed = InputsData.min_jump_speed
 	else:
-		if is_on_wall():
-			if is_jumping:
-				# Wall Jump: Use wall normal to push away
-				velocity.x = get_wall_normal().x * InputsData.wall_jump_pushback
-				velocity.y = -(InputsData.max_jump_speed)
-				InputsData.wall_jump_lock_timer = InputsData.wall_jump_lock_time
-			if velocity.y > 0.0:
-				# 1. Handle Wall Sliding
-				velocity.y = min(velocity.y, InputsData.wall_slide_speed)
+		#if is_on_wall():
+			#if is_jumping:
+				## Wall Jump: Use wall normal to push away
+				#velocity.x = get_wall_normal().x * InputsData.wall_jump_pushback
+				#velocity.y = -(InputsData.max_jump_speed)
+				#InputsData.wall_jump_lock_timer = InputsData.wall_jump_lock_time
+			#if velocity.y > 0.0:
+				## 1. Handle Wall Sliding
+				#velocity.y = min(velocity.y, InputsData.wall_slide_speed)
 		#Gravity fall! Times 2!
 		velocity.y += gravity * _delta * 2
 		grounded = false
 
 	# 3. Handle Horizontal Movement (with control lock)
-	if InputsData.wall_jump_lock_timer <= 0:
-		velocity.x = InputsData.move_speed
-	else:
-		# Air control during wall jump lock (optional, keeps inertia)
-		velocity.x = move_toward(velocity.x, 0, 50)
+	#if InputsData.wall_jump_lock_timer <= 0:
+		#velocity.x = InputsData.move_speed
+	#else:
+		## Air control during wall jump lock (optional, keeps inertia)
+		#velocity.x = move_toward(velocity.x, 0, 50)
 
 	move_and_slide()
-
 	ghost_frames.append(position)
 
 func _input(_event: InputEvent) -> void:
@@ -239,6 +251,7 @@ func _add_input_actions_for_this_player() -> void:
 			InputMap.action_add_event(move_left_action, eventAction1)
 			var eventAction2 = InputEventJoypadMotion.new()
 			eventAction2.axis = JoyAxis.JOY_AXIS_LEFT_X
+			eventAction2.axis_value = -1
 			eventAction2.device = player_id
 			InputMap.action_add_event(move_left_action, eventAction2)
 			var eventAction3 = InputEventKey.new()
@@ -255,7 +268,8 @@ func _add_input_actions_for_this_player() -> void:
 			eventAction1.device = player_id
 			InputMap.action_add_event(move_right_action, eventAction1)
 			var eventAction2 = InputEventJoypadMotion.new()
-			eventAction2.axis = JoyAxis.JOY_AXIS_RIGHT_X
+			eventAction2.axis = JoyAxis.JOY_AXIS_LEFT_X
+			eventAction2.axis_value = 1
 			eventAction2.device = player_id
 			InputMap.action_add_event(move_right_action, eventAction2)
 			var eventAction3 = InputEventKey.new()
@@ -300,6 +314,7 @@ func _add_input_actions_for_this_player() -> void:
 			InputMap.action_add_event(move_left_action, eventAction1)
 			var eventAction2 = InputEventJoypadMotion.new()
 			eventAction2.axis = JoyAxis.JOY_AXIS_LEFT_X
+			eventAction2.axis_value = -1
 			eventAction2.device = player_id
 			InputMap.action_add_event(move_left_action, eventAction2)
 		if not InputMap.has_action(move_right_action):
@@ -310,7 +325,8 @@ func _add_input_actions_for_this_player() -> void:
 			eventAction1.device = player_id
 			InputMap.action_add_event(move_right_action, eventAction1)
 			var eventAction2 = InputEventJoypadMotion.new()
-			eventAction2.axis = JoyAxis.JOY_AXIS_RIGHT_X
+			eventAction2.axis = JoyAxis.JOY_AXIS_LEFT_X
+			eventAction2.axis_value = 1
 			eventAction2.device = player_id
 			InputMap.action_add_event(move_right_action, eventAction2)
 		if not InputMap.has_action(run_action):

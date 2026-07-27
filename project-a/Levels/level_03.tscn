@@ -1,74 +1,73 @@
-[gd_scene format=3 uid="uid://buexajo2k2e1l"]
+[gd_scene format=3 uid="uid://c77r7x2qkwv7r"]
 
 [ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_1vin3"]
 [ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_ojpmh"]
 [ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_703nv"]
 [ext_resource type="PackedScene" uid="uid://c7kw2s1jyomna" path="res://Scenes/death.tscn" id="4_gff3n"]
 
-[node name="Level_03" type="Node2D" unique_id=234875700]
+[node name="Level_06" type="Node2D" unique_id=1762506268]
 
 [node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_1vin3")]
-position = Vector2(73, 221)
+position = Vector2(69, 594)
 
 [node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_ojpmh")]
-position = Vector2(1520, 597)
+position = Vector2(1787, 453)
 
 [node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_703nv")]
 position = Vector2(920, -132)
 scale = Vector2(44.03, 1)
 
-[node name="Ground_W_L_1" parent="." unique_id=648999026 instance=ExtResource("3_703nv")]
+[node name="Ground_W_L_1" parent="." unique_id=810051558 instance=ExtResource("3_703nv")]
 position = Vector2(20, 248)
 scale = Vector2(1, 20)
 
-[node name="Ground_W_R_1" parent="." unique_id=535263373 instance=ExtResource("3_703nv")]
+[node name="Ground_W_R_1" parent="." unique_id=44279467 instance=ExtResource("3_703nv")]
 position = Vector2(1820, 248)
 scale = Vector2(1, 20)
 
-[node name="Ground_P_1" parent="." unique_id=1453319394 instance=ExtResource("3_703nv")]
-position = Vector2(1434, 628)
+[node name="Ground_F_1" parent="." unique_id=1632604068 instance=ExtResource("3_703nv")]
+position = Vector2(240, 628)
+scale = Vector2(10, 1)
+
+[node name="Ground_F_2" parent="." unique_id=1151708799 instance=ExtResource("3_703nv")]
+position = Vector2(1781, 628)
+
+[node name="Ground_P_4" parent="." unique_id=603075016 instance=ExtResource("3_703nv")]
+position = Vector2(596.00006, 483)
 scale = Vector2(5, 1)
 
-[node name="Ground_P_3" parent="." unique_id=561590810 instance=ExtResource("3_703nv")]
-position = Vector2(1035, 442)
+[node name="Ground_P_5" parent="." unique_id=473936102 instance=ExtResource("3_703nv")]
+position = Vector2(1095, 483)
+scale = Vector2(8, 1)
+
+[node name="Ground_P_8" parent="." unique_id=894913734 instance=ExtResource("3_703nv")]
+position = Vector2(1700, 483)
 scale = Vector2(5, 1)
 
-[node name="Ground_P_4" parent="." unique_id=1627510295 instance=ExtResource("3_703nv")]
-position = Vector2(736.00006, 254)
-scale = Vector2(5, 1)
+[node name="Ground_P_7" parent="." unique_id=2079323390 instance=ExtResource("3_703nv")]
+position = Vector2(264, 483)
+scale = Vector2(3, 1)
 
-[node name="Ground_P_5" parent="." unique_id=1827352975 instance=ExtResource("3_703nv")]
-position = Vector2(536, 254)
-scale = Vector2(5, 1)
-
-[node name="Ground_P_6" parent="." unique_id=2083270353 instance=ExtResource("3_703nv")]
-position = Vector2(336, 254)
-scale = Vector2(5, 1)
-
-[node name="Ground_P_7" parent="." unique_id=852924870 instance=ExtResource("3_703nv")]
-position = Vector2(141, 254)
-scale = Vector2(5, 1)
-
-[node name="LevelObjective" type="TextEdit" parent="." unique_id=1773787374]
+[node name="LevelObjective" type="TextEdit" parent="." unique_id=591409077]
 offset_left = 57.0
-offset_top = 115.0
-offset_right = 404.0
-offset_bottom = 163.0
-text = "Get the move speed just right. Again. ⚆ _ ⚆"
+offset_top = 349.0
+offset_right = 360.0
+offset_bottom = 384.0
+text = "Jump good practice but with DANGER!"
 
-[node name="LevelEnd" type="TextEdit" parent="." unique_id=1070965928]
-offset_left = 889.0
-offset_top = 115.0
-offset_right = 997.0
-offset_bottom = 163.0
-text = "Down again."
+[node name="LevelObjective2" type="TextEdit" parent="." unique_id=128485132]
+offset_left = 1147.0
+offset_top = 671.0
+offset_right = 1297.0
+offset_bottom = 706.0
+text = "Hah, you fell. ಠ⌣ಠ"
 
-[node name="LevelEnd2" type="TextEdit" parent="." unique_id=1869373238]
-offset_left = 1519.0
-offset_top = 413.0
-offset_right = 1710.0
-offset_bottom = 461.0
-text = "You're improving. ʕ•ᴥ•ʔ"
+[node name="LevelEnd" type="TextEdit" parent="." unique_id=5469685]
+offset_left = 1631.0
+offset_top = 516.0
+offset_right = 1792.0
+offset_bottom = 554.0
+text = "Keep Going. (°ロ°)☝"
 
 [node name="Death" parent="." unique_id=1296578022 instance=ExtResource("4_gff3n")]
 position = Vector2(920, 750)

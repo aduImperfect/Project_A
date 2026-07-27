@@ -1,13 +1,30 @@
-extends TextEdit
+extends HSlider
+
+var timerAccumulation : float = 0.0
+var timerMax : float = 0.0
+var timerReached : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	editable = false
+	timerAccumulation = 0.0
+	timerMax = 0.5
+	timerReached = false
+	value = 0.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	#text = "Wall Jump Lock Timer: " + str(InputsData.wall_jump_lock_timer)
-	pass
+	if timerReached == false:
+		timerAccumulation += _delta
+		if timerAccumulation > timerMax:
+			timerAccumulation = 0.0
+			value = AudioDatabase.audioMasterVolume
+			timerReached = true
+		return
+
+	if InputsData.begin_delay:
+		timerReached = false
+	else:
+		AudioDatabase.audioMasterVolume = value
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

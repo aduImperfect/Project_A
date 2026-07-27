@@ -30,7 +30,17 @@ static func save_game() -> void:
 				#"current": LevelsDatabase.currLevel + 1,
 				"current": 1,
 			},
-			"player_count": PlayersHelper.playersCount
+			"player": {
+				"count": PlayersHelper.playersCount,
+			},
+			"camera": {
+				"smoothing_speed": CameraHelper.smoothing_speed
+			},
+			"audio": {
+				"volume": {
+					"master": AudioDatabase.audioMasterVolume
+				}
+			}
 		},
 		"character": {
 			"jump_speed": {
@@ -39,20 +49,22 @@ static func save_game() -> void:
 				"decrement": InputsData.jump_speed_dec,
 				"min_diff": InputsData.jump_speed_min_diff
 			},
-			"wall_jump": {
-				"lock_time": InputsData.wall_jump_lock_time,
-				"lock_timer": InputsData.wall_jump_lock_timer,
-				"pushback": InputsData.wall_jump_pushback,
-				"wall_slide_speed": InputsData.wall_slide_speed
-			},
+			#"wall_jump": {
+				#"lock_time": InputsData.wall_jump_lock_time,
+				#"lock_timer": InputsData.wall_jump_lock_timer,
+				#"pushback": InputsData.wall_jump_pushback,
+				#"wall_slide_speed": InputsData.wall_slide_speed
+			#},
 			"move_speed": {
 				"max": InputsData.max_move_speed,
 				"min": InputsData.min_move_speed,
 				"decrement": InputsData.move_speed_dec,
 				"min_diff": InputsData.move_speed_min_diff
 			},
-			"max_run_speed": InputsData.max_run_speed
-		}
+			"run_speed": {
+				"max": InputsData.max_run_speed
+			}
+		},
 	}
 
 	print("SAVE DATA VALUE ON SAVE: ", save_data)
