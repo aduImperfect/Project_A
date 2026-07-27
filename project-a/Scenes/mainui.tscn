@@ -104,6 +104,19 @@ func _input(event: InputEvent):
 [node name="MainUi" type="Node2D" unique_id=473959145]
 z_index = 9
 
+[node name="NEW UI STORAGE" type="GridContainer" parent="." unique_id=385084997]
+offset_left = -559.0
+offset_top = -307.0
+offset_right = 578.0
+offset_bottom = 272.0
+
+[node name="CurrentInput" type="TextEdit" parent="NEW UI STORAGE" unique_id=1524028920]
+z_index = 100
+custom_minimum_size = Vector2(399, 80)
+layout_mode = 2
+script = ExtResource("15_c1erm")
+metadata/_edit_use_anchors_ = true
+
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=768113886]
 light_mask = 0
 material = SubResource("CanvasItemMaterial_3q4g7")
@@ -274,13 +287,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="FoldableContainer/ScrollContainer/HSplitContainer" unique_id=974409604]
 layout_mode = 2
-
-[node name="CurrentInput" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer3" unique_id=1524028920]
-z_index = 100
-custom_minimum_size = Vector2(399, 80)
-layout_mode = 2
-script = ExtResource("15_c1erm")
-metadata/_edit_use_anchors_ = true
 
 [node name="NumPlayers" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer3" unique_id=2083542118]
 z_index = 100
