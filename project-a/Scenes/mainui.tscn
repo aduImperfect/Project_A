@@ -104,13 +104,16 @@ func _input(event: InputEvent):
 [node name="MainUi" type="Node2D" unique_id=473959145]
 z_index = 9
 
-[node name="NEW UI STORAGE" type="GridContainer" parent="." unique_id=385084997]
+[node name="🦑 NEW UI STORAGE" type="GridContainer" parent="." unique_id=385084997]
 offset_left = -559.0
 offset_top = -307.0
-offset_right = 578.0
-offset_bottom = 272.0
+offset_right = 574.0
+offset_bottom = -146.0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 5
 
-[node name="CurrentInput" type="TextEdit" parent="NEW UI STORAGE" unique_id=1524028920]
+[node name="CurrentInput" type="TextEdit" parent="🦑 NEW UI STORAGE" unique_id=1524028920]
 z_index = 100
 custom_minimum_size = Vector2(399, 80)
 layout_mode = 2
@@ -132,6 +135,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 7.0
+focus_mode = 0
 mouse_filter = 1
 theme = SubResource("Theme_wc7ih")
 theme_override_font_sizes/font_size = 33
