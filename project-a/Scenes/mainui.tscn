@@ -54,6 +54,8 @@ allow_folding_all = true
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_y8xgx"]
 
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_y8xgx"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc2pf"]
 content_margin_left = 16.0
 content_margin_top = 16.0
@@ -165,12 +167,16 @@ metadata/_tab_index = 0
 [node name="TabContainer" type="TabContainer" parent="FoldableContainer/TabContainer/Sandbox" unique_id=1551790100]
 custom_minimum_size = Vector2(1100, 0)
 layout_mode = 2
-current_tab = 2
+current_tab = 3
 
 [node name="Text" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=799615244]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Text" unique_id=397512232]
+layout_mode = 2
+text = "Text Edit Types"
 
 [node name="TextEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Text" unique_id=515999351]
 custom_minimum_size = Vector2(64, 16)
@@ -202,6 +208,9 @@ code_completion_enabled = true
 indent_size = 2
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
+
+[node name="LineEdit" type="LineEdit" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Text" unique_id=2102749975]
+layout_mode = 2
 
 [node name="Toggles" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=684047568]
 visible = false
@@ -271,6 +280,7 @@ texture_hover = ExtResource("4_ih6jt")
 stretch_mode = 0
 
 [node name="Ranges" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=8894410]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -299,6 +309,48 @@ value = 37.0
 nine_patch_stretch = true
 texture_under = ExtResource("5_ih6jt")
 texture_over = ExtResource("3_yj67u")
+
+[node name="HScrollBar" type="HScrollBar" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Ranges" unique_id=932558678]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Ranges" unique_id=1165200475]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="Node Editor" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=1812846084]
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="GraphEdit" type="GraphEdit" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Node Editor" unique_id=1347234560]
+custom_minimum_size = Vector2(1100, 176)
+layout_mode = 2
+
+[node name="Other" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=815344751]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="Tree" type="Tree" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Other" unique_id=1301939187]
+layout_mode = 2
+select_mode = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Other/Tree" unique_id=685685713]
+layout_mode = 0
+offset_top = 31.0
+offset_right = 40.0
+offset_bottom = 71.0
+stream = SubResource("VideoStreamTheora_y8xgx")
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Other/Tree" unique_id=2141589619]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HSeparator" type="HSeparator" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Other/Tree" unique_id=224777313]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 4.0
 
 [node name="Movement Controller" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=186175641]
 visible = false
