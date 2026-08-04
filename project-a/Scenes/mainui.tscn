@@ -113,8 +113,6 @@ member_variable_color = Color(0.23585257, 0.00044848234, 0.6083738, 1)
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_y8xgx"]
 
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_y8xgx"]
-
 [node name="MainUi" type="Node2D" unique_id=473959145]
 z_index = 9
 
@@ -129,8 +127,14 @@ columns = 5
 
 [node name="CurrentInput" type="TextEdit" parent="🦑 NEW UI STORAGE" unique_id=1524028920]
 z_index = 100
-custom_minimum_size = Vector2(399, 80)
+custom_minimum_size = Vector2(128, 0)
+custom_maximum_size = Vector2(-1, 256)
+clip_contents = true
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+editable = false
+scroll_smooth = true
 script = ExtResource("15_c1erm")
 metadata/_edit_use_anchors_ = true
 
@@ -416,7 +420,6 @@ text = "{
 		}
 	}
 }"
-scroll_vertical = 40.592592592592595
 syntax_highlighter = SubResource("CodeHighlighter_ih6jt")
 highlight_all_occurrences = true
 highlight_current_line = true
@@ -599,7 +602,6 @@ layout_mode = 0
 offset_top = 31.0
 offset_right = 40.0
 offset_bottom = 71.0
-stream = SubResource("VideoStreamTheora_y8xgx")
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Other" unique_id=2141589619]
 custom_minimum_size = Vector2(64, 64)
