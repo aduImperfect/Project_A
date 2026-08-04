@@ -334,7 +334,7 @@ metadata/_tab_index = 1
 [node name="TabContainer" type="TabContainer" parent="FoldableContainer/TabContainer/Sandbox" unique_id=1551790100]
 custom_minimum_size = Vector2(1100, 0)
 layout_mode = 2
-current_tab = 3
+current_tab = 4
 
 [node name="Text" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=799615244]
 visible = false
@@ -405,13 +405,27 @@ text = "Link Button"
 layout_mode = 2
 button_pressed = true
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Toggles" unique_id=1386371304]
+[node name="TextureButton" type="TextureButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Toggles" unique_id=1631681301]
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 2
+tooltip_text = "Texture Button"
+texture_normal = ExtResource("2_3q4g7")
+texture_pressed = ExtResource("3_yj67u")
+texture_hover = ExtResource("4_ih6jt")
+stretch_mode = 0
+
+[node name="OptionSelect" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=392797823]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/OptionSelect" unique_id=1386371304]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "C"
 expand_icon = true
 
-[node name="MenuButton" type="MenuButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Toggles" unique_id=1406125025]
+[node name="MenuButton" type="MenuButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/OptionSelect" unique_id=1406125025]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_y8xgx")
@@ -424,7 +438,7 @@ popup/item_1/id = 1
 popup/item_2/text = "C"
 popup/item_2/id = 2
 
-[node name="OptionButton" type="OptionButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Toggles" unique_id=499888810]
+[node name="OptionButton" type="OptionButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/OptionSelect" unique_id=499888810]
 layout_mode = 2
 selected = 0
 item_count = 4
@@ -437,19 +451,10 @@ popup/item_2/id = 2
 popup/item_3/text = "C"
 popup/item_3/id = 3
 
-[node name="TextureButton" type="TextureButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Toggles" unique_id=1631681301]
-custom_maximum_size = Vector2(64, 64)
-layout_mode = 2
-tooltip_text = "Texture Button"
-texture_normal = ExtResource("2_3q4g7")
-texture_pressed = ExtResource("3_yj67u")
-texture_hover = ExtResource("4_ih6jt")
-stretch_mode = 0
-
 [node name="Ranges" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=8894410]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 3
 
 [node name="HSlider" type="HSlider" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Ranges" unique_id=1887849996]
 custom_minimum_size = Vector2(64, 64)
@@ -487,7 +492,7 @@ layout_mode = 2
 
 [node name="Node Editor" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=1812846084]
 layout_mode = 2
-metadata/_tab_index = 3
+metadata/_tab_index = 4
 
 [node name="GraphEdit" type="GraphEdit" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Node Editor" unique_id=1347234560]
 custom_minimum_size = Vector2(1100, 176)
@@ -522,7 +527,7 @@ position_offset = Vector2(310, 75)
 [node name="Other" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=815344751]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 4
+metadata/_tab_index = 5
 
 [node name="Tree" type="Tree" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Other" unique_id=1301939187]
 custom_minimum_size = Vector2(64, 64)
