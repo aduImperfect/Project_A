@@ -1,0 +1,47 @@
+
+{
+	"game": {
+		"level": {
+			"current": 1,
+			"total": 7
+		},
+		"player_count": 0
+	},
+	"character": {
+		"jump": {
+			"speed": {
+				"max": 0.0,
+				"min": 0.0
+			},
+			"decrement": 0.0,
+			"min_diff": 0.0
+		},
+		"wall_jump": {
+			"lock_time": 0,
+			"lock_timer": 0,
+			"pushback": 0,
+			"wall_slide_speed": 0
+		},
+		"move": {
+			"speed": {
+				"max": 0.0,
+				"min": 0.0
+			},
+			"decrement": 0.0,
+			"min_diff": 0.0,
+			"run": {
+				"speed": {
+					"max": 0.0
+				}
+			}
+		},
+	},
+	"camera": {
+		"singleplayer": {
+			
+		},
+		"multiplayer": {
+			
+		}
+	}
+}
