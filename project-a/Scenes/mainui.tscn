@@ -414,18 +414,18 @@ texture_pressed = ExtResource("3_yj67u")
 texture_hover = ExtResource("4_ih6jt")
 stretch_mode = 0
 
-[node name="OptionSelect" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=392797823]
+[node name="Select" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=392797823]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/OptionSelect" unique_id=1386371304]
+[node name="ColorPickerButton" type="ColorPickerButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Select" unique_id=1386371304]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 text = "C"
 expand_icon = true
 
-[node name="MenuButton" type="MenuButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/OptionSelect" unique_id=1406125025]
+[node name="MenuButton" type="MenuButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Select" unique_id=1406125025]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 button_group = SubResource("ButtonGroup_y8xgx")
@@ -438,7 +438,7 @@ popup/item_1/id = 1
 popup/item_2/text = "C"
 popup/item_2/id = 2
 
-[node name="OptionButton" type="OptionButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/OptionSelect" unique_id=499888810]
+[node name="OptionButton" type="OptionButton" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Select" unique_id=499888810]
 layout_mode = 2
 selected = 0
 item_count = 4
