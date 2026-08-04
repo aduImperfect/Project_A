@@ -1,4 +1,4 @@
-extends TextEdit
+extends SpinBox
 
 var timerAccumulation : float = 0.0
 var timerMax : float = 0.0
@@ -9,7 +9,8 @@ func _ready() -> void:
 	timerAccumulation = 0.0
 	timerMax = 0.5
 	timerReached = false
-	text = ""
+	value = 0
+	#text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -17,7 +18,8 @@ func _process(_delta: float) -> void:
 		timerAccumulation += _delta
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
-			text = "Max Move Speed: " + str(InputsData.max_move_speed)
+			value = InputsData.max_move_speed
+			#text = "Max Move Speed: " + str(InputsData.max_move_speed)
 			timerReached = true
 		return
 
@@ -25,15 +27,15 @@ func _process(_delta: float) -> void:
 	# Regex pattern matches an optional negative sign followed by digits and a decimal point
 	regex.compile("-?\\d+\\.?\\d+") 
 
-	var result = regex.search(text)
-	var first_float : float = 0.0
-	if result:
-		first_float = result.get_string().to_float()
+	#var result = regex.search(text)
+	#var first_float : float = 0.0
+	#if result:
+		#first_float = result.get_string().to_float()
 
 	if InputsData.begin_delay:
 		timerReached = false
 	else:
-		InputsData.max_move_speed = first_float
+		InputsData.max_move_speed = value
 
 func _input(event: InputEvent):
 	# Check if a mouse button is clicked while the node has focus

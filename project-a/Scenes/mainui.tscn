@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cqmeae25j884s" path="res://Scripts/move_speed_decrement_edit.gd" id="3_kx34a"]
 [ext_resource type="Script" uid="uid://dvkcoae6aw6mn" path="res://Scripts/max_move_speed_edit.gd" id="4_wc7ih"]
 [ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://Scripts/jump_speed_current.gd" id="5_3q4g7"]
+[ext_resource type="Script" uid="uid://ncwxubicedkt" path="res://Scenes/spin_box.gd" id="6_3q4g7"]
 [ext_resource type="Script" uid="uid://bovd0x14v1lv5" path="res://Scripts/max_jump_speed_edit.gd" id="6_qoud8"]
 [ext_resource type="Script" uid="uid://cew4elyv2w054" path="res://Scripts/max_run_speed_edit.gd" id="7_yj67u"]
 [ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://Scripts/wall_slide_speed_edit.gd" id="8_ih6jt"]
@@ -161,11 +162,11 @@ split_offset = 200
 [node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/ScrollContainer/HSplitContainer" unique_id=373042873]
 layout_mode = 2
 
-[node name="MaxMoveSpeedEdit" type="TextEdit" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer" unique_id=862662329]
+[node name="MaxMoveSpeedEdit" type="SpinBox" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer" unique_id=609556396]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-tab_input_mode = false
+max_value = 1000.0
 script = ExtResource("4_wc7ih")
 metadata/_edit_use_anchors_ = true
 
@@ -192,6 +193,10 @@ layout_mode = 2
 tab_input_mode = false
 script = ExtResource("17_enppw")
 metadata/_edit_use_anchors_ = true
+
+[node name="SpinBox" type="SpinBox" parent="FoldableContainer/ScrollContainer/HSplitContainer/VBoxContainer" unique_id=1504672764]
+layout_mode = 2
+script = ExtResource("6_3q4g7")
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/ScrollContainer/HSplitContainer" unique_id=947268821]
 layout_mode = 2
