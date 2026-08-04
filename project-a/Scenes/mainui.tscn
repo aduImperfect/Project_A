@@ -105,6 +105,12 @@ func _input(event: InputEvent):
 			release_focus()
 "
 
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_ih6jt"]
+number_color = Color(0, 0.45214397, 0.76830685, 1)
+symbol_color = Color(0.7882116, 0.50398266, 1.347661e-06, 1)
+function_color = Color(0.44882286, 0, 0.18443286, 1)
+member_variable_color = Color(0.23585257, 0.00044848234, 0.6083738, 1)
+
 [sub_resource type="ButtonGroup" id="ButtonGroup_y8xgx"]
 
 [sub_resource type="VideoStreamTheora" id="VideoStreamTheora_y8xgx"]
@@ -364,8 +370,56 @@ layout_mode = 2
 text = "CODE EDIT "
 
 [node name="CodeEdit" type="CodeEdit" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Text/CodeEdit" unique_id=298562423]
-custom_minimum_size = Vector2(200, 100)
+custom_minimum_size = Vector2(512, 256)
 layout_mode = 2
+text = "{
+	\"game\": {
+		\"level\": {
+			\"current\": 1,
+			\"total\": 7
+		},
+		\"player_count\": 0
+	},
+	\"character\": {
+		\"jump\": {
+			\"speed\": {
+				\"max\": 0.0,
+				\"min\": 0.0
+			},
+			\"decrement\": 0.0,
+			\"min_diff\": 0.0
+		},
+		\"wall_jump\": {
+			\"lock_time\": 0,
+			\"lock_timer\": 0,
+			\"pushback\": 0,
+			\"wall_slide_speed\": 0
+		},
+		\"move\": {
+			\"speed\": {
+				\"max\": 0.0,
+				\"min\": 0.0,
+				\"run\": {
+					\"max\": 0.0
+				}
+			},
+			\"decrement\": 0.0,
+			\"min_diff\": 0.0
+		}
+	},
+	\"camera\": {
+		\"singleplayer\": {
+			
+		},
+		\"multiplayer\": {
+			
+		}
+	}
+}"
+scroll_vertical = 40.592592592592595
+syntax_highlighter = SubResource("CodeHighlighter_ih6jt")
+highlight_all_occurrences = true
+highlight_current_line = true
 gutters_draw_breakpoints_gutter = true
 gutters_draw_bookmarks = true
 gutters_draw_executing_lines = true
