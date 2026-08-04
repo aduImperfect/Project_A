@@ -52,10 +52,6 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="FoldableGroup" id="FoldableGroup_3q4g7"]
 allow_folding_all = true
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_y8xgx"]
-
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_y8xgx"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fc2pf"]
 content_margin_left = 16.0
 content_margin_top = 16.0
@@ -109,6 +105,10 @@ func _input(event: InputEvent):
 			release_focus()
 "
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_y8xgx"]
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_y8xgx"]
+
 [node name="MainUi" type="Node2D" unique_id=473959145]
 z_index = 9
 
@@ -160,9 +160,176 @@ foldable_group = SubResource("FoldableGroup_3q4g7")
 layout_mode = 2
 current_tab = 0
 
-[node name="Sandbox" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=1041103589]
+[node name="Movement Controller" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=186175641]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fc2pf")
 metadata/_tab_index = 0
+
+[node name="HSplitContainer" type="HSplitContainer" parent="FoldableContainer/TabContainer/Movement Controller" unique_id=2022433440]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offsets = PackedInt32Array(200, 607, 819)
+split_offset = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=373042873]
+layout_mode = 2
+
+[node name="MaxMoveSpeedEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=609556396]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 1000.0
+script = ExtResource("4_wc7ih")
+metadata/_edit_use_anchors_ = true
+
+[node name="MoveSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1692520237]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+tab_input_mode = false
+script = ExtResource("3_kx34a")
+metadata/_edit_use_anchors_ = true
+
+[node name="MaxRunSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1879324692]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+tab_input_mode = false
+script = ExtResource("7_yj67u")
+metadata/_edit_use_anchors_ = true
+
+[node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1992169720]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+tab_input_mode = false
+script = ExtResource("17_enppw")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=947268821]
+layout_mode = 2
+
+[node name="MaxJumpSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1245757916]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+tab_input_mode = false
+script = ExtResource("6_qoud8")
+metadata/_edit_use_anchors_ = true
+
+[node name="JumpSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1644206962]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+tab_input_mode = false
+script = SubResource("GDScript_0o3wc")
+metadata/_edit_use_anchors_ = true
+
+[node name="WallJumpLockTimeEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1271128809]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("11_l0p4r")
+
+[node name="WallJumpPushbackEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=417973689]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("9_i3k6o")
+
+[node name="WallSlideSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1729114497]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("8_ih6jt")
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1216369138]
+layout_mode = 2
+
+[node name="MasterVolumeHSliderTitle" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1472250107]
+z_index = 100
+custom_minimum_size = Vector2(150, 40)
+layout_mode = 2
+text = "Master Volume"
+editable = false
+script = ExtResource("18_wc7ih")
+metadata/_edit_use_anchors_ = true
+
+[node name="MasterVolumeHSliderEdit" type="HSlider" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1652831052]
+z_index = 100
+custom_minimum_size = Vector2(150, 20)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+script = ExtResource("18_kx34a")
+metadata/_edit_use_anchors_ = true
+
+[node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1057249460]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("5_3q4g7")
+metadata/_edit_use_anchors_ = true
+
+[node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=154121554]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("2_enppw")
+metadata/_edit_use_anchors_ = true
+
+[node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=851112648]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("14_8i0sk")
+
+[node name="WallJumpLockTimer" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=728292712]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("10_ueqbn")
+
+[node name="CurrentLevelEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=596001624]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("13_e4h4u")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=974409604]
+layout_mode = 2
+
+[node name="NumPlayers" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=2083542118]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("12_kcbrv")
+metadata/_edit_use_anchors_ = true
+
+[node name="FPSCounter" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=601955518]
+z_index = 100
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+script = ExtResource("1_147pp")
+metadata/_edit_use_anchors_ = true
+
+[node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=1735564947]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("16_enppw")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sandbox" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=1041103589]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="TabContainer" type="TabContainer" parent="FoldableContainer/TabContainer/Sandbox" unique_id=1551790100]
 custom_minimum_size = Vector2(1100, 0)
@@ -378,170 +545,3 @@ stream = SubResource("VideoStreamTheora_y8xgx")
 [node name="VirtualJoystick" type="VirtualJoystick" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Other" unique_id=2141589619]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-
-[node name="Movement Controller" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=186175641]
-visible = false
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_fc2pf")
-metadata/_tab_index = 1
-
-[node name="HSplitContainer" type="HSplitContainer" parent="FoldableContainer/TabContainer/Movement Controller" unique_id=2022433440]
-layout_mode = 2
-size_flags_horizontal = 3
-split_offsets = PackedInt32Array(200, 607, 819)
-split_offset = 200
-
-[node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=373042873]
-layout_mode = 2
-
-[node name="MaxMoveSpeedEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=609556396]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-max_value = 1000.0
-script = ExtResource("4_wc7ih")
-metadata/_edit_use_anchors_ = true
-
-[node name="MoveSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1692520237]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-tab_input_mode = false
-script = ExtResource("3_kx34a")
-metadata/_edit_use_anchors_ = true
-
-[node name="MaxRunSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1879324692]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-tab_input_mode = false
-script = ExtResource("7_yj67u")
-metadata/_edit_use_anchors_ = true
-
-[node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1992169720]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-tab_input_mode = false
-script = ExtResource("17_enppw")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=947268821]
-layout_mode = 2
-
-[node name="MaxJumpSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1245757916]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-tab_input_mode = false
-script = ExtResource("6_qoud8")
-metadata/_edit_use_anchors_ = true
-
-[node name="JumpSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1644206962]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-tab_input_mode = false
-script = SubResource("GDScript_0o3wc")
-metadata/_edit_use_anchors_ = true
-
-[node name="WallJumpLockTimeEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1271128809]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("11_l0p4r")
-
-[node name="WallJumpPushbackEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=417973689]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("9_i3k6o")
-
-[node name="WallSlideSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1729114497]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("8_ih6jt")
-
-[node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1216369138]
-layout_mode = 2
-
-[node name="MasterVolumeHSliderTitle" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1472250107]
-z_index = 100
-custom_minimum_size = Vector2(150, 40)
-layout_mode = 2
-text = "Master Volume"
-editable = false
-script = ExtResource("18_wc7ih")
-metadata/_edit_use_anchors_ = true
-
-[node name="MasterVolumeHSliderEdit" type="HSlider" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1652831052]
-z_index = 100
-custom_minimum_size = Vector2(150, 20)
-layout_mode = 2
-max_value = 1.0
-step = 0.01
-script = ExtResource("18_kx34a")
-metadata/_edit_use_anchors_ = true
-
-[node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1057249460]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("5_3q4g7")
-metadata/_edit_use_anchors_ = true
-
-[node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=154121554]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("2_enppw")
-metadata/_edit_use_anchors_ = true
-
-[node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=851112648]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("14_8i0sk")
-
-[node name="WallJumpLockTimer" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=728292712]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("10_ueqbn")
-
-[node name="CurrentLevelEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=596001624]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("13_e4h4u")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer3" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=974409604]
-layout_mode = 2
-
-[node name="NumPlayers" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=2083542118]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("12_kcbrv")
-metadata/_edit_use_anchors_ = true
-
-[node name="FPSCounter" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=601955518]
-z_index = 100
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-script = ExtResource("1_147pp")
-metadata/_edit_use_anchors_ = true
-
-[node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=1735564947]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("16_enppw")
-metadata/_edit_use_anchors_ = true
