@@ -182,35 +182,56 @@ split_offset = 200
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=373042873]
 layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1365485196]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Max Move Speed"
 
 [node name="MaxMoveSpeedEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=609556396]
 z_index = 100
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 max_value = 1000.0
 update_on_text_changed = true
 script = ExtResource("2_x1p3b")
 metadata/_edit_use_anchors_ = true
 
+[node name="Label2" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=766893277]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Move Speed Dec"
+
 [node name="MoveSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1692520237]
 z_index = 100
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 tab_input_mode = false
 script = ExtResource("3_spyps")
 metadata/_edit_use_anchors_ = true
 
+[node name="Label3" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=281494369]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Max Run Speed"
+
 [node name="MaxRunSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1879324692]
 z_index = 100
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 tab_input_mode = false
 script = ExtResource("4_odutt")
 metadata/_edit_use_anchors_ = true
 
+[node name="Label4" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=709515036]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Cam Smoothing"
+
 [node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1992169720]
 z_index = 100
-custom_minimum_size = Vector2(200, 40)
+custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 tab_input_mode = false
 script = ExtResource("5_ka7aa")
