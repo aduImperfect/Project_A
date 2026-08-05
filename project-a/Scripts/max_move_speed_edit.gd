@@ -10,7 +10,6 @@ func _ready() -> void:
 	timerMax = 0.5
 	timerReached = false
 	value = 0
-	#text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -19,18 +18,8 @@ func _process(_delta: float) -> void:
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
 			value = InputsData.max_move_speed
-			#text = "Max Move Speed: " + str(InputsData.max_move_speed)
 			timerReached = true
 		return
-
-	var regex = RegEx.new()
-	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile("-?\\d+\\.?\\d+") 
-
-	#var result = regex.search(text)
-	#var first_float : float = 0.0
-	#if result:
-		#first_float = result.get_string().to_float()
 
 	if InputsData.begin_delay:
 		timerReached = false

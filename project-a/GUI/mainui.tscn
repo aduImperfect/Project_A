@@ -1,28 +1,28 @@
 [gd_scene format=3 uid="uid://dl4i8yvjvkeqn"]
 
-[ext_resource type="Script" uid="uid://djatmjw4uukb5" path="res://Scripts/fps_counter.gd" id="1_147pp"]
-[ext_resource type="Texture2D" uid="uid://dhx2ftic1jx3s" path="res://Textures/Goal.png" id="2_3q4g7"]
-[ext_resource type="Script" uid="uid://8nsomulkwu6q" path="res://Scripts/move_speed_current.gd" id="2_enppw"]
-[ext_resource type="Script" uid="uid://cqmeae25j884s" path="res://Scripts/move_speed_decrement_edit.gd" id="3_kx34a"]
-[ext_resource type="Texture2D" uid="uid://bkwjtfev52nch" path="res://Textures/Player0.png" id="3_yj67u"]
-[ext_resource type="Texture2D" uid="uid://dbfaxjo15hwpn" path="res://Textures/Player5.png" id="4_ih6jt"]
-[ext_resource type="Script" uid="uid://dvkcoae6aw6mn" path="res://Scripts/max_move_speed_edit.gd" id="4_wc7ih"]
-[ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://Scripts/jump_speed_current.gd" id="5_3q4g7"]
-[ext_resource type="Texture2D" uid="uid://bmbkehc1dn7vv" path="res://Art/References/references.png" id="5_ih6jt"]
-[ext_resource type="Script" uid="uid://bovd0x14v1lv5" path="res://Scripts/max_jump_speed_edit.gd" id="6_qoud8"]
-[ext_resource type="Script" uid="uid://cew4elyv2w054" path="res://Scripts/max_run_speed_edit.gd" id="7_yj67u"]
-[ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://Scripts/wall_slide_speed_edit.gd" id="8_ih6jt"]
-[ext_resource type="Script" uid="uid://dnmmooax6vny1" path="res://Scripts/wall_jump_pushback_edit.gd" id="9_i3k6o"]
-[ext_resource type="Script" uid="uid://bf4q8h6u3cypq" path="res://Scripts/wall_jump_lock_timer.gd" id="10_ueqbn"]
-[ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://Scripts/wall_jump_lock_time_edit.gd" id="11_l0p4r"]
-[ext_resource type="Script" uid="uid://cw2d4o5d40a0m" path="res://Scripts/num_players.gd" id="12_kcbrv"]
-[ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scripts/current_level_edit.gd" id="13_e4h4u"]
-[ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://Scripts/begin_delay_current.gd" id="14_8i0sk"]
-[ext_resource type="Script" uid="uid://db053svsam2we" path="res://Scripts/current_input.gd" id="15_c1erm"]
-[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://Scripts/gamepad_in_use.gd" id="16_enppw"]
-[ext_resource type="Script" uid="uid://df7h7pelquxfc" path="res://Scripts/cam_smoothing_edit.gd" id="17_enppw"]
-[ext_resource type="Script" uid="uid://c5wu1pch8h8yt" path="res://GUI/master_volume_h_slider_edit.gd" id="18_kx34a"]
-[ext_resource type="Script" uid="uid://c2q57gipas4qi" path="res://GUI/master_volume_h_slider_title.gd" id="18_wc7ih"]
+[ext_resource type="Script" uid="uid://db053svsam2we" path="res://Scripts/current_input.gd" id="1_37nrb"]
+[ext_resource type="Script" uid="uid://dvkcoae6aw6mn" path="res://Scripts/max_move_speed_edit.gd" id="2_x1p3b"]
+[ext_resource type="Script" uid="uid://cqmeae25j884s" path="res://Scripts/move_speed_decrement_edit.gd" id="3_spyps"]
+[ext_resource type="Script" uid="uid://cew4elyv2w054" path="res://Scripts/max_run_speed_edit.gd" id="4_odutt"]
+[ext_resource type="Script" uid="uid://df7h7pelquxfc" path="res://Scripts/cam_smoothing_edit.gd" id="5_ka7aa"]
+[ext_resource type="Script" uid="uid://bovd0x14v1lv5" path="res://Scripts/max_jump_speed_edit.gd" id="6_r7bh7"]
+[ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://Scripts/wall_jump_lock_time_edit.gd" id="7_mx6st"]
+[ext_resource type="Script" uid="uid://dnmmooax6vny1" path="res://Scripts/wall_jump_pushback_edit.gd" id="8_vg1ug"]
+[ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://Scripts/wall_slide_speed_edit.gd" id="9_xc7xn"]
+[ext_resource type="Script" uid="uid://c2q57gipas4qi" path="res://GUI/master_volume_h_slider_title.gd" id="10_e6ldy"]
+[ext_resource type="Script" uid="uid://c5wu1pch8h8yt" path="res://GUI/master_volume_h_slider_edit.gd" id="11_ywgeq"]
+[ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://Scripts/jump_speed_current.gd" id="12_1mubl"]
+[ext_resource type="Script" uid="uid://8nsomulkwu6q" path="res://Scripts/move_speed_current.gd" id="13_nxb80"]
+[ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://Scripts/begin_delay_current.gd" id="14_sme61"]
+[ext_resource type="Script" uid="uid://bf4q8h6u3cypq" path="res://Scripts/wall_jump_lock_timer.gd" id="15_q8gmq"]
+[ext_resource type="Script" uid="uid://deakrs3ler74o" path="res://Scripts/current_level_edit.gd" id="16_acye6"]
+[ext_resource type="Script" uid="uid://cw2d4o5d40a0m" path="res://Scripts/num_players.gd" id="17_r5h6g"]
+[ext_resource type="Script" uid="uid://djatmjw4uukb5" path="res://Scripts/fps_counter.gd" id="18_r6vda"]
+[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://Scripts/gamepad_in_use.gd" id="19_jvdor"]
+[ext_resource type="Texture2D" uid="uid://dhx2ftic1jx3s" path="res://Textures/Goal.png" id="20_ui6yx"]
+[ext_resource type="Texture2D" uid="uid://bkwjtfev52nch" path="res://Textures/Player0.png" id="21_7oltq"]
+[ext_resource type="Texture2D" uid="uid://dbfaxjo15hwpn" path="res://Textures/Player5.png" id="22_8moe8"]
+[ext_resource type="Texture2D" uid="uid://bmbkehc1dn7vv" path="res://Art/References/references.png" id="23_du0yg"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_3q4g7"]
 
@@ -134,7 +134,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 12
 editable = false
 scroll_smooth = true
-script = ExtResource("15_c1erm")
+script = ExtResource("1_37nrb")
 metadata/_edit_use_anchors_ = true
 
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=768113886]
@@ -188,7 +188,8 @@ z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 1000.0
-script = ExtResource("4_wc7ih")
+update_on_text_changed = true
+script = ExtResource("2_x1p3b")
 metadata/_edit_use_anchors_ = true
 
 [node name="MoveSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1692520237]
@@ -196,7 +197,7 @@ z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 tab_input_mode = false
-script = ExtResource("3_kx34a")
+script = ExtResource("3_spyps")
 metadata/_edit_use_anchors_ = true
 
 [node name="MaxRunSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1879324692]
@@ -204,7 +205,7 @@ z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 tab_input_mode = false
-script = ExtResource("7_yj67u")
+script = ExtResource("4_odutt")
 metadata/_edit_use_anchors_ = true
 
 [node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1992169720]
@@ -212,7 +213,7 @@ z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 tab_input_mode = false
-script = ExtResource("17_enppw")
+script = ExtResource("5_ka7aa")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=947268821]
@@ -223,7 +224,7 @@ z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 tab_input_mode = false
-script = ExtResource("6_qoud8")
+script = ExtResource("6_r7bh7")
 metadata/_edit_use_anchors_ = true
 
 [node name="JumpSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1644206962]
@@ -239,21 +240,21 @@ visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
-script = ExtResource("11_l0p4r")
+script = ExtResource("7_mx6st")
 
 [node name="WallJumpPushbackEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=417973689]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
-script = ExtResource("9_i3k6o")
+script = ExtResource("8_vg1ug")
 
 [node name="WallSlideSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1729114497]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
-script = ExtResource("8_ih6jt")
+script = ExtResource("9_xc7xn")
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1216369138]
 layout_mode = 2
@@ -264,7 +265,7 @@ custom_minimum_size = Vector2(150, 40)
 layout_mode = 2
 text = "Master Volume"
 editable = false
-script = ExtResource("18_wc7ih")
+script = ExtResource("10_e6ldy")
 metadata/_edit_use_anchors_ = true
 
 [node name="MasterVolumeHSliderEdit" type="HSlider" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1652831052]
@@ -273,21 +274,21 @@ custom_minimum_size = Vector2(150, 20)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
-script = ExtResource("18_kx34a")
+script = ExtResource("11_ywgeq")
 metadata/_edit_use_anchors_ = true
 
 [node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1057249460]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-script = ExtResource("5_3q4g7")
+script = ExtResource("12_1mubl")
 metadata/_edit_use_anchors_ = true
 
 [node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=154121554]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-script = ExtResource("2_enppw")
+script = ExtResource("13_nxb80")
 metadata/_edit_use_anchors_ = true
 
 [node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=851112648]
@@ -295,20 +296,20 @@ visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-script = ExtResource("14_8i0sk")
+script = ExtResource("14_sme61")
 
 [node name="WallJumpLockTimer" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=728292712]
 visible = false
 z_index = 100
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
-script = ExtResource("10_ueqbn")
+script = ExtResource("15_q8gmq")
 
 [node name="CurrentLevelEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=596001624]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-script = ExtResource("13_e4h4u")
+script = ExtResource("16_acye6")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=974409604]
@@ -318,21 +319,21 @@ layout_mode = 2
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-script = ExtResource("12_kcbrv")
+script = ExtResource("17_r5h6g")
 metadata/_edit_use_anchors_ = true
 
 [node name="FPSCounter" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=601955518]
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-script = ExtResource("1_147pp")
+script = ExtResource("18_r6vda")
 metadata/_edit_use_anchors_ = true
 
 [node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=1735564947]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-script = ExtResource("16_enppw")
+script = ExtResource("19_jvdor")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sandbox" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=1041103589]
@@ -465,9 +466,9 @@ button_pressed = true
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 2
 tooltip_text = "Texture Button"
-texture_normal = ExtResource("2_3q4g7")
-texture_pressed = ExtResource("3_yj67u")
-texture_hover = ExtResource("4_ih6jt")
+texture_normal = ExtResource("20_ui6yx")
+texture_pressed = ExtResource("21_7oltq")
+texture_hover = ExtResource("22_8moe8")
 stretch_mode = 0
 
 [node name="Ranges" type="FlowContainer" parent="FoldableContainer/TabContainer/Sandbox/TabContainer" unique_id=8894410]
@@ -498,8 +499,8 @@ custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 value = 37.0
 nine_patch_stretch = true
-texture_under = ExtResource("5_ih6jt")
-texture_over = ExtResource("3_yj67u")
+texture_under = ExtResource("23_du0yg")
+texture_over = ExtResource("21_7oltq")
 
 [node name="HScrollBar" type="HScrollBar" parent="FoldableContainer/TabContainer/Sandbox/TabContainer/Ranges" unique_id=932558678]
 custom_minimum_size = Vector2(64, 64)
