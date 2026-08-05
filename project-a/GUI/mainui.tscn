@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://Scripts/wall_jump_lock_time_edit.gd" id="7_mx6st"]
 [ext_resource type="Script" uid="uid://dnmmooax6vny1" path="res://Scripts/wall_jump_pushback_edit.gd" id="8_vg1ug"]
 [ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://Scripts/wall_slide_speed_edit.gd" id="9_xc7xn"]
-[ext_resource type="Script" uid="uid://c2q57gipas4qi" path="res://GUI/master_volume_h_slider_title.gd" id="10_e6ldy"]
 [ext_resource type="Script" uid="uid://c5wu1pch8h8yt" path="res://GUI/master_volume_h_slider_edit.gd" id="11_ywgeq"]
 [ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://Scripts/jump_speed_current.gd" id="12_1mubl"]
 [ext_resource type="Script" uid="uid://8nsomulkwu6q" path="res://Scripts/move_speed_current.gd" id="13_nxb80"]
@@ -165,6 +164,20 @@ custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 script = ExtResource("9_xc7xn")
 
+[node name="BeginDelayCurrent" type="TextEdit" parent="☠️ Broken Items" unique_id=851112648]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("14_sme61")
+
+[node name="WallJumpLockTimer" type="TextEdit" parent="☠️ Broken Items" unique_id=728292712]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("15_q8gmq")
+
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=768113886]
 light_mask = 0
 material = SubResource("CanvasItemMaterial_3q4g7")
@@ -204,8 +217,8 @@ metadata/_tab_index = 0
 
 [node name="HSplitContainer" type="HSplitContainer" parent="FoldableContainer/TabContainer/Movement Controller" unique_id=2022433440]
 layout_mode = 2
-split_offsets = PackedInt32Array(200, 607, 819)
-split_offset = 200
+split_offsets = PackedInt32Array(106, 224, 436)
+split_offset = 106
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=373042873]
 layout_mode = 2
@@ -275,6 +288,7 @@ layout_mode = 2
 max_value = 10000.0
 step = 10.0
 value = 900.0
+update_on_text_changed = true
 script = ExtResource("5_ka7aa")
 metadata/_edit_use_anchors_ = true
 
@@ -289,6 +303,7 @@ custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10000.0
 step = 10.0
+update_on_text_changed = true
 script = ExtResource("6_r7bh7")
 metadata/_edit_use_anchors_ = true
 
@@ -303,87 +318,77 @@ custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10000.0
 step = 10.0
+update_on_text_changed = true
 script = SubResource("GDScript_0o3wc")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1216369138]
+custom_maximum_size = Vector2(200, -1)
 layout_mode = 2
 
-[node name="MasterVolumeHSliderTitle" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1472250107]
-z_index = 100
-custom_minimum_size = Vector2(150, 40)
+[node name="Label6" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1410709438]
 layout_mode = 2
-text = "Master Volume"
-editable = false
-script = ExtResource("10_e6ldy")
-metadata/_edit_use_anchors_ = true
+theme_override_font_sizes/font_size = 10
+text = "Volume"
 
 [node name="MasterVolumeHSliderEdit" type="HSlider" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1652831052]
 z_index = 100
-custom_minimum_size = Vector2(150, 20)
+custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 max_value = 1.0
 step = 0.01
 script = ExtResource("11_ywgeq")
 metadata/_edit_use_anchors_ = true
 
-[node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1057249460]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
+[node name="Label7" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1863369210]
 layout_mode = 2
-script = ExtResource("12_1mubl")
-metadata/_edit_use_anchors_ = true
+theme_override_font_sizes/font_size = 10
+text = "Current Level"
 
-[node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=154121554]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("13_nxb80")
-metadata/_edit_use_anchors_ = true
-
-[node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=851112648]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("14_sme61")
-
-[node name="WallJumpLockTimer" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=728292712]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("15_q8gmq")
-
-[node name="CurrentLevelEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=596001624]
+[node name="CurrentLevelEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=2032929936]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("16_acye6")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=974409604]
+[node name="HFlowContainer" type="HFlowContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1659663573]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="NumPlayers" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=2083542118]
+[node name="NumPlayers" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=2083542118]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("17_r5h6g")
 metadata/_edit_use_anchors_ = true
 
-[node name="FPSCounter" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=601955518]
+[node name="FPSCounter" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=601955518]
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 script = ExtResource("18_r6vda")
 metadata/_edit_use_anchors_ = true
 
-[node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer3" unique_id=1735564947]
+[node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=1735564947]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("19_jvdor")
+metadata/_edit_use_anchors_ = true
+
+[node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=1057249460]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("12_1mubl")
+metadata/_edit_use_anchors_ = true
+
+[node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=154121554]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("13_nxb80")
 metadata/_edit_use_anchors_ = true
 
 [node name="Sandbox" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=1041103589]

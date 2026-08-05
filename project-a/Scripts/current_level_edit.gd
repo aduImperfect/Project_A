@@ -1,4 +1,4 @@
-extends TextEdit
+extends SpinBox
 
 var timerAccumulation : float = 0.0
 var timerMax : float = 0.0
@@ -10,7 +10,7 @@ func _ready() -> void:
 	timerMax = 0.5
 	timerReached = false
 	#editable = false
-	text = ""
+#	text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -18,18 +18,20 @@ func _process(_delta: float) -> void:
 		timerAccumulation += _delta
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
-			text = "Current Level: " + str(LevelsDatabase.currLevel + 1)
+			value = LevelsDatabase.currLevel + 1
+#			text = "Current Level: " + str(LevelsDatabase.currLevel + 1)
 			timerReached = true
 		return
 
-	var regex = RegEx.new()
+	# var regex = RegEx.new()
 	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile("-?\\d+")
+	# regex.compile("-?\\d+")
 
-	var result = regex.search(text)
+	# var result = regex.search(text)
+	var result = value
 	var first_int : int = 0
 	if result:
-		first_int = result.get_string().to_int()
+		first_int = result
 
 	if InputsData.begin_delay:
 		timerReached = false
