@@ -137,6 +137,33 @@ scroll_smooth = true
 script = ExtResource("1_37nrb")
 metadata/_edit_use_anchors_ = true
 
+[node name="☠️ Broken Items" type="GridContainer" parent="." unique_id=939998005]
+offset_left = -419.0
+offset_top = -307.0
+offset_right = -419.0
+offset_bottom = -51.0
+
+[node name="WallJumpLockTimeEdit" type="TextEdit" parent="☠️ Broken Items" unique_id=1271128809]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("7_mx6st")
+
+[node name="WallJumpPushbackEdit" type="TextEdit" parent="☠️ Broken Items" unique_id=417973689]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("8_vg1ug")
+
+[node name="WallSlideSpeedEdit" type="TextEdit" parent="☠️ Broken Items" unique_id=1729114497]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+script = ExtResource("9_xc7xn")
+
 [node name="FoldableContainer" type="FoldableContainer" parent="." unique_id=768113886]
 light_mask = 0
 material = SubResource("CanvasItemMaterial_3q4g7")
@@ -193,7 +220,9 @@ text = "Max Move Speed"
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-max_value = 1000.0
+max_value = 10000.0
+step = 10.0
+value = 20.0
 update_on_text_changed = true
 script = ExtResource("2_x1p3b")
 metadata/_edit_use_anchors_ = true
@@ -203,11 +232,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Move Speed Dec"
 
-[node name="MoveSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1692520237]
+[node name="MoveSpeedDecrementEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1597026743]
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-tab_input_mode = false
+max_value = 10000.0
+step = 10.0
+value = 900.0
+update_on_text_changed = true
 script = ExtResource("3_spyps")
 metadata/_edit_use_anchors_ = true
 
@@ -216,29 +248,32 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Max Run Speed"
 
-[node name="MaxRunSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1879324692]
+[node name="MaxRunSpeedEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=288172422]
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-tab_input_mode = false
+max_value = 10000.0
+step = 10.0
+value = 50.0
+update_on_text_changed = true
 script = ExtResource("4_odutt")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label4" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=709515036]
+[node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=947268821]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=709515036]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Cam Smoothing"
 
-[node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=1992169720]
+[node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1992169720]
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 tab_input_mode = false
 script = ExtResource("5_ka7aa")
 metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=947268821]
-layout_mode = 2
 
 [node name="MaxJumpSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1245757916]
 z_index = 100
@@ -255,27 +290,6 @@ layout_mode = 2
 tab_input_mode = false
 script = SubResource("GDScript_0o3wc")
 metadata/_edit_use_anchors_ = true
-
-[node name="WallJumpLockTimeEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1271128809]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("7_mx6st")
-
-[node name="WallJumpPushbackEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=417973689]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("8_vg1ug")
-
-[node name="WallSlideSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1729114497]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(300, 40)
-layout_mode = 2
-script = ExtResource("9_xc7xn")
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1216369138]
 layout_mode = 2

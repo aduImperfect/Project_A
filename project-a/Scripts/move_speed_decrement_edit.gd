@@ -1,4 +1,4 @@
-extends TextEdit
+extends SpinBox
 
 var timerAccumulation : float = 0.0
 var timerMax : float = 0.0
@@ -9,7 +9,7 @@ func _ready() -> void:
 	timerAccumulation = 0.0
 	timerMax = 0.5
 	timerReached = false
-	text = ""
+#	text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -17,18 +17,14 @@ func _process(_delta: float) -> void:
 		timerAccumulation += _delta
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
-			text = "Move Speed Dec: " + str(InputsData.move_speed_dec)
+			value = InputsData.move_speed_dec
 			timerReached = true
 		return
 
-	var regex = RegEx.new()
-	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile("-?\\d+\\.?\\d+") 
-
-	var result = regex.search(text)
+	var result = value
 	var first_float : float = 0.0
 	if result:
-		first_float = result.get_string().to_float()
+		first_float = result
 
 	if InputsData.begin_delay:
 		timerReached = false
