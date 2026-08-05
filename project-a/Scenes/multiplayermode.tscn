@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cdr6kd3xwvfmo" path="res://Scripts/camera_multiplayer.gd" id="1_2lkk3"]
 [ext_resource type="PackedScene" uid="uid://difmoi1dld25r" path="res://Scenes/background.tscn" id="2_1icgi"]
-[ext_resource type="PackedScene" uid="uid://dl4i8yvjvkeqn" path="res://Scenes/mainui.tscn" id="3_gutp0"]
+[ext_resource type="PackedScene" uid="uid://dl4i8yvjvkeqn" path="res://GUI/mainui.tscn" id="3_gutp0"]
+
 
 [node name="MultiPlayerMode" type="Node2D" unique_id=1898326181]
 

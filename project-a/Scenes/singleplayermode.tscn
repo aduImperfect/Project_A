@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ceousoufhi85g" path="res://Scripts/camera_singleplayer.gd" id="1_cl3b8"]
 [ext_resource type="PackedScene" uid="uid://difmoi1dld25r" path="res://Scenes/background.tscn" id="2_744m0"]
-[ext_resource type="PackedScene" uid="uid://dl4i8yvjvkeqn" path="res://Scenes/mainui.tscn" id="3_thagc"]
+[ext_resource type="PackedScene" uid="uid://dl4i8yvjvkeqn" path="res://GUI/mainui.tscn" id="3_thagc"]
+
 
 [node name="SinglePlayerMode" type="Node2D" unique_id=1898326181]
 
