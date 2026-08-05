@@ -1,4 +1,4 @@
-extends TextEdit
+extends SpinBox
 
 var timerAccumulation : float = 0.0
 var timerMax : float = 0.0
@@ -10,7 +10,7 @@ func _ready() -> void:
 	timerMax = 0.5
 	timerReached = false
 	#editable = false
-	text = ""
+#	text = ""
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -18,18 +18,20 @@ func _process(_delta: float) -> void:
 		timerAccumulation += _delta
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
-			text = "Camera Smoothing: " + str(CameraHelper.smoothing_speed)
+			value = CameraHelper.smoothing_speed
+			# text = "Camera Smoothing: " + str(CameraHelper.smoothing_speed)
 			timerReached = true
 		return
 
-	var regex = RegEx.new()
+	# var regex = RegEx.new()
 	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile("-?\\d+\\.?\\d+")
+	# regex.compile("-?\\d+\\.?\\d+")
 
-	var result = regex.search(text)
+	# var result = regex.search(text)
+	var result = value
 	var first_float : float = 0.0
 	if result:
-		first_float = result.get_string().to_float()
+		first_float = result
 
 	if InputsData.begin_delay:
 		timerReached = false

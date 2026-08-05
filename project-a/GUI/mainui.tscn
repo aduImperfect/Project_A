@@ -60,7 +60,7 @@ content_margin_bottom = 16.0
 draw_center = false
 
 [sub_resource type="GDScript" id="GDScript_0o3wc"]
-script/source = "extends TextEdit
+script/source = "extends SpinBox
 
 var timerAccumulation : float = 0.0
 var timerMax : float = 0.0
@@ -71,7 +71,7 @@ func _ready() -> void:
 	timerAccumulation = 0.0
 	timerMax = 0.5
 	timerReached = false
-	text = \"\"
+#	text = \"\"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -79,18 +79,19 @@ func _process(_delta: float) -> void:
 		timerAccumulation += _delta
 		if timerAccumulation > timerMax:
 			timerAccumulation = 0.0
-			text = \"Jump Speed Dec: \" + str(InputsData.jump_speed_dec)
+			value = InputsData.jump_speed_dec
+			# text = \"Jump Speed Dec: \" + str(InputsData.jump_speed_dec)
 			timerReached = true
 		return
 
-	var regex = RegEx.new()
+	# var regex = RegEx.new()
 	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	regex.compile(\"-?\\\\d+\\\\.?\\\\d+\") 
+	# regex.compile(\"-?\\\\d+\\\\.?\\\\d+\") 
 
-	var result = regex.search(text)
+	var result = value
 	var first_float : float = 0.0
 	if result:
-		first_float = result.get_string().to_float()
+		first_float = result
 
 	if InputsData.begin_delay:
 		timerReached = false
@@ -203,7 +204,6 @@ metadata/_tab_index = 0
 
 [node name="HSplitContainer" type="HSplitContainer" parent="FoldableContainer/TabContainer/Movement Controller" unique_id=2022433440]
 layout_mode = 2
-size_flags_horizontal = 3
 split_offsets = PackedInt32Array(200, 607, 819)
 split_offset = 200
 
@@ -260,6 +260,7 @@ script = ExtResource("4_odutt")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=947268821]
+custom_maximum_size = Vector2(100, -1)
 layout_mode = 2
 
 [node name="Label4" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=709515036]
@@ -267,27 +268,41 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 10
 text = "Cam Smoothing"
 
-[node name="CamSmoothingEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1992169720]
+[node name="CamSmoothingEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1121697948]
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
-tab_input_mode = false
+max_value = 10000.0
+step = 10.0
+value = 900.0
 script = ExtResource("5_ka7aa")
 metadata/_edit_use_anchors_ = true
 
-[node name="MaxJumpSpeedEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1245757916]
+[node name="Label5" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1734355413]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Max Jump Speed"
+
+[node name="MaxJumpSpeedEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1064281152]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-tab_input_mode = false
+max_value = 10000.0
+step = 10.0
 script = ExtResource("6_r7bh7")
 metadata/_edit_use_anchors_ = true
 
-[node name="JumpSpeedDecrementEdit" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1644206962]
+[node name="Label6" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1191309135]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Jump Speed Dec"
+
+[node name="JumpSpeedDecrementEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=167918233]
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
-tab_input_mode = false
+max_value = 10000.0
+step = 10.0
 script = SubResource("GDScript_0o3wc")
 metadata/_edit_use_anchors_ = true
 
