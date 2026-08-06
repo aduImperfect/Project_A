@@ -164,13 +164,6 @@ custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
 script = ExtResource("9_xc7xn")
 
-[node name="BeginDelayCurrent" type="TextEdit" parent="☠️ Broken Items" unique_id=851112648]
-visible = false
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("14_sme61")
-
 [node name="WallJumpLockTimer" type="TextEdit" parent="☠️ Broken Items" unique_id=728292712]
 visible = false
 z_index = 100
@@ -390,6 +383,12 @@ custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 script = ExtResource("13_nxb80")
 metadata/_edit_use_anchors_ = true
+
+[node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=851112648]
+z_index = 100
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+script = ExtResource("14_sme61")
 
 [node name="Sandbox" type="ScrollContainer" parent="FoldableContainer/TabContainer" unique_id=1041103589]
 visible = false
