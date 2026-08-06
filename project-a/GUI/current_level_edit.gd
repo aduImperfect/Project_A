@@ -1,47 +1,16 @@
-extends SpinBox
+# res://Scripts/current_level_edit.gd
+extends LinkedSpinBox
 
-var timerAccumulation : float = 0.0
-var timerMax : float = 0.0
-var timerReached : bool = false
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timerAccumulation = 0.0
-	timerMax = 0.5
-	timerReached = false
-	#editable = false
-#	text = ""
+	target_autoload = "LevelsDatabase"
+	bound_property = "currLevel"
+	super._ready()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if timerReached == false:
-		timerAccumulation += _delta
-		if timerAccumulation > timerMax:
-			timerAccumulation = 0.0
-			value = LevelsDatabase.currLevel + 1
-#			text = "Current Level: " + str(LevelsDatabase.currLevel + 1)
-			timerReached = true
-		return
+func _on_source_changed(property: String, new_value) -> void:
+	if property == bound_property:
+		value = new_value + 1
 
-	# var regex = RegEx.new()
-	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	# regex.compile("-?\\d+")
-
-	# var result = regex.search(text)
-	var result = value
-	var first_int : int = 0
-	if result:
-		first_int = result
-
-	if InputsData.begin_delay:
-		timerReached = false
-	elif ((first_int > 0)) && ((first_int - 1) != LevelsDatabase.currLevel):
-		print(first_int)
+func _on_ui_changed(new_value: float) -> void:
+	var first_int := int(new_value)
+	if first_int > 0 and (first_int - 1) != LevelsDatabase.currLevel:
 		LevelsDatabase._level_switcher(first_int - 1)
-
-func _input(event: InputEvent):
-	# Check if a mouse button is clicked while the node has focus
-	if has_focus() and event is InputEventMouseButton and event.pressed:
-		# If the click position is outside the node's rectangle
-		if not get_global_rect().has_point(event.position):
-			release_focus()
