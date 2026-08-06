@@ -15,6 +15,12 @@ run/main_scene="uid://c1skm251qmouu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+InputsData="*uid://c2632n0tlce3l"
+CameraHelper="*uid://8skqlxyaosdo"
+LevelsDatabase="*uid://bmghkcr8ob1ll"
+
 [display]
 
 window/stretch/mode="canvas_items"

@@ -1,22 +1,23 @@
 extends Node
+# Registered as Autoload: LevelsDatabase
 
-class_name LevelsDatabase
+signal value_changed(property: String, new_value)
 
-static var LEVEL_SCENES : Array[String] = []
-static var levelNodes : Array[Node2D]
+var LEVEL_SCENES : Array[String] = []
+var levelNodes : Array[Node2D]
 
-static var xLevelOffset : float = 0.0
-static var yLevelOffset : float = 0.0
+var xLevelOffset : float = 0.0
+var yLevelOffset : float = 0.0
 
-static var levelsCount : int = 0
-static var maxHeight : int = 0
+var levelsCount : int = 0
+var maxHeight : int = 0
 
-static var xLevelCenter : float = 0.0
-static var yLevelCenter : float = 0.0
+var xLevelCenter : float = 0.0
+var yLevelCenter : float = 0.0
 
-static var currLevel : int = 0
+var currLevel : int = 0
 
-static func _load_level_scenes() -> void:
+func _load_level_scenes() -> void:
 	LEVEL_SCENES.clear()
 	var dir := DirAccess.open("res://Levels")
 	if dir == null:
@@ -36,7 +37,7 @@ static func _load_level_scenes() -> void:
 
 	LEVEL_SCENES.sort()
 
-static func _set_values() -> void:
+func _set_values() -> void:
 	_load_level_scenes()
 
 	xLevelCenter = 0.0
@@ -55,28 +56,32 @@ static func _set_values() -> void:
 	maxHeight = 10
 	print("All Levels Loaded!")
 
-static func _level_switcher(newLevelNum : int = -1) -> void:
+	value_changed.emit("currLevel", currLevel)
+
+func _level_switcher(newLevelNum : int = -1) -> void:
 	print("---------------")
 	print("Level Switched to: ", newLevelNum)
 
 	if newLevelNum < 0:
 		#Normal internal function of level switching incrementally.
-		LevelsDatabase.currLevel += 1
+		currLevel += 1
 	else:
 		#Setting level forcibly to switch version.
-		LevelsDatabase.currLevel = newLevelNum
+		currLevel = newLevelNum
 	InputsData.begin_delay = true
 	InputsData._reset_values()
 	CameraHelper._reset_values_sp()
 
-	if LevelsDatabase.currLevel >= LevelsDatabase.levelsCount:
+	value_changed.emit("currLevel", currLevel)
+
+	if currLevel >= levelsCount:
 		#print("Game Complete")
 		return
 
 	for k in PlayersHelper.playerNodes.size():
 		PlayersHelper.clear_ghosts_for_player(k)
 		PlayersHelper.playerNodes[k].get_child(0).position = Vector2(0.0, 0.0)
-		PlayersHelper.playerNodes[k].global_position = LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(0).global_position
+		PlayersHelper.playerNodes[k].global_position = levelNodes[currLevel].get_child(0).global_position
 		PlayersHelper.playerNodes[k].get_child(0)._start_new_run()
 
 	SaveLoadHelper.save_game()

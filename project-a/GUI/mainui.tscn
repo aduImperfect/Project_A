@@ -1,11 +1,7 @@
 [gd_scene format=3 uid="uid://dl4i8yvjvkeqn"]
 
 [ext_resource type="Script" uid="uid://db053svsam2we" path="res://GUI/current_input.gd" id="1_37nrb"]
-[ext_resource type="Script" uid="uid://dvkcoae6aw6mn" path="res://GUI/max_move_speed_edit.gd" id="2_x1p3b"]
-[ext_resource type="Script" uid="uid://cqmeae25j884s" path="res://GUI/move_speed_decrement_edit.gd" id="3_spyps"]
-[ext_resource type="Script" uid="uid://cew4elyv2w054" path="res://GUI/max_run_speed_edit.gd" id="4_odutt"]
-[ext_resource type="Script" uid="uid://df7h7pelquxfc" path="res://Scripts/cam_smoothing_edit.gd" id="5_ka7aa"]
-[ext_resource type="Script" uid="uid://bovd0x14v1lv5" path="res://GUI/max_jump_speed_edit.gd" id="6_r7bh7"]
+[ext_resource type="Script" uid="uid://cxww0jjde26g4" path="res://Scripts/linked_spinbox.gd" id="6_ysyxf"]
 [ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://GUI/wall_jump_lock_time_edit.gd" id="7_mx6st"]
 [ext_resource type="Script" uid="uid://dnmmooax6vny1" path="res://GUI/wall_jump_pushback_edit.gd" id="8_vg1ug"]
 [ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://GUI/wall_slide_speed_edit.gd" id="9_xc7xn"]
@@ -57,53 +53,6 @@ content_margin_top = 16.0
 content_margin_right = 16.0
 content_margin_bottom = 16.0
 draw_center = false
-
-[sub_resource type="GDScript" id="GDScript_0o3wc"]
-script/source = "extends SpinBox
-
-var timerAccumulation : float = 0.0
-var timerMax : float = 0.0
-var timerReached : bool = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	timerAccumulation = 0.0
-	timerMax = 0.5
-	timerReached = false
-#	text = \"\"
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if timerReached == false:
-		timerAccumulation += _delta
-		if timerAccumulation > timerMax:
-			timerAccumulation = 0.0
-			value = InputsData.jump_speed_dec
-			# text = \"Jump Speed Dec: \" + str(InputsData.jump_speed_dec)
-			timerReached = true
-		return
-
-	# var regex = RegEx.new()
-	# Regex pattern matches an optional negative sign followed by digits and a decimal point
-	# regex.compile(\"-?\\\\d+\\\\.?\\\\d+\") 
-
-	var result = value
-	var first_float : float = 0.0
-	if result:
-		first_float = result
-
-	if InputsData.begin_delay:
-		timerReached = false
-	else:
-		InputsData.jump_speed_dec = first_float
-
-func _input(event: InputEvent):
-	# Check if a mouse button is clicked while the node has focus
-	if has_focus() and event is InputEventMouseButton and event.pressed:
-		# If the click position is outside the node's rectangle
-		if not get_global_rect().has_point(event.position):
-			release_focus()
-"
 
 [sub_resource type="CodeHighlighter" id="CodeHighlighter_ih6jt"]
 number_color = Color(0, 0.45214397, 0.76830685, 1)
@@ -230,7 +179,8 @@ max_value = 10000.0
 step = 10.0
 value = 20.0
 update_on_text_changed = true
-script = ExtResource("2_x1p3b")
+script = ExtResource("6_ysyxf")
+bound_property = "max_move_speed"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=766893277]
@@ -246,7 +196,8 @@ max_value = 10000.0
 step = 10.0
 value = 900.0
 update_on_text_changed = true
-script = ExtResource("3_spyps")
+script = ExtResource("6_ysyxf")
+bound_property = "move_speed_dec"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer" unique_id=281494369]
@@ -262,7 +213,8 @@ max_value = 10000.0
 step = 10.0
 value = 50.0
 update_on_text_changed = true
-script = ExtResource("4_odutt")
+script = ExtResource("6_ysyxf")
+bound_property = "max_run_speed"
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer5" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=947268821]
@@ -282,7 +234,9 @@ max_value = 10000.0
 step = 10.0
 value = 900.0
 update_on_text_changed = true
-script = ExtResource("5_ka7aa")
+script = ExtResource("6_ysyxf")
+target_autoload = "CameraHelper"
+bound_property = "smoothing_speed"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label5" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1734355413]
@@ -297,7 +251,8 @@ layout_mode = 2
 max_value = 10000.0
 step = 10.0
 update_on_text_changed = true
-script = ExtResource("6_r7bh7")
+script = ExtResource("6_ysyxf")
+bound_property = "max_jump_speed"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label6" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer5" unique_id=1191309135]
@@ -312,7 +267,8 @@ layout_mode = 2
 max_value = 10000.0
 step = 10.0
 update_on_text_changed = true
-script = SubResource("GDScript_0o3wc")
+script = ExtResource("6_ysyxf")
+bound_property = "jump_speed_dec"
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1216369138]
