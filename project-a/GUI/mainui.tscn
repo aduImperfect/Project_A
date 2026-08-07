@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dl4i8yvjvkeqn"]
 
-[ext_resource type="Script" uid="uid://db053svsam2we" path="res://GUI/current_input.gd" id="1_37nrb"]
+[ext_resource type="Script" uid="uid://db053svsam2we" path="res://_scratch/_archived/current_input.gd" id="1_37nrb"]
 [ext_resource type="Script" uid="uid://cxww0jjde26g4" path="res://GUI/linked_spinbox.gd" id="6_ysyxf"]
 [ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://GUI/_scratch/wall_jump_lock_time_edit.gd" id="7_mx6st"]
 [ext_resource type="Script" uid="uid://dk48rypwu3ki6" path="res://GUI/current_level_edit.gd" id="8_hfx5k"]
@@ -10,11 +10,11 @@
 [ext_resource type="Script" uid="uid://c5wu1pch8h8yt" path="res://GUI/master_volume_h_slider_edit.gd" id="11_ywgeq"]
 [ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://_scratch/_archived/jump_speed_current.gd" id="12_1mubl"]
 [ext_resource type="Script" uid="uid://8nsomulkwu6q" path="res://_scratch/_archived/move_speed_current.gd" id="13_nxb80"]
-[ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://GUI/begin_delay_current.gd" id="14_sme61"]
+[ext_resource type="Script" uid="uid://csva20trxhqdo" path="res://_scratch/_archived/begin_delay_current.gd" id="14_sme61"]
 [ext_resource type="Script" uid="uid://bf4q8h6u3cypq" path="res://GUI/_scratch/wall_jump_lock_timer.gd" id="15_q8gmq"]
-[ext_resource type="Script" uid="uid://cw2d4o5d40a0m" path="res://Scripts/num_players.gd" id="17_r5h6g"]
-[ext_resource type="Script" uid="uid://djatmjw4uukb5" path="res://GUI/fps_counter.gd" id="18_r6vda"]
-[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://GUI/gamepad_in_use.gd" id="19_jvdor"]
+[ext_resource type="Script" uid="uid://cw2d4o5d40a0m" path="res://_scratch/_archived/num_players.gd" id="17_r5h6g"]
+[ext_resource type="Script" uid="uid://djatmjw4uukb5" path="res://_scratch/_archived/fps_counter.gd" id="18_r6vda"]
+[ext_resource type="Script" uid="uid://bmakgkw4dbh3x" path="res://_scratch/_archived/gamepad_in_use.gd" id="19_jvdor"]
 [ext_resource type="Texture2D" uid="uid://dhx2ftic1jx3s" path="res://Textures/Goal.png" id="20_ui6yx"]
 [ext_resource type="Texture2D" uid="uid://bkwjtfev52nch" path="res://Textures/Player0.png" id="21_7oltq"]
 [ext_resource type="Texture2D" uid="uid://dbfaxjo15hwpn" path="res://Textures/Player5.png" id="22_8moe8"]
@@ -306,7 +306,7 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=836975546]
+[node name="DevStats" type="RichTextLabel" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=836975546]
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 text = "asdasd"
