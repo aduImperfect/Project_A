@@ -300,7 +300,8 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="DevStats" type="RichTextLabel" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=836975546]
+[node name="DevStats" type="RichTextLabel" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=836975546]
+visible = false
 custom_minimum_size = Vector2(400, 400)
 layout_mode = 2
 text = "asdasd"
