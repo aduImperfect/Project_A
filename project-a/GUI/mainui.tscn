@@ -154,7 +154,7 @@ metadata/_tab_index = 0
 
 [node name="HSplitContainer" type="HSplitContainer" parent="FoldableContainer/TabContainer/Movement Controller" unique_id=2022433440]
 layout_mode = 2
-split_offsets = PackedInt32Array(106, 224, 436)
+split_offsets = PackedInt32Array(106, 224, 436, 0)
 split_offset = 106
 
 [node name="VBoxContainer" type="VBoxContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=373042873]
@@ -270,6 +270,17 @@ metadata/_edit_use_anchors_ = true
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 2
 
+[node name="Label7" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1863369210]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Current Level"
+
+[node name="CurrentLevelEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=2032929936]
+z_index = 100
+layout_mode = 2
+script = ExtResource("8_hfx5k")
+metadata/_edit_use_anchors_ = true
+
 [node name="Label6" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1410709438]
 layout_mode = 2
 theme_override_font_sizes/font_size = 10
@@ -284,25 +295,12 @@ step = 0.01
 script = ExtResource("11_ywgeq")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label7" type="Label" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=1863369210]
-layout_mode = 2
-theme_override_font_sizes/font_size = 10
-text = "Current Level"
-
-[node name="CurrentLevelEdit" type="SpinBox" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/VBoxContainer4" unique_id=2032929936]
-z_index = 100
-custom_minimum_size = Vector2(200, 40)
-layout_mode = 2
-script = ExtResource("8_hfx5k")
-metadata/_edit_use_anchors_ = true
-
 [node name="HFlowContainer" type="HFlowContainer" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=1659663573]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
 [node name="DevStats" type="RichTextLabel" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer" unique_id=836975546]
-visible = false
-custom_minimum_size = Vector2(400, 400)
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "asdasd"
 script = ExtResource("9_cx3r0")
