@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d4kh3mwyrynb1" path="res://GUI/_scratch/wall_jump_lock_time_edit.gd" id="7_mx6st"]
 [ext_resource type="Script" uid="uid://dk48rypwu3ki6" path="res://GUI/current_level_edit.gd" id="8_hfx5k"]
 [ext_resource type="Script" uid="uid://dnmmooax6vny1" path="res://GUI/_scratch/wall_jump_pushback_edit.gd" id="8_vg1ug"]
+[ext_resource type="Script" uid="uid://dtcp4dv51h4as" path="res://GUI/dev_stats.gd" id="9_cx3r0"]
 [ext_resource type="Script" uid="uid://dor3pdp0kyy6v" path="res://GUI/_scratch/wall_slide_speed_edit.gd" id="9_xc7xn"]
 [ext_resource type="Script" uid="uid://c5wu1pch8h8yt" path="res://GUI/master_volume_h_slider_edit.gd" id="11_ywgeq"]
 [ext_resource type="Script" uid="uid://cpij6bnuo5pbe" path="res://_scratch/_archived/jump_speed_current.gd" id="12_1mubl"]
@@ -305,7 +306,14 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
+[node name="RichTextLabel" type="RichTextLabel" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=836975546]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+text = "asdasd"
+script = ExtResource("9_cx3r0")
+
 [node name="NumPlayers" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=2083542118]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -313,6 +321,7 @@ script = ExtResource("17_r5h6g")
 metadata/_edit_use_anchors_ = true
 
 [node name="FPSCounter" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=601955518]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
@@ -320,6 +329,7 @@ script = ExtResource("18_r6vda")
 metadata/_edit_use_anchors_ = true
 
 [node name="GamepadInUse" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=1735564947]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -327,6 +337,7 @@ script = ExtResource("19_jvdor")
 metadata/_edit_use_anchors_ = true
 
 [node name="JumpSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=1057249460]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -334,6 +345,7 @@ script = ExtResource("12_1mubl")
 metadata/_edit_use_anchors_ = true
 
 [node name="MoveSpeedCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=154121554]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
@@ -341,6 +353,7 @@ script = ExtResource("13_nxb80")
 metadata/_edit_use_anchors_ = true
 
 [node name="BeginDelayCurrent" type="TextEdit" parent="FoldableContainer/TabContainer/Movement Controller/HSplitContainer/HFlowContainer" unique_id=851112648]
+visible = false
 z_index = 100
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
