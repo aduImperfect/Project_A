@@ -10,9 +10,6 @@
 [node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_1vin3")]
 position = Vector2(69, 594)
 
-[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_ojpmh")]
-position = Vector2(1787, 453)
-
 [node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_703nv")]
 position = Vector2(920, -132)
 scale = Vector2(44.03, 1)
@@ -44,6 +41,25 @@ scale = Vector2(8, 1)
 position = Vector2(1700, 483)
 scale = Vector2(5, 1)
 
+[node name="Ground_P_9" parent="." unique_id=870865973 instance=ExtResource("3_703nv")]
+position = Vector2(1482.0001, 116)
+scale = Vector2(6.825, 1)
+
+[node name="Ground_P_10" parent="." unique_id=2106493572 instance=ExtResource("3_703nv")]
+position = Vector2(992, 173)
+scale = Vector2(5, 1)
+
+[node name="Ground_P_11" parent="." unique_id=228178348 instance=ExtResource("3_703nv")]
+position = Vector2(539.00006, 168)
+scale = Vector2(5, 1)
+
+[node name="Goal2" parent="." unique_id=1634378711 instance=ExtResource("2_ojpmh")]
+position = Vector2(50, 44)
+
+[node name="Ground_P_12" parent="." unique_id=2087450223 instance=ExtResource("3_703nv")]
+position = Vector2(140.00006, 75)
+scale = Vector2(5, 1)
+
 [node name="Ground_P_7" parent="." unique_id=2079323390 instance=ExtResource("3_703nv")]
 position = Vector2(264, 483)
 scale = Vector2(3, 1)
@@ -56,18 +72,25 @@ offset_bottom = 384.0
 text = "Jump good practice but with DANGER!"
 
 [node name="LevelObjective2" type="TextEdit" parent="." unique_id=128485132]
-offset_left = 1147.0
-offset_top = 671.0
-offset_right = 1297.0
-offset_bottom = 706.0
+offset_left = 1210.0
+offset_top = 655.0
+offset_right = 1360.0
+offset_bottom = 690.0
 text = "Hah, you fell. ಠ⌣ಠ"
 
+[node name="LevelObjective3" type="TextEdit" parent="." unique_id=70328092]
+offset_left = 1111.0
+offset_top = -70.0
+offset_right = 1261.0
+offset_bottom = -35.0
+text = "Careful. ಠ⌣ಠ"
+
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=5469685]
-offset_left = 1631.0
+offset_left = 1619.0
 offset_top = 516.0
 offset_right = 1792.0
 offset_bottom = 554.0
-text = "Keep Going. (°ロ°)☝"
+text = "Up.  Way Up.   (°ロ°)☝"
 
 [node name="Death" parent="." unique_id=1296578022 instance=ExtResource("4_gff3n")]
 position = Vector2(920, 750)

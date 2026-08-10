@@ -11,7 +11,7 @@
 position = Vector2(85, 253)
 
 [node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_iel4d")]
-position = Vector2(53, 459)
+position = Vector2(201, 459)
 
 [node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_i2y1e")]
 position = Vector2(920, -132)
@@ -24,10 +24,6 @@ scale = Vector2(1, 20)
 [node name="Ground_W_R_1" parent="." unique_id=1804239981 instance=ExtResource("3_i2y1e")]
 position = Vector2(1820, 248)
 scale = Vector2(1, 20)
-
-[node name="Ground_F_1" parent="." unique_id=1686414086 instance=ExtResource("3_i2y1e")]
-position = Vector2(240, 628)
-scale = Vector2(10, 1)
 
 [node name="Ground_P_4" parent="." unique_id=1687364210 instance=ExtResource("3_i2y1e")]
 position = Vector2(758, 117)
@@ -86,7 +82,7 @@ position = Vector2(920, 750)
 scale = Vector2(100, 1)
 
 [node name="Ground_P_6" parent="." unique_id=1118029000 instance=ExtResource("3_i2y1e")]
-position = Vector2(733, 569)
+position = Vector2(730, 526)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_9" parent="." unique_id=831549226 instance=ExtResource("3_i2y1e")]
@@ -94,9 +90,9 @@ position = Vector2(1638, 627)
 scale = Vector2(8, 1)
 
 [node name="Ground_P_11" parent="." unique_id=1919907967 instance=ExtResource("3_i2y1e")]
-position = Vector2(1052, 668)
+position = Vector2(1049, 625)
 scale = Vector2(5, 1)
 
 [node name="Ground_P_13" parent="." unique_id=1118193303 instance=ExtResource("3_i2y1e")]
-position = Vector2(142, 492)
+position = Vector2(290, 492)
 scale = Vector2(5, 1)
