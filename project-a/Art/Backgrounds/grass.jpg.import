@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://viyytty4bpm8"
-path="res://.godot/imported/walk_.png-10dff5a314231652be1e84ea7bb85312.ctex"
+uid="uid://b3te70fparge6"
+path="res://.godot/imported/grass.jpg-d67f707dd9895b0f91fcf62f9ad95f5e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animation/walk_.png"
-dest_files=["res://.godot/imported/walk_.png-10dff5a314231652be1e84ea7bb85312.ctex"]
+source_file="res://Art/Backgrounds/grass.jpg"
+dest_files=["res://.godot/imported/grass.jpg-d67f707dd9895b0f91fcf62f9ad95f5e.ctex"]
 
 [params]
 
