@@ -29,6 +29,15 @@ func _ready() -> void:
 	_spawn_levels()
 	_spawn_players()
 
+	for k in LevelsDatabase.levelsCount:
+		if k == 0:
+			continue
+		LevelsDatabase.levelNodes[k].global_position.x = -9999.0
+		LevelsDatabase.levelNodes[k].global_position.y = -9999.0
+
+	LevelsDatabase.levelNodes[0].z_index = 0
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	#owner.get_child(2)
@@ -42,16 +51,19 @@ func _process(_delta: float) -> void:
 	#backgroundNode = background_instance
 
 func _spawn_levels() -> void:
-	var j : int = 0
+	#var j : int = 0
 	for k in LevelsDatabase.levelsCount:
 		var level_instance = load(LevelsDatabase.LEVEL_SCENES[k]).instantiate()
-		level_instance.global_position.x = LevelsDatabase.xLevelCenter + (j * LevelsDatabase.xLevelOffset)
-		level_instance.global_position.y = LevelsDatabase.yLevelCenter + ((k % LevelsDatabase.maxHeight) * LevelsDatabase.yLevelOffset)
+		#level_instance.global_position.x = LevelsDatabase.xLevelCenter + (j * LevelsDatabase.xLevelOffset)
+		#level_instance.global_position.y = LevelsDatabase.yLevelCenter + ((k % LevelsDatabase.maxHeight) * LevelsDatabase.yLevelOffset)
+		level_instance.global_position.x = 0.0
+		level_instance.global_position.y = 0.0
+		level_instance.z_index = -2000
 		add_child(level_instance)
 		LevelsDatabase.levelNodes.append(level_instance)
 
-		if (k != 0) && ((k % LevelsDatabase.maxHeight) == 0):
-			j += 1
+		#if (k != 0) && ((k % LevelsDatabase.maxHeight) == 0):
+			#j += 1
 
 func _spawn_players() -> void:
 	for k in PlayersHelper.playersCount:
