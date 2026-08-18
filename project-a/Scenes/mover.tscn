@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://vfr6fly53brv"]
+
+[ext_resource type="Script" uid="uid://dspuyu4wvgpcb" path="res://Scripts/mover.gd" id="1_mhv4i"]
+[ext_resource type="Texture2D" uid="uid://nfg1hdvwsm3p" path="res://Textures/Ground.png" id="1_mj62o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_688p1"]
+size = Vector2(40, 40)
+
+[node name="Mover" type="Node2D" unique_id=1751980]
+
+[node name="MoverRB2D" type="RigidBody2D" parent="." unique_id=1507636331]
+freeze = true
+script = ExtResource("1_mhv4i")
+
+[node name="MoverCS2D" type="CollisionShape2D" parent="MoverRB2D" unique_id=972104351]
+shape = SubResource("RectangleShape2D_688p1")
+debug_color = Color(0.5014225, 0.5809717, 0.02131095, 0.41960785)
+
+[node name="MoverGround" type="Sprite2D" parent="MoverRB2D" unique_id=1934793575]
+z_index = 5
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_mj62o")
