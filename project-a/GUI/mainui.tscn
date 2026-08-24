@@ -139,11 +139,13 @@ theme_override_styles/title_hover_panel = SubResource("StyleBoxFlat_yj67u")
 theme_override_styles/title_collapsed_panel = SubResource("StyleBoxFlat_ih6jt")
 theme_override_styles/title_collapsed_hover_panel = SubResource("StyleBoxFlat_qoud8")
 theme_override_styles/panel = SubResource("StyleBoxFlat_3q4g7")
+folded = true
 title = "DASHBOARD"
 title_position = 1
 foldable_group = SubResource("FoldableGroup_3q4g7")
 
 [node name="TabContainer" type="TabContainer" parent="FoldableContainer" unique_id=560709334]
+visible = false
 layout_mode = 2
 current_tab = 0
 
