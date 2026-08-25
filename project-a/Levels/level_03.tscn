@@ -3,12 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="1_1vin3"]
 [ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_ojpmh"]
 [ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="3_703nv"]
+[ext_resource type="PackedScene" uid="uid://du4tag6wi3epi" path="res://Scenes/campos.tscn" id="3_f3lte"]
 [ext_resource type="PackedScene" uid="uid://c7kw2s1jyomna" path="res://Scenes/death.tscn" id="4_gff3n"]
 
-[node name="Level_06" type="Node2D" unique_id=1762506268]
+[node name="Level_03" type="Node2D" unique_id=1762506268]
 
 [node name="Start" parent="." unique_id=1470424718 instance=ExtResource("1_1vin3")]
 position = Vector2(69, 594)
+
+[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_ojpmh")]
+position = Vector2(50, 44)
+
+[node name="Campos" parent="." unique_id=737987499 instance=ExtResource("3_f3lte")]
+position = Vector2(407, 172)
 
 [node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_703nv")]
 position = Vector2(920, -132)
@@ -52,9 +59,6 @@ scale = Vector2(5, 1)
 [node name="Ground_P_11" parent="." unique_id=228178348 instance=ExtResource("3_703nv")]
 position = Vector2(539.00006, 168)
 scale = Vector2(5, 1)
-
-[node name="Goal2" parent="." unique_id=1634378711 instance=ExtResource("2_ojpmh")]
-position = Vector2(50, 44)
 
 [node name="Ground_P_12" parent="." unique_id=2087450223 instance=ExtResource("3_703nv")]
 position = Vector2(140.00006, 75)

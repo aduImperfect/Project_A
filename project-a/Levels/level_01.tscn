@@ -2,22 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://b36n3qasn3g46" path="res://Scenes/ground.tscn" id="1_vk57k"]
 [ext_resource type="PackedScene" uid="uid://c2gstpkex2tx8" path="res://Scenes/goal.tscn" id="2_8ffim"]
+[ext_resource type="PackedScene" uid="uid://du4tag6wi3epi" path="res://Scenes/campos.tscn" id="3_5royd"]
 [ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://c7kw2s1jyomna" path="res://Scenes/death.tscn" id="4_1cq4g"]
 [ext_resource type="Script" uid="uid://cmrkycs05rpka" path="res://Scripts/welcome.gd" id="5_ocwms"]
 [ext_resource type="SpriteFrames" uid="uid://c2jyvxxgnpvko" path="res://Animation/animation/movement_.tres" id="6_pbphk"]
 
 [node name="Level_01" type="Node2D" unique_id=234875700]
-position = Vector2(87, -133)
 
 [node name="Start" parent="." unique_id=1470424718 instance=ExtResource("3_xfk5q")]
 position = Vector2(73, 21)
 
-[node name="Goal2" parent="Start" unique_id=1634378711 instance=ExtResource("2_8ffim")]
-position = Vector2(1236, 462)
+[node name="Goal" parent="." unique_id=1634378711 instance=ExtResource("2_8ffim")]
+position = Vector2(1309, 483)
 
-[node name="Ground_P_9" parent="Start" unique_id=1751980 instance=ExtResource("1_vk57k")]
-position = Vector2(1045, 492)
+[node name="Campos" parent="." unique_id=737987499 instance=ExtResource("3_5royd")]
+position = Vector2(560, 161)
+
+[node name="Ground_P_13" parent="." unique_id=1751980 instance=ExtResource("1_vk57k")]
+position = Vector2(1118, 513)
 scale = Vector2(10, 1)
 
 [node name="Ground_C_1" parent="." unique_id=1529564929 instance=ExtResource("1_vk57k")]
