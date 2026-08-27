@@ -13,8 +13,9 @@ func _process(_delta : float):
 		return
 
 	# 1. Find the center point
-	var center = Vector2.ZERO
-	center += PlayersHelper.playerNodes[0].get_child(0).global_position
+	#var center = Vector2.ZERO
+	#center += PlayersHelper.playerNodes[0].get_child(0).global_position
 
 	# Smoothly move and zoom
-	global_position = global_position.lerp(center, CameraHelper.smoothing_speed * _delta)
+	#global_position = global_position.lerp(center, CameraHelper.smoothing_speed * _delta)
+	global_position = CameraHelper.position

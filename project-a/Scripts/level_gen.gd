@@ -36,7 +36,7 @@ func _ready() -> void:
 		LevelsDatabase.levelNodes[k].global_position.y = -9999.0
 
 	LevelsDatabase.levelNodes[0].z_index = 0
-
+	CameraHelper.position = LevelsDatabase.levelNodes[0].get_child(2).position
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

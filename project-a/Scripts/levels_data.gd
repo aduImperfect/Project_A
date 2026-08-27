@@ -78,11 +78,11 @@ func _level_switcher(newLevelNum : int = -1) -> void:
 		#print("Game Complete")
 		return
 
-	for k in LevelsDatabase.levelsCount:
-		LevelsDatabase.levelNodes[k].global_position.x = 0.0
-		LevelsDatabase.levelNodes[k].global_position.y = 0.0
-		LevelsDatabase.levelNodes[k].z_index = -2000
-	LevelsDatabase.levelNodes[LevelsDatabase.currLevel].z_index = 0
+	for k in levelsCount:
+		levelNodes[k].global_position.x = 0.0
+		levelNodes[k].global_position.y = 0.0
+		levelNodes[k].z_index = -2000
+	levelNodes[currLevel].z_index = 0
 
 	for k in PlayersHelper.playerNodes.size():
 		PlayersHelper.clear_ghosts_for_player(k)
@@ -91,14 +91,14 @@ func _level_switcher(newLevelNum : int = -1) -> void:
 		PlayersHelper.playerNodes[k].get_child(0)._start_new_run()
 
 
-	for k in LevelsDatabase.levelsCount:
-		if k == LevelsDatabase.currLevel:
+	for k in levelsCount:
+		if k == currLevel:
 			continue
-		LevelsDatabase.levelNodes[k].global_position.x = -9999.0
-		LevelsDatabase.levelNodes[k].global_position.y = -9999.0
+		levelNodes[k].global_position.x = -9999.0
+		levelNodes[k].global_position.y = -9999.0
 
-	LevelsDatabase.levelNodes[LevelsDatabase.currLevel].get_child(1).set_deferred("monitoring", true)
-
+	levelNodes[currLevel].get_child(1).set_deferred("monitoring", true)
+	CameraHelper.position = levelNodes[currLevel].get_child(2).position
 
 	SaveLoadHelper.save_game()
 	print("---------------")
