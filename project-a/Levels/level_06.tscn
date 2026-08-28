@@ -15,7 +15,7 @@ position = Vector2(69, 594)
 position = Vector2(1755, -9)
 
 [node name="Campos" parent="." unique_id=737987499 instance=ExtResource("3_mrdki")]
-position = Vector2(625, 453)
+position = Vector2(633, 295)
 
 [node name="Ground_C_1" parent="." unique_id=1751980 instance=ExtResource("3_ap64g")]
 position = Vector2(920, -132)
