@@ -4,11 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://difmoi1dld25r" path="res://Scenes/background.tscn" id="2_744m0"]
 [ext_resource type="PackedScene" uid="uid://dl4i8yvjvkeqn" path="res://GUI/mainui.tscn" id="3_thagc"]
 
-
 [node name="SinglePlayerMode" type="Node2D" unique_id=1898326181]
 
 [node name="SPCam" type="Camera2D" parent="." unique_id=120547439]
 script = ExtResource("1_cl3b8")
+left_inset = 100.0
+right_inset = 100.0
+top_inset = 100.0
+bottom_inset = 100.0
+rectColor = Color(0.7646854, 0.6481287, 1, 0.91764706)
 
 [node name="Background" parent="SPCam" unique_id=1958889540 instance=ExtResource("2_744m0")]
 

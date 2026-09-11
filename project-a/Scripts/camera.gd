@@ -4,11 +4,22 @@ extends Node
 signal value_changed(property: String, new_value)
 
 # Camera settings
-var min_zoom : Vector2
-var max_zoom : Vector2
-var margin : Vector2 # Space around the players in pixels
-var smoothing_speed : float
-var position : Vector2
+static var min_zoom : Vector2
+static var max_zoom : Vector2
+static var margin : Vector2
+static var smoothing_speed : float
+static var position : Vector2
+
+# Camera window
+static var left_inset : float
+static var right_inset : float
+static var top_inset : float
+static var bottom_inset : float
+
+# Camera behaviour
+static var window_push_speed : float
+static var platform_snap_speed : float
+static var clamp_camera_to_world_bounds : bool
 
 func set_value(property: String, new_value) -> void:
 	set(property, new_value)
@@ -17,6 +28,10 @@ func set_value(property: String, new_value) -> void:
 func _set_initial_camera_values_sp() -> void:
 	#position = Vector2.ZERO
 	smoothing_speed = 5.0
+	left_inset = 0.0
+	right_inset = 0.0
+	top_inset = 0.0
+	bottom_inset = 0.0
 	value_changed.emit("smoothing_speed", smoothing_speed)
 
 func _set_initial_camera_values_mp() -> void:
