@@ -13,6 +13,8 @@ right_inset = 100.0
 top_inset = 100.0
 bottom_inset = 100.0
 rectColor = Color(0.7646854, 0.6481287, 1, 0.91764706)
+lineBaseColor = Color(0.52208763, 0.28114733, 0, 0.40392157)
+lineHighlightedColor = Color(0, 1.353256, 0.36913884, 1)
 
 [node name="Background" parent="SPCam" unique_id=1958889540 instance=ExtResource("2_744m0")]
 
