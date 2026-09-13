@@ -35,6 +35,10 @@ extends Camera2D
 
 func _ready():
 	CameraHelper._set_initial_camera_values_sp()
+	startPosX = global_position.x - left_inset
+	startPosY = global_position.y - top_inset
+	width = (global_position.x + right_inset) - (global_position.x - left_inset)
+	height = (global_position.y + bottom_inset) - (global_position.y - top_inset)
 
 func _process(_delta : float):
 	if PlayersHelper.playerNodes.is_empty():
@@ -56,35 +60,32 @@ func _process(_delta : float):
 	var playerPos = playerNode.get_child(0).global_position
 	CameraHelper.position = CameraHelper.position.lerp(playerPos, CameraHelper.smoothing_speed * _delta)
 
-	startPosX = global_position.x - left_inset
-	startPosY = global_position.y - top_inset
-	width = (global_position.x + right_inset) - (global_position.x - left_inset)
-	height = (global_position.y + bottom_inset) - (global_position.y - top_inset)
-
-	rectBounds = Rect2(startPosX, startPosY, width, height)
-
 	lineColorLeft = lineBaseColor
 	lineColorRight = lineBaseColor
 	lineColorTop = lineBaseColor
 	lineColorBottom = lineBaseColor
 
-	if playerPos.x <= startPosX:
+	if (InputsData.move_speed < 0) && (playerPos.x <= startPosX):
 		lineColorLeft = lineHighlightedColor
-
-	if playerPos.x >= (startPosX + width):
+		startPosX = playerPos.x
+		#global_position.x += _delta * InputsData.move_speed
+	elif (InputsData.move_speed > 0) && (playerPos.x >= (startPosX + width)):
 		lineColorRight = lineHighlightedColor
+		startPosX = playerPos.x - width
+		#global_position.x += _delta * InputsData.move_speed
 
-	if playerPos.y <= (startPosY):
+	if playerPos.y <= startPosY:
 		lineColorTop = lineHighlightedColor
-
-	if playerPos.y >= (startPosY + height):
+		startPosY = playerPos.y
+	elif playerPos.y >= (startPosY + height):
 		lineColorBottom = lineHighlightedColor
+		startPosY = playerPos.y - height
 
-	#global_position = CameraHelper.position
+	rectBounds = Rect2(startPosX, startPosY, width, height)
 	queue_redraw()
 
 func _draw() -> void:
-	draw_rect(rectBounds, rectColor)
+	draw_rect(rectBounds, rectColor, false)
 	draw_line(Vector2(startPosX, startPosY), Vector2(startPosX, startPosY + height), lineColorLeft)
 	draw_line(Vector2(startPosX + width, startPosY), Vector2(startPosX + width, startPosY + height), lineColorRight)
 	draw_line(Vector2(startPosX, startPosY), Vector2(startPosX + width, startPosY), lineColorTop)

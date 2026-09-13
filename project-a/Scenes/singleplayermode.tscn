@@ -8,10 +8,10 @@
 
 [node name="SPCam" type="Camera2D" parent="." unique_id=120547439]
 script = ExtResource("1_cl3b8")
-left_inset = 100.0
-right_inset = 100.0
-top_inset = 100.0
-bottom_inset = 100.0
+left_inset = 50.0
+right_inset = 50.0
+top_inset = 50.0
+bottom_inset = 50.0
 rectColor = Color(0.7646854, 0.6481287, 1, 0.91764706)
 lineBaseColor = Color(0.52208763, 0.28114733, 0, 0.40392157)
 lineHighlightedColor = Color(0, 1.353256, 0.36913884, 1)
