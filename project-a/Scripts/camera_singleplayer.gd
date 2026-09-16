@@ -9,17 +9,20 @@ extends Camera2D
 @export var lineBaseColor : Color
 @export var lineHighlightedColor : Color
 
+@export var circleColor : Color
+@export var circleBaseColor : Color
+@export var circleHighlightedColor : Color
+
 @export var lineColorLeft : Color
 @export var lineColorRight : Color
 @export var lineColorTop : Color
 @export var lineColorBottom : Color
 
 @export var playerNode : Node2D
+@export var playerPos : Vector2
 
-@export var startPosX : float
-@export var startPosY : float
-@export var width : float
-@export var height : float
+@export var insetStartPos : Vector2
+@export var insetSize : Vector2
 
 @export var rectBounds : Rect2
 
@@ -33,12 +36,21 @@ extends Camera2D
 @export var crossingTop : bool
 @export var crossingBottom : bool
 
+@export var priorGlobalPos : Vector2
+@export var priorInsetStartPos : Vector2
+@export var priorInsetSize : Vector2
+@export var priorPlayerPos : Vector2
+
+@export var currLevel : Node2D
+@export var camInset : Node2D
+
 func _ready():
 	CameraHelper._set_initial_camera_values_sp()
-	startPosX = global_position.x - left_inset
-	startPosY = global_position.y - top_inset
-	width = (global_position.x + right_inset) - (global_position.x - left_inset)
-	height = (global_position.y + bottom_inset) - (global_position.y - top_inset)
+
+	priorGlobalPos = Vector2.ZERO
+	priorInsetStartPos = Vector2.ZERO
+	priorInsetSize = Vector2.ZERO
+	priorPlayerPos = Vector2.ZERO
 
 func _process(_delta : float):
 	if PlayersHelper.playerNodes.is_empty():
@@ -51,42 +63,30 @@ func _process(_delta : float):
 
 	if playerNode == null:
 		playerNode = PlayersHelper.playerNodes[0]
+		playerPos = playerNode.get_child(0).global_position
+		currLevel = LevelsDatabase.levelNodes[LevelsDatabase.currLevel]
+		camInset = currLevel.get_child(3)
+		return
 
 	CameraHelper.left_inset = left_inset
 	CameraHelper.right_inset = right_inset
 	CameraHelper.top_inset = top_inset
 	CameraHelper.bottom_inset = bottom_inset
 
-	var playerPos = playerNode.get_child(0).global_position
-	CameraHelper.position = CameraHelper.position.lerp(playerPos, CameraHelper.smoothing_speed * _delta)
-
 	lineColorLeft = lineBaseColor
 	lineColorRight = lineBaseColor
 	lineColorTop = lineBaseColor
 	lineColorBottom = lineBaseColor
+	circleColor = circleBaseColor
 
-	if (InputsData.move_speed < 0) && (playerPos.x <= startPosX):
-		lineColorLeft = lineHighlightedColor
-		startPosX = playerPos.x
-		#global_position.x += _delta * InputsData.move_speed
-	elif (InputsData.move_speed > 0) && (playerPos.x >= (startPosX + width)):
-		lineColorRight = lineHighlightedColor
-		startPosX = playerPos.x - width
-		#global_position.x += _delta * InputsData.move_speed
+	priorGlobalPos = CameraHelper.position_cam
+	priorInsetStartPos = insetStartPos
+	priorInsetSize = insetSize
+	priorPlayerPos = Vector2(playerPos.x, playerPos.y)
 
-	if playerPos.y <= startPosY:
-		lineColorTop = lineHighlightedColor
-		startPosY = playerPos.y
-	elif playerPos.y >= (startPosY + height):
-		lineColorBottom = lineHighlightedColor
-		startPosY = playerPos.y - height
+	global_position = global_position.lerp(CameraHelper.position_cam, CameraHelper.smoothing_speed * _delta)
 
-	rectBounds = Rect2(startPosX, startPosY, width, height)
 	queue_redraw()
 
 func _draw() -> void:
-	draw_rect(rectBounds, rectColor, false)
-	draw_line(Vector2(startPosX, startPosY), Vector2(startPosX, startPosY + height), lineColorLeft)
-	draw_line(Vector2(startPosX + width, startPosY), Vector2(startPosX + width, startPosY + height), lineColorRight)
-	draw_line(Vector2(startPosX, startPosY), Vector2(startPosX + width, startPosY), lineColorTop)
-	draw_line(Vector2(startPosX, startPosY + height), Vector2(startPosX + width, startPosY + height), lineColorBottom)
+	draw_circle(Vector2.ZERO, 10, circleColor)

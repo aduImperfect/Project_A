@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c8ufi34aum17e"]
+
+[ext_resource type="Texture2D" uid="uid://xdkfwbp0skji" path="res://Textures/CamInset.png" id="1_shnex"]
+[ext_resource type="Script" uid="uid://beo4a2psuu7mv" path="res://Scripts/caminset.gd" id="1_um2ab"]
+[ext_resource type="Texture2D" uid="uid://bykl45tpv5cso" path="res://Textures/CamInsetSidesNormal.png" id="3_42jhb"]
+[ext_resource type="Texture2D" uid="uid://ceglk4kmij1m6" path="res://Textures/CamInsetSidesHighlighted.png" id="3_xpm1c"]
+
+[node name="CamInsetPos" type="Node2D" unique_id=737987499]
+script = ExtResource("1_um2ab")
+normalTex = ExtResource("3_42jhb")
+highlightedTex = ExtResource("3_xpm1c")
+size = Vector2(100, 100)
+
+[node name="BGSprite2D" type="Sprite2D" parent="." unique_id=1788854151]
+z_index = 200
+scale = Vector2(50, 50)
+texture = ExtResource("1_shnex")
+
+[node name="LeftSprite2D" type="Sprite2D" parent="BGSprite2D" unique_id=667798817]
+z_index = 200
+position = Vector2(-0.5, 0)
+scale = Vector2(0.05, 1)
+texture = ExtResource("3_42jhb")
+
+[node name="RightSprite2D" type="Sprite2D" parent="BGSprite2D" unique_id=1530563461]
+z_index = 200
+position = Vector2(0.5, 0)
+scale = Vector2(0.05, 1)
+texture = ExtResource("3_42jhb")
+
+[node name="TopSprite2D" type="Sprite2D" parent="BGSprite2D" unique_id=625096462]
+z_index = 200
+position = Vector2(0, -0.5)
+scale = Vector2(1, 0.05)
+texture = ExtResource("3_42jhb")
+
+[node name="BottomSprite2D" type="Sprite2D" parent="BGSprite2D" unique_id=542234846]
+z_index = 200
+position = Vector2(0, 0.5)
+scale = Vector2(1, 0.05)
+texture = ExtResource("3_42jhb")

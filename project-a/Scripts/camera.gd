@@ -8,7 +8,7 @@ static var min_zoom : Vector2
 static var max_zoom : Vector2
 static var margin : Vector2
 static var smoothing_speed : float
-static var position : Vector2
+static var position_cam : Vector2
 
 # Camera window
 static var left_inset : float

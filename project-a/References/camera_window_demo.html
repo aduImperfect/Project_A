@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Camera-Window Playground</title>
+<style>
+  :root{
+    --bg: #0d1117;
+    --panel: #12181f;
+    --panel-border: #232c36;
+    --ink: #d8e0e8;
+    --dim: #7c8896;
+    --accent: #ff8a3d;   /* window edge / push glow */
+    --accent2: #4fc3ff;  /* player collider */
+    --grid: #1c2530;
+    --world: #0a0e14;
+    --mono: "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{
+    margin:0; padding:0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    height:100%;
+  }
+  .app{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px 16px 40px;
+    gap:14px;
+  }
+  h1{
+    font-size:14px;
+    letter-spacing:0.3px;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+  .sub{
+    font-size:11.5px;
+    color:var(--dim);
+    margin:-8px 0 4px;
+    max-width:640px;
+    text-align:center;
+    line-height:1.5;
+  }
+  .stage-wrap{
+    position:relative;
+    width:100%;
+    max-width:1280px;
+  }
+  canvas{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio: 1280 / 720;
+    background: var(--world);
+    border:1px solid var(--panel-border);
+    border-radius:3px;
+    cursor:crosshair;
+  }
+  .hint{
+    position:absolute;
+    top:10px;
+    left:12px;
+    font-size:10.5px;
+    color:#aab4bf;
+    background:rgba(10,14,20,0.55);
+    padding:5px 9px;
+    border-radius:3px;
+    border:1px solid rgba(255,255,255,0.06);
+    pointer-events:none;
+    line-height:1.5;
+  }
+  .hint b{ color:var(--accent2); }
+
+  .panel{
+    width:100%;
+    max-width:1280px;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:4px;
+    padding:16px 18px 8px;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+    gap: 4px 26px;
+  }
+  .group{
+    padding-bottom:14px;
+  }
+  .group-title{
+    font-size:10px;
+    text-transform:uppercase;
+    letter-spacing:1.1px;
+    color:var(--dim);
+    margin-bottom:9px;
+    border-bottom:1px solid var(--panel-border);
+    padding-bottom:6px;
+  }
+  .row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:9px;
+  }
+  .row label{
+    font-size:11px;
+    color:var(--ink);
+    width:118px;
+    flex-shrink:0;
+  }
+  .row input[type=range]{
+    flex:1;
+    accent-color: var(--accent);
+    height:3px;
+  }
+  .row .val{
+    width:42px;
+    text-align:right;
+    font-size:11px;
+    color:var(--accent2);
+    flex-shrink:0;
+  }
+  .row.checkbox label{ width:auto; }
+  .row input[type=checkbox]{ accent-color: var(--accent); }
+  select{
+    background:#1a222c;
+    color:var(--ink);
+    border:1px solid var(--panel-border);
+    border-radius:3px;
+    font-family:var(--mono);
+    font-size:11px;
+    padding:3px 6px;
+  }
+  button{
+    background:#1a222c;
+    color:var(--ink);
+    border:1px solid var(--panel-border);
+    border-radius:3px;
+    font-family:var(--mono);
+    font-size:11px;
+    padding:6px 12px;
+    cursor:pointer;
+  }
+  button:hover{ border-color:var(--accent); color:var(--accent); }
+  .footer-row{
+    grid-column: 1 / -1;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-top:4px;
+    border-top:1px solid var(--panel-border);
+    margin-top:2px;
+  }
+  .readout{
+    font-size:10.5px;
+    color:var(--dim);
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .readout span b{ color:var(--ink); font-weight:600; }
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>CAMERA-WINDOW PLAYGROUND</h1>
+  <div class="sub">
+    Based on the "camera-window" technique described in Itay Keren's <i>Scroll Back</i> (Jump&nbsp;Bug, Rastan&nbsp;Saga,
+    Street&nbsp;Fighter, Fez). The dashed inner rectangle is the camera window. The screen only scrolls once the
+    player's collider (blue box) touches a window edge — and it moves in that same direction.
+  </div>
+
+  <div class="stage-wrap">
+    <canvas id="stage" width="1280" height="720"></canvas>
+    <div class="hint">move: <b>WASD / arrows</b></div>
+  </div>
+
+  <div class="panel">
+    <div class="group">
+      <div class="group-title">Camera Window</div>
+      <div class="row">
+        <label for="marginL">Left inset</label>
+        <input type="range" id="marginL" min="0" max="620" value="420">
+        <span class="val" id="marginL_v"></span>
+      </div>
+      <div class="row">
+        <label for="marginR">Right inset</label>
+        <input type="range" id="marginR" min="0" max="620" value="420">
+        <span class="val" id="marginR_v"></span>
+      </div>
+      <div class="row">
+        <label for="marginT">Top inset</label>
+        <input type="range" id="marginT" min="0" max="340" value="220">
+        <span class="val" id="marginT_v"></span>
+      </div>
+      <div class="row">
+        <label for="marginB">Bottom inset</label>
+        <input type="range" id="marginB" min="0" max="340" value="220">
+        <span class="val" id="marginB_v"></span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Player Collider</div>
+      <div class="row">
+        <label for="pw">Width</label>
+        <input type="range" id="pw" min="10" max="160" value="36">
+        <span class="val" id="pw_v"></span>
+      </div>
+      <div class="row">
+        <label for="ph">Height</label>
+        <input type="range" id="ph" min="10" max="160" value="48">
+        <span class="val" id="ph_v"></span>
+      </div>
+      <div class="row">
+        <label for="speed">Move speed</label>
+        <input type="range" id="speed" min="50" max="900" value="360">
+        <span class="val" id="speed_v"></span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Camera Behaviour</div>
+      <div class="row">
+        <label for="smooth">Push smoothing</label>
+        <input type="range" id="smooth" min="1" max="100" value="100">
+        <span class="val" id="smooth_v"></span>
+      </div>
+      <div class="row checkbox">
+        <input type="checkbox" id="clampWorld" checked>
+        <label for="clampWorld">Clamp camera to world bounds</label>
+      </div>
+      <div class="row checkbox">
+        <input type="checkbox" id="showGrid" checked>
+        <label for="showGrid">Show world grid</label>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <div class="readout">
+        <span>player (world) <b id="ro_player">0, 0</b></span>
+        <span>camera (world) <b id="ro_cam">0, 0</b></span>
+        <span>window px <b id="ro_win">0×0</b></span>
+        <span>edge touch <b id="ro_touch">—</b></span>
+      </div>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d');
+  const VW = canvas.width, VH = canvas.height; // viewport / screen size, fixed 1280x720
+
+  // ---- World -------------------------------------------------------------
+  const WORLD_W = 4200, WORLD_H = 1900;
+
+  // ---- State ---------------------------------------------------------------
+  const state = {
+    player: { x: WORLD_W/2, y: WORLD_H/2, w: 36, h: 48 },
+    camera: { x: WORLD_W/2 - VW/2, y: WORLD_H/2 - VH/2 },
+    margin: { l: 420, r: 420, t: 220, b: 220 },
+    speed: 360,
+    smoothing: 1.0,   // 1 = instant hard push (classic camera-window), lower = lerped push
+    clampWorld: true,
+    showGrid: true,
+    touch: { l:false, r:false, t:false, b:false }
+  };
+
+  // ---- Controls wiring -----------------------------------------------------
+  function bindRange(id, target, key, fmt){
+    const el = document.getElementById(id);
+    const out = document.getElementById(id+'_v');
+    const set = () => {
+      const v = parseFloat(el.value);
+      target[key] = v;
+      out.textContent = fmt ? fmt(v) : v;
+    };
+    el.addEventListener('input', set);
+    set();
+  }
+  bindRange('marginL', state.margin, 'l', v=>v+'px');
+  bindRange('marginR', state.margin, 'r', v=>v+'px');
+  bindRange('marginT', state.margin, 't', v=>v+'px');
+  bindRange('marginB', state.margin, 'b', v=>v+'px');
+  bindRange('pw', state.player, 'w', v=>v+'px');
+  bindRange('ph', state.player, 'h', v=>v+'px');
+  bindRange('speed', state, 'speed', v=>v+'px/s');
+  bindRange('smooth', state, 'smoothing', v=>{ state.smoothing = v/100; return v+'%'; });
+
+  document.getElementById('clampWorld').addEventListener('change', e=>{
+    state.clampWorld = e.target.checked;
+  });
+  document.getElementById('showGrid').addEventListener('change', e=>{
+    state.showGrid = e.target.checked;
+  });
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    state.player.x = WORLD_W/2; state.player.y = WORLD_H/2;
+    state.camera.x = WORLD_W/2 - VW/2; state.camera.y = WORLD_H/2 - VH/2;
+  });
+
+  // keep window insets sane relative to viewport so window never inverts
+  function clampMargins(){
+    const maxH = VW - 40;
+    if(state.margin.l + state.margin.r > maxH){
+      const scale = maxH/(state.margin.l+state.margin.r);
+      state.margin.l *= scale; state.margin.r *= scale;
+    }
+    const maxV = VH - 40;
+    if(state.margin.t + state.margin.b > maxV){
+      const scale = maxV/(state.margin.t+state.margin.b);
+      state.margin.t *= scale; state.margin.b *= scale;
+    }
+  }
+
+  // ---- Input -----------------------------------------------------------
+  const keys = {};
+  window.addEventListener('keydown', e=>{
+    keys[e.key.toLowerCase()] = true;
+    if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(e.key.toLowerCase())) e.preventDefault();
+  });
+  window.addEventListener('keyup', e=>{ keys[e.key.toLowerCase()] = false; });
+
+  // ---- Update ------------------------------------------------------------
+  let last = performance.now();
+  function update(now){
+    const dt = Math.min(0.033, (now-last)/1000);
+    last = now;
+    clampMargins();
+
+    // player movement in world space
+    let dx=0, dy=0;
+    if(keys['arrowleft']||keys['a']) dx -= 1;
+    if(keys['arrowright']||keys['d']) dx += 1;
+    if(keys['arrowup']||keys['w']) dy -= 1;
+    if(keys['arrowdown']||keys['s']) dy += 1;
+    if(dx || dy){
+      const len = Math.hypot(dx,dy);
+      dx/=len; dy/=len;
+    }
+    state.player.x += dx * state.speed * dt;
+    state.player.y += dy * state.speed * dt;
+
+    // clamp player to world
+    state.player.x = Math.max(0, Math.min(WORLD_W - state.player.w, state.player.x));
+    state.player.y = Math.max(0, Math.min(WORLD_H - state.player.h, state.player.y));
+
+    // --- camera-window logic ---
+    const winLeft   = state.margin.l;
+    const winRight  = VW - state.margin.r;
+    const winTop    = state.margin.t;
+    const winBottom = VH - state.margin.b;
+
+    const p = state.player, cam = state.camera;
+    const screenLeft   = p.x - cam.x;
+    const screenRight  = p.x + p.w - cam.x;
+    const screenTop    = p.y - cam.y;
+    const screenBottom = p.y + p.h - cam.y;
+
+    let targetX = cam.x;
+    let targetY = cam.y;
+    state.touch.l = state.touch.r = state.touch.t = state.touch.b = false;
+
+    if(screenLeft < winLeft){ targetX = cam.x - (winLeft - screenLeft); state.touch.l = true; }
+    if(screenRight > winRight){ targetX = cam.x + (screenRight - winRight); state.touch.r = true; }
+    if(screenTop < winTop){ targetY = cam.y - (winTop - screenTop); state.touch.t = true; }
+    if(screenBottom > winBottom){ targetY = cam.y + (screenBottom - winBottom); state.touch.b = true; }
+
+    // smoothing: 1 = snap instantly (hard push), lower = eased catch-up (lerp-smoothing)
+    const t = state.smoothing <= 0 ? 1 : Math.min(1, state.smoothing + (1-state.smoothing)*0); // base factor
+    const lerpFactor = state.smoothing >= 0.999 ? 1 : 1 - Math.pow(1 - state.smoothing, dt*60);
+    cam.x += (targetX - cam.x) * lerpFactor;
+    cam.y += (targetY - cam.y) * lerpFactor;
+
+    if(state.clampWorld){
+      cam.x = Math.max(0, Math.min(WORLD_W - VW, cam.x));
+      cam.y = Math.max(0, Math.min(WORLD_H - VH, cam.y));
+    }
+
+    render();
+    updateReadout();
+    requestAnimationFrame(update);
+  }
+
+  // ---- Render ------------------------------------------------------------
+  function render(){
+    ctx.clearRect(0,0,VW,VH);
+    const cam = state.camera, p = state.player;
+
+    // world background
+    ctx.fillStyle = '#0a0e14';
+    ctx.fillRect(0,0,VW,VH);
+
+    // grid (world-space, offset by camera to show scroll)
+    if(state.showGrid){
+      const step = 80;
+      ctx.strokeStyle = '#1c2530';
+      ctx.lineWidth = 1;
+      const offX = -cam.x % step;
+      const offY = -cam.y % step;
+      ctx.beginPath();
+      for(let x = offX; x < VW; x += step){
+        ctx.moveTo(x+0.5, 0); ctx.lineTo(x+0.5, VH);
+      }
+      for(let y = offY; y < VH; y += step){
+        ctx.moveTo(0, y+0.5); ctx.lineTo(VW, y+0.5);
+      }
+      ctx.stroke();
+
+      // world boundary markers
+      ctx.strokeStyle = '#3a4552';
+      ctx.lineWidth = 3;
+      ctx.strokeRect(0-cam.x, 0-cam.y, WORLD_W, WORLD_H);
+
+      // landmark posts every 400 world px so scroll is legible
+      ctx.fillStyle = '#222c38';
+      for(let wx=200; wx<WORLD_W; wx+=400){
+        for(let wy=140; wy<WORLD_H; wy+=380){
+          const sx = wx - cam.x, sy = wy - cam.y;
+          if(sx > -60 && sx < VW+60 && sy > -60 && sy < VH+60){
+            ctx.fillRect(sx-6, sy-24, 12, 48);
+            ctx.fillStyle = '#2c3846';
+            ctx.beginPath(); ctx.arc(sx, sy-24, 10, 0, Math.PI*2); ctx.fill();
+            ctx.fillStyle = '#222c38';
+          }
+        }
+      }
+    }
+
+    // camera window rectangle
+    const winLeft   = state.margin.l;
+    const winRight  = VW - state.margin.r;
+    const winTop    = state.margin.t;
+    const winBottom = VH - state.margin.b;
+
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,138,61,0.85)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([8,6]);
+    ctx.strokeRect(winLeft, winTop, winRight-winLeft, winBottom-winTop);
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    // glow on touched edges
+    ctx.save();
+    ctx.strokeStyle = '#ffb37a';
+    ctx.lineWidth = 5;
+    ctx.shadowColor = '#ff8a3d';
+    ctx.shadowBlur = 14;
+    if(state.touch.l){ ctx.beginPath(); ctx.moveTo(winLeft,winTop); ctx.lineTo(winLeft,winBottom); ctx.stroke(); }
+    if(state.touch.r){ ctx.beginPath(); ctx.moveTo(winRight,winTop); ctx.lineTo(winRight,winBottom); ctx.stroke(); }
+    if(state.touch.t){ ctx.beginPath(); ctx.moveTo(winLeft,winTop); ctx.lineTo(winRight,winTop); ctx.stroke(); }
+    if(state.touch.b){ ctx.beginPath(); ctx.moveTo(winLeft,winBottom); ctx.lineTo(winRight,winBottom); ctx.stroke(); }
+    ctx.restore();
+
+    // window corner labels
+    ctx.fillStyle = 'rgba(255,138,61,0.9)';
+    ctx.font = '10px monospace';
+    ctx.fillText('camera window', winLeft+6, winTop+13);
+
+    // player collider (screen space)
+    const sx = p.x - cam.x, sy = p.y - cam.y;
+    ctx.fillStyle = 'rgba(79,195,255,0.25)';
+    ctx.fillRect(sx, sy, p.w, p.h);
+    ctx.strokeStyle = '#4fc3ff';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(sx, sy, p.w, p.h);
+    // facing dot
+    ctx.fillStyle = '#4fc3ff';
+    ctx.beginPath(); ctx.arc(sx+p.w/2, sy+p.h/2, 2.5, 0, Math.PI*2); ctx.fill();
+
+    // viewport frame
+    ctx.strokeStyle = '#232c36';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1,1,VW-2,VH-2);
+  }
+
+  function updateReadout(){
+    document.getElementById('ro_player').textContent =
+      Math.round(state.player.x)+', '+Math.round(state.player.y);
+    document.getElementById('ro_cam').textContent =
+      Math.round(state.camera.x)+', '+Math.round(state.camera.y);
+    document.getElementById('ro_win').textContent =
+      Math.round(VW-state.margin.l-state.margin.r)+'×'+Math.round(VH-state.margin.t-state.margin.b);
+    const t = state.touch;
+    const active = ['l'+ (t.l?'✓':''), 'r'+(t.r?'✓':''), 't'+(t.t?'✓':''), 'b'+(t.b?'✓':'')]
+      .filter(s=>s.includes('✓')).map(s=>s[0].toUpperCase());
+    document.getElementById('ro_touch').textContent = active.length ? active.join(' ') : '—';
+  }
+
+  requestAnimationFrame(update);
+})();
+</script>
+</body>
+</html>

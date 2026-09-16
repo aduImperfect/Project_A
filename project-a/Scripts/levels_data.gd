@@ -62,6 +62,10 @@ func _level_switcher(newLevelNum : int = -1) -> void:
 	print("---------------")
 	print("Level Switched to: ", newLevelNum)
 
+	for k in levelsCount:
+		levelNodes[k].visible = false
+		levelNodes[k].get_child(1).set_deferred("monitoring", false)
+
 	if newLevelNum < 0:
 		#Normal internal function of level switching incrementally.
 		currLevel += 1
@@ -97,8 +101,9 @@ func _level_switcher(newLevelNum : int = -1) -> void:
 		levelNodes[k].global_position.x = -9999.0
 		levelNodes[k].global_position.y = -9999.0
 
+	levelNodes[currLevel].visible = true
 	levelNodes[currLevel].get_child(1).set_deferred("monitoring", true)
-	CameraHelper.position = levelNodes[currLevel].get_child(2).position
+	CameraHelper.position_cam = levelNodes[currLevel].get_child(2).position
 
 	SaveLoadHelper.save_game()
 	print("---------------")

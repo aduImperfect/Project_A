@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://du4tag6wi3epi" path="res://Scenes/campos.tscn" id="3_5royd"]
 [ext_resource type="PackedScene" uid="uid://dbswmh8aba0vb" path="res://Scenes/start.tscn" id="3_xfk5q"]
 [ext_resource type="PackedScene" uid="uid://c7kw2s1jyomna" path="res://Scenes/death.tscn" id="4_1cq4g"]
+[ext_resource type="PackedScene" uid="uid://c8ufi34aum17e" path="res://Scenes/caminsetpos.tscn" id="4_5royd"]
 [ext_resource type="Script" uid="uid://cmrkycs05rpka" path="res://Scripts/welcome.gd" id="5_ocwms"]
 
 [node name="Level_01" type="Node2D" unique_id=234875700]
@@ -17,6 +18,9 @@ position = Vector2(1309, 483)
 
 [node name="Campos" parent="." unique_id=737987499 instance=ExtResource("3_5royd")]
 position = Vector2(633, 204)
+
+[node name="CamInsetPos" parent="." unique_id=1993680403 instance=ExtResource("4_5royd")]
+position = Vector2(73, 21)
 
 [node name="Ground_P_13" parent="." unique_id=1751980 instance=ExtResource("1_vk57k")]
 position = Vector2(1118, 513)

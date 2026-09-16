@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Camera-Window Playground — Platformer Edition</title>
+<style>
+  :root{
+    --bg: #0d1117;
+    --panel: #12181f;
+    --panel-border: #232c36;
+    --ink: #d8e0e8;
+    --dim: #7c8896;
+    --accent: #ff8a3d;   /* window edge / push glow */
+    --accent2: #4fc3ff;  /* player collider */
+    --accent3: #7dffb0;  /* platform snap anchor */
+    --grid: #1c2530;
+    --world: #0a0e14;
+    --mono: "SF Mono", "Cascadia Code", "JetBrains Mono", Consolas, monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; background: var(--bg); color: var(--ink); font-family: var(--mono); height:100%; }
+  .app{ display:flex; flex-direction:column; align-items:center; padding:20px 16px 40px; gap:14px; }
+  h1{ font-size:14px; letter-spacing:0.3px; font-weight:600; color:var(--ink); margin:0; }
+  .sub{ font-size:11.5px; color:var(--dim); margin:-8px 0 4px; max-width:680px; text-align:center; line-height:1.5; }
+  .stage-wrap{ position:relative; width:100%; max-width:1280px; }
+  canvas{
+    display:block; width:100%; height:auto; aspect-ratio: 1280 / 720;
+    background: var(--world); border:1px solid var(--panel-border); border-radius:3px; cursor:default;
+  }
+  .hint{
+    position:absolute; top:10px; left:12px; font-size:10.5px; color:#aab4bf;
+    background:rgba(10,14,20,0.55); padding:5px 9px; border-radius:3px;
+    border:1px solid rgba(255,255,255,0.06); pointer-events:none; line-height:1.5;
+  }
+  .hint b{ color:var(--accent2); }
+  .panel{
+    width:100%; max-width:1280px; background:var(--panel); border:1px solid var(--panel-border);
+    border-radius:4px; padding:16px 18px 8px; display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px,1fr)); gap: 4px 26px;
+  }
+  .group{ padding-bottom:14px; }
+  .group-title{
+    font-size:10px; text-transform:uppercase; letter-spacing:1.1px; color:var(--dim);
+    margin-bottom:9px; border-bottom:1px solid var(--panel-border); padding-bottom:6px;
+    display:flex; justify-content:space-between;
+  }
+  .group-title .note{ text-transform:none; letter-spacing:0; color:#5b6672; font-size:9.5px; }
+  .row{ display:flex; align-items:center; gap:10px; margin-bottom:9px; }
+  .row label{ font-size:11px; color:var(--ink); width:150px; flex-shrink:0; }
+  .row input[type=range]{ flex:1; accent-color: var(--accent); height:3px; }
+  .row .val{ width:48px; text-align:right; font-size:11px; color:var(--accent2); flex-shrink:0; }
+  .row.checkbox label{ width:auto; }
+  .row input[type=checkbox]{ accent-color: var(--accent); }
+  button{
+    background:#1a222c; color:var(--ink); border:1px solid var(--panel-border); border-radius:3px;
+    font-family:var(--mono); font-size:11px; padding:6px 12px; cursor:pointer;
+  }
+  button:hover{ border-color:var(--accent); color:var(--accent); }
+  .footer-row{
+    grid-column: 1 / -1; display:flex; justify-content:space-between; align-items:center;
+    padding-top:4px; border-top:1px solid var(--panel-border); margin-top:2px; flex-wrap:wrap; gap:8px;
+  }
+  .readout{ font-size:10.5px; color:var(--dim); display:flex; gap:16px; flex-wrap:wrap; }
+  .readout span b{ color:var(--ink); font-weight:600; }
+  .readout span b.on{ color: var(--accent3); }
+</style>
+</head>
+<body>
+<div class="app">
+  <h1>CAMERA-WINDOW PLAYGROUND — SIDE-SCROLLER EDITION</h1>
+  <div class="sub">
+    Horizontal axis keeps the classic camera-window push (Rastan Saga / Street Fighter). The vertical axis is now
+    gravity-driven and uses <b style="color:var(--accent3)">platform-snapping</b> (Super Mario World / Rayman): the
+    camera stays vertically locked while the player is airborne or standing still, and only re-aligns — smoothly,
+    at an adjustable speed — the moment the player lands on a platform at a <i>different</i> height than the one
+    it last snapped to. A vertical safety window (top/bottom insets) still nudges the camera during big jumps or falls
+    so the collider never leaves the screen mid-air.
+  </div>
+
+  <div class="stage-wrap">
+    <canvas id="stage" width="1280" height="720"></canvas>
+    <div class="hint">move: <b>A/D or ←/→</b> &nbsp;·&nbsp; jump: <b>Space / W / ↑</b></div>
+  </div>
+
+  <div class="panel">
+    <div class="group">
+      <div class="group-title">Camera Window</div>
+      <div class="row">
+        <label for="marginL">Left inset</label>
+        <input type="range" id="marginL" min="0" max="620" value="420">
+        <span class="val" id="marginL_v"></span>
+      </div>
+      <div class="row">
+        <label for="marginR">Right inset</label>
+        <input type="range" id="marginR" min="0" max="620" value="420">
+        <span class="val" id="marginR_v"></span>
+      </div>
+      <div class="row">
+        <label for="marginT">Top inset (air safety)</label>
+        <input type="range" id="marginT" min="0" max="340" value="140">
+        <span class="val" id="marginT_v"></span>
+      </div>
+      <div class="row">
+        <label for="marginB">Bottom inset (snap anchor)</label>
+        <input type="range" id="marginB" min="20" max="340" value="160">
+        <span class="val" id="marginB_v"></span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Player Collider</div>
+      <div class="row">
+        <label for="pw">Width</label>
+        <input type="range" id="pw" min="10" max="120" value="34">
+        <span class="val" id="pw_v"></span>
+      </div>
+      <div class="row">
+        <label for="ph">Height</label>
+        <input type="range" id="ph" min="10" max="140" value="50">
+        <span class="val" id="ph_v"></span>
+      </div>
+      <div class="row">
+        <label for="speed">Move speed</label>
+        <input type="range" id="speed" min="50" max="700" value="320">
+        <span class="val" id="speed_v"></span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Physics</div>
+      <div class="row">
+        <label for="gravity">Gravity</label>
+        <input type="range" id="gravity" min="200" max="3000" value="1500">
+        <span class="val" id="gravity_v"></span>
+      </div>
+      <div class="row">
+        <label for="jump">Jump strength</label>
+        <input type="range" id="jump" min="200" max="1400" value="720">
+        <span class="val" id="jump_v"></span>
+      </div>
+    </div>
+
+    <div class="group">
+      <div class="group-title">Camera Behaviour <span class="note">horizontal push / vertical snap</span></div>
+      <div class="row">
+        <label for="pushSpeed">Window push speed</label>
+        <input type="range" id="pushSpeed" min="1" max="100" value="100">
+        <span class="val" id="pushSpeed_v"></span>
+      </div>
+      <div class="row">
+        <label for="snapDamp">Platform snap speed</label>
+        <input type="range" id="snapDamp" min="1" max="100" value="35">
+        <span class="val" id="snapDamp_v"></span>
+      </div>
+      <div class="row checkbox">
+        <input type="checkbox" id="clampWorld" checked>
+        <label for="clampWorld">Clamp camera to world bounds</label>
+      </div>
+      <div class="row checkbox">
+        <input type="checkbox" id="showGrid" checked>
+        <label for="showGrid">Show world grid</label>
+      </div>
+    </div>
+
+    <div class="footer-row">
+      <div class="readout">
+        <span>player (world) <b id="ro_player">0, 0</b></span>
+        <span>camera (world) <b id="ro_cam">0, 0</b></span>
+        <span>grounded <b id="ro_grounded">—</b></span>
+        <span>platform y <b id="ro_platy">—</b></span>
+        <span>snapping <b id="ro_snap">idle</b></span>
+      </div>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d');
+  const VW = canvas.width, VH = canvas.height; // fixed 1280x720 viewport
+
+  // ---- World & platforms ----------------------------------------------
+  const WORLD_W = 4400, WORLD_H = 2000;
+  const FLOOR_Y = 1900; // safety catch-floor, below every real platform
+
+  const platforms = [
+    { x: 0,    y: 1500, w: 900, h: 500 },
+    { x: 1050, y: 1500, w: 420, h: 500 },
+    { x: 1620, y: 1260, w: 360, h: 740 },
+    { x: 2130, y: 1500, w: 460, h: 500 },
+    { x: 2740, y: 1080, w: 320, h: 920 },
+    { x: 3210, y: 1500, w: 420, h: 500 },
+    { x: 3780, y: 860,  w: 520, h: 1140 },
+    { x: 0,    y: FLOOR_Y, w: WORLD_W, h: 100 } // catch-floor under gaps
+  ];
+
+  // ---- State -------------------------------------------------------------
+  const state = {
+    player: {
+      x: 80, y: platforms[0].y - 50, w: 34, h: 50,
+      vx: 0, vy: 0, grounded: true, wasGrounded: true, justLanded: false,
+      currentPlatformY: platforms[0].y, jumpLatch: false
+    },
+    camera: { x: 0, y: 0 },
+    margin: { l: 420, r: 420, t: 140, b: 160 },
+    speed: 320,
+    gravity: 1500,
+    jumpStrength: 720,
+    pushSpeed: 1.0,     // horizontal push + vertical air-safety push
+    snapDamping: 0.35,  // platform-snap re-alignment speed
+    clampWorld: true,
+    showGrid: true,
+    touch: { l:false, r:false, t:false, b:false },
+    snap: { trackedY: platforms[0].y, active: false, targetY: 0 }
+  };
+  // initial camera so player rests on the bottom-inset anchor line
+  state.camera.x = state.player.x - VW/2;
+  state.camera.y = (state.player.y + state.player.h) - (VH - state.margin.b);
+
+  // ---- Controls wiring -----------------------------------------------------
+  function bindRange(id, apply, fmt){
+    const el = document.getElementById(id);
+    const out = document.getElementById(id+'_v');
+    const set = () => { const v = parseFloat(el.value); apply(v); out.textContent = fmt ? fmt(v) : v; };
+    el.addEventListener('input', set);
+    set();
+  }
+  bindRange('marginL', v=>state.margin.l=v, v=>v+'px');
+  bindRange('marginR', v=>state.margin.r=v, v=>v+'px');
+  bindRange('marginT', v=>state.margin.t=v, v=>v+'px');
+  bindRange('marginB', v=>state.margin.b=v, v=>v+'px');
+  bindRange('pw', v=>state.player.w=v, v=>v+'px');
+  bindRange('ph', v=>state.player.h=v, v=>v+'px');
+  bindRange('speed', v=>state.speed=v, v=>v+'px/s');
+  bindRange('gravity', v=>state.gravity=v, v=>v+'px/s²');
+  bindRange('jump', v=>state.jumpStrength=v, v=>v+'px/s');
+  bindRange('pushSpeed', v=>state.pushSpeed=v/100, v=>v+'%');
+  bindRange('snapDamp', v=>state.snapDamping=v/100, v=>v+'%');
+
+  document.getElementById('clampWorld').addEventListener('change', e=>{ state.clampWorld = e.target.checked; });
+  document.getElementById('showGrid').addEventListener('change', e=>{ state.showGrid = e.target.checked; });
+  document.getElementById('resetBtn').addEventListener('click', ()=>{
+    const p = state.player;
+    p.x = 80; p.y = platforms[0].y - p.h; p.vx = 0; p.vy = 0;
+    p.grounded = true; p.wasGrounded = true; p.justLanded = false; p.currentPlatformY = platforms[0].y;
+    state.snap.trackedY = platforms[0].y; state.snap.active = false;
+    state.camera.x = p.x - VW/2;
+    state.camera.y = (p.y+p.h) - (VH - state.margin.b);
+  });
+
+  function clampMargins(){
+    const maxH = VW - 40;
+    if(state.margin.l + state.margin.r > maxH){
+      const s = maxH/(state.margin.l+state.margin.r); state.margin.l*=s; state.margin.r*=s;
+    }
+    const maxV = VH - 40;
+    if(state.margin.t + state.margin.b > maxV){
+      const s = maxV/(state.margin.t+state.margin.b); state.margin.t*=s; state.margin.b*=s;
+    }
+  }
+
+  // ---- Input -----------------------------------------------------------
+  const keys = {};
+  window.addEventListener('keydown', e=>{
+    keys[e.key.toLowerCase()] = true;
+    if(['arrowup','arrowdown','arrowleft','arrowright',' '].includes(e.key.toLowerCase())) e.preventDefault();
+  });
+  window.addEventListener('keyup', e=>{ keys[e.key.toLowerCase()] = false; });
+
+  function aabbOverlap(x,y,w,h, r){
+    return x < r.x+r.w && x+w > r.x && y < r.y+r.h && y+h > r.y;
+  }
+
+  // ---- Physics -----------------------------------------------------------
+  function updatePhysics(dt){
+    const p = state.player;
+
+    // horizontal input
+    let dx = 0;
+    if(keys['arrowleft']||keys['a']) dx -= 1;
+    if(keys['arrowright']||keys['d']) dx += 1;
+    p.vx = dx * state.speed;
+
+    let nx = p.x + p.vx*dt;
+    nx = Math.max(0, Math.min(WORLD_W - p.w, nx));
+    for(const plat of platforms){
+      if(aabbOverlap(nx, p.y, p.w, p.h, plat)){
+        if(p.vx > 0) nx = plat.x - p.w;
+        else if(p.vx < 0) nx = plat.x + plat.w;
+      }
+    }
+    p.x = nx;
+
+    // jump
+    const jumpPressed = keys[' ']||keys['arrowup']||keys['w'];
+    if(jumpPressed && p.grounded && !p.jumpLatch){
+      p.vy = -state.jumpStrength;
+      p.grounded = false;
+      p.jumpLatch = true;
+    }
+    if(!jumpPressed) p.jumpLatch = false;
+
+    // gravity
+    p.vy += state.gravity * dt;
+    if(p.vy > 1800) p.vy = 1800;
+
+    const prevBottom = p.y + p.h;
+    const prevTop = p.y;
+    let ny = p.y + p.vy*dt;
+    let grounded = false, landedTop = null;
+
+    for(const plat of platforms){
+      const overlapX = (p.x + p.w > plat.x) && (p.x < plat.x + plat.w);
+      if(!overlapX) continue;
+      const nb = ny + p.h;
+      if(p.vy >= 0 && prevBottom <= plat.y + 1 && nb >= plat.y){
+        ny = plat.y - p.h; p.vy = 0; grounded = true; landedTop = plat.y;
+      } else if(p.vy < 0 && prevTop >= plat.y + plat.h - 1 && ny <= plat.y + plat.h){
+        ny = plat.y + plat.h; p.vy = 0;
+      }
+    }
+    p.y = ny;
+    p.wasGrounded = p.grounded;
+    p.grounded = grounded;
+    p.justLanded = grounded && !p.wasGrounded;
+    if(grounded) p.currentPlatformY = landedTop;
+  }
+
+  // ---- Camera --------------------------------------------------------------
+  function updateCamera(dt){
+    clampMargins();
+    const p = state.player, cam = state.camera;
+    const winLeft   = state.margin.l;
+    const winRight  = VW - state.margin.r;
+    const winTop    = state.margin.t;
+    const winBottom = VH - state.margin.b;
+
+    const pushLerp = state.pushSpeed >= 0.999 ? 1 : 1 - Math.pow(1 - state.pushSpeed, dt*60);
+    const snapLerp = state.snapDamping >= 0.999 ? 1 : 1 - Math.pow(1 - state.snapDamping, dt*60);
+
+    // --- horizontal: classic camera-window push, always active ---
+    const screenLeft  = p.x - cam.x;
+    const screenRight = p.x + p.w - cam.x;
+    let targetX = cam.x;
+    state.touch.l = state.touch.r = false;
+    if(screenLeft < winLeft){ targetX = cam.x - (winLeft - screenLeft); state.touch.l = true; }
+    if(screenRight > winRight){ targetX = cam.x + (screenRight - winRight); state.touch.r = true; }
+    cam.x += (targetX - cam.x) * pushLerp;
+
+    // --- vertical: air-safety window push only while airborne ---
+    state.touch.t = state.touch.b = false;
+    if(!p.grounded){
+      const screenTop = p.y - cam.y;
+      const screenBottom = p.y + p.h - cam.y;
+      let targetY = cam.y;
+      if(screenTop < winTop){ targetY = cam.y - (winTop - screenTop); state.touch.t = true; }
+      if(screenBottom > winBottom){ targetY = cam.y + (screenBottom - winBottom); state.touch.b = true; }
+      cam.y += (targetY - cam.y) * pushLerp;
+    }
+
+    // --- vertical: platform-snapping, triggered only by landing on a NEW height ---
+    if(p.justLanded && Math.abs(p.currentPlatformY - state.snap.trackedY) > 0.5){
+      state.snap.trackedY = p.currentPlatformY;
+      state.snap.targetY = (p.y + p.h) - winBottom;
+      state.snap.active = true;
+    }
+    if(state.snap.active){
+      cam.y += (state.snap.targetY - cam.y) * snapLerp;
+      if(Math.abs(state.snap.targetY - cam.y) < 0.25){
+        cam.y = state.snap.targetY;
+        state.snap.active = false;
+      }
+    }
+
+    if(state.clampWorld){
+      cam.x = Math.max(0, Math.min(WORLD_W - VW, cam.x));
+      cam.y = Math.max(0, Math.min(WORLD_H - VH, cam.y));
+    }
+  }
+
+  // ---- Render ------------------------------------------------------------
+  function render(){
+    ctx.clearRect(0,0,VW,VH);
+    const cam = state.camera, p = state.player;
+
+    ctx.fillStyle = '#0a0e14';
+    ctx.fillRect(0,0,VW,VH);
+
+    if(state.showGrid){
+      const step = 80;
+      ctx.strokeStyle = '#1c2530';
+      ctx.lineWidth = 1;
+      const offX = -cam.x % step, offY = -cam.y % step;
+      ctx.beginPath();
+      for(let x=offX; x<VW; x+=step){ ctx.moveTo(x+0.5,0); ctx.lineTo(x+0.5,VH); }
+      for(let y=offY; y<VH; y+=step){ ctx.moveTo(0,y+0.5); ctx.lineTo(VW,y+0.5); }
+      ctx.stroke();
+    }
+
+    // platforms
+    for(const plat of platforms){
+      const sx = plat.x - cam.x, sy = plat.y - cam.y;
+      if(sx+plat.w < 0 || sx > VW || sy > VH) continue;
+      const isFloor = plat.y === FLOOR_Y;
+      ctx.fillStyle = isFloor ? '#1a2028' : '#233042';
+      ctx.fillRect(sx, sy, plat.w, Math.min(plat.h, VH));
+      ctx.fillStyle = isFloor ? '#2c3644' : '#37506b';
+      ctx.fillRect(sx, sy, plat.w, 6);
+    }
+
+    // camera window (horizontal push edges + air-safety top/bottom)
+    const winLeft = state.margin.l, winRight = VW-state.margin.r;
+    const winTop = state.margin.t, winBottom = VH-state.margin.b;
+    ctx.save();
+    ctx.strokeStyle = 'rgba(255,138,61,0.7)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([8,6]);
+    ctx.strokeRect(winLeft, winTop, winRight-winLeft, winBottom-winTop);
+    ctx.setLineDash([]);
+    ctx.restore();
+
+    // platform-snap anchor line (bottom inset) — the "follows on landing" edge
+    ctx.save();
+    ctx.strokeStyle = state.snap.active ? '#a8ffce' : 'rgba(125,255,176,0.55)';
+    ctx.lineWidth = state.snap.active ? 3 : 2;
+    ctx.setLineDash([2,4]);
+    ctx.beginPath(); ctx.moveTo(winLeft, winBottom); ctx.lineTo(winRight, winBottom); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(125,255,176,0.9)';
+    ctx.font = '10px monospace';
+    ctx.fillText('platform snap anchor', winLeft+6, winBottom-6);
+    ctx.restore();
+
+    // glow on actively touched push edges
+    ctx.save();
+    ctx.strokeStyle = '#ffb37a';
+    ctx.lineWidth = 5;
+    ctx.shadowColor = '#ff8a3d';
+    ctx.shadowBlur = 14;
+    if(state.touch.l){ ctx.beginPath(); ctx.moveTo(winLeft,winTop); ctx.lineTo(winLeft,winBottom); ctx.stroke(); }
+    if(state.touch.r){ ctx.beginPath(); ctx.moveTo(winRight,winTop); ctx.lineTo(winRight,winBottom); ctx.stroke(); }
+    if(state.touch.t){ ctx.beginPath(); ctx.moveTo(winLeft,winTop); ctx.lineTo(winRight,winTop); ctx.stroke(); }
+    ctx.restore();
+
+    ctx.fillStyle = 'rgba(255,138,61,0.9)';
+    ctx.font = '10px monospace';
+    ctx.fillText('camera window', winLeft+6, winTop+13);
+
+    // player collider
+    const sx = p.x - cam.x, sy = p.y - cam.y;
+    ctx.fillStyle = 'rgba(79,195,255,0.25)';
+    ctx.fillRect(sx, sy, p.w, p.h);
+    ctx.strokeStyle = '#4fc3ff';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(sx, sy, p.w, p.h);
+
+    // viewport frame
+    ctx.strokeStyle = '#232c36';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(1,1,VW-2,VH-2);
+  }
+
+  function updateReadout(){
+    const p = state.player;
+    document.getElementById('ro_player').textContent = Math.round(p.x)+', '+Math.round(p.y);
+    document.getElementById('ro_cam').textContent = Math.round(state.camera.x)+', '+Math.round(state.camera.y);
+    const g = document.getElementById('ro_grounded');
+    g.textContent = p.grounded ? 'yes' : 'no';
+    g.className = p.grounded ? 'on' : '';
+    document.getElementById('ro_platy').textContent = p.grounded ? Math.round(p.currentPlatformY) : '—';
+    const s = document.getElementById('ro_snap');
+    s.textContent = state.snap.active ? 'snapping…' : 'idle';
+    s.className = state.snap.active ? 'on' : '';
+  }
+
+  // ---- Loop ----------------------------------------------------------------
+  let last = performance.now();
+  function loop(now){
+    const dt = Math.min(0.033, (now-last)/1000);
+    last = now;
+    updatePhysics(dt);
+    updateCamera(dt);
+    render();
+    updateReadout();
+    requestAnimationFrame(loop);
+  }
+  requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>

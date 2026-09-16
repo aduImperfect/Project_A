@@ -5,6 +5,6 @@
 [node name="Start" type="Node2D" unique_id=1470424718]
 
 [node name="Start" type="Sprite2D" parent="." unique_id=957139478]
-z_index = -5
+z_index = 300
 scale = Vector2(0.025, 0.025)
 texture = ExtResource("1_3bxa3")

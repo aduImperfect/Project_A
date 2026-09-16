@@ -15,6 +15,8 @@ bottom_inset = 50.0
 rectColor = Color(0.7646854, 0.6481287, 1, 0.91764706)
 lineBaseColor = Color(0.52208763, 0.28114733, 0, 0.40392157)
 lineHighlightedColor = Color(0, 1.353256, 0.36913884, 1)
+circleBaseColor = Color(0, 0, 0.627451, 0.42352942)
+circleHighlightedColor = Color(1, 0, 0, 1)
 
 [node name="Background" parent="SPCam" unique_id=1958889540 instance=ExtResource("2_744m0")]
 

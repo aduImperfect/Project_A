@@ -6,10 +6,11 @@
 
 [node name="Main" type="Node2D" unique_id=1004778219]
 
+[node name="SinglePlayerMode" parent="." unique_id=1264525211 instance=ExtResource("2_bo1nx")]
+z_index = 4096
+
 [node name="LevelGen" type="Node2D" parent="." unique_id=1618441754]
 script = ExtResource("1_jjgbg")
 
 [node name="AudioMgr" type="Node2D" parent="." unique_id=562412432]
 script = ExtResource("2_8gbba")
-
-[node name="SinglePlayerMode" parent="." unique_id=1264525211 instance=ExtResource("2_bo1nx")]
