@@ -16,7 +16,7 @@ position = Vector2(69, 594)
 position = Vector2(1511.9999, 408)
 
 [node name="Campos" parent="." unique_id=737987499 instance=ExtResource("3_4t8un")]
-position = Vector2(634, 296)
+position = Vector2(168, 536)
 
 [node name="CamInsetPos" parent="." unique_id=790438175 instance=ExtResource("4_af376")]
 position = Vector2(69, 594)
