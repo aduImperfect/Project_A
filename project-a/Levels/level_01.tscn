@@ -127,6 +127,7 @@ offset_top = 251.0
 offset_right = 1115.0
 offset_bottom = 292.0
 text = "Fix your movespeed & jump. (ง'̀-'́)ง"
+editable = false
 
 [node name="Ground_P_15" parent="." unique_id=265919292 instance=ExtResource("1_vk57k")]
 position = Vector2(540, 513)
@@ -138,6 +139,7 @@ offset_top = 384.0
 offset_right = 1560.0
 offset_bottom = 425.0
 text = "You're learning. ಠ╭╮ಠ"
+editable = false
 
 [node name="LevelObjective3" type="TextEdit" parent="." unique_id=948582256]
 offset_left = 96.0
@@ -145,6 +147,7 @@ offset_top = 652.0
 offset_right = 391.0
 offset_bottom = 700.0
 text = "Get the move speed just right. (ง'̀-'́)ง"
+editable = false
 
 [node name="Welcome" type="TextEdit" parent="." unique_id=333298301]
 custom_minimum_size = Vector2(300, 50)

@@ -88,6 +88,7 @@ offset_bottom = 569.0
 text = "Wall jumping practice!
 Think Megaman X or 
 Hollow Knight (post claws)."
+editable = false
 
 [node name="LevelObjective2" type="TextEdit" parent="." unique_id=1499840322]
 offset_left = 1304.0
@@ -96,6 +97,7 @@ offset_right = 1543.0
 offset_bottom = 568.0
 text = "Might need to modify
 pushback here. ᕦ(ò_óˇ)ᕤ"
+editable = false
 
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=1830785741]
 offset_left = 1524.0
@@ -104,6 +106,7 @@ offset_right = 1748.0
 offset_bottom = 125.0
 text = "Congrats. You designed 2D
 platforming. (ʘᗩʘ')"
+editable = false
 
 [node name="Death" parent="." unique_id=1296578022 instance=ExtResource("4_qd2hy")]
 position = Vector2(920, 750)

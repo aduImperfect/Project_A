@@ -63,6 +63,7 @@ offset_right = 254.0
 offset_bottom = 305.0
 text = "Jump & move good.
 But with DANGER."
+editable = false
 
 [node name="LevelObjective2" type="TextEdit" parent="." unique_id=698498951]
 offset_left = 859.0
@@ -71,6 +72,7 @@ offset_right = 1079.0
 offset_bottom = 103.0
 text = "Think hard about your
  numbers here."
+editable = false
 
 [node name="LevelObjective3" type="TextEdit" parent="." unique_id=1816929586]
 offset_left = 1151.0
@@ -78,6 +80,7 @@ offset_top = 564.0
 offset_right = 1359.0
 offset_bottom = 599.0
 text = "Hah, you fell. Again. ʘ‿ʘ"
+editable = false
 
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=1596129767]
 offset_left = 1619.0
@@ -85,6 +88,7 @@ offset_top = 514.0
 offset_right = 1787.0
 offset_bottom = 545.0
 text = "Damn, you made it."
+editable = false
 
 [node name="Death" parent="." unique_id=1296578022 instance=ExtResource("4_yvass")]
 position = Vector2(920, 750)

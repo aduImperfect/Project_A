@@ -74,7 +74,7 @@ offset_bottom = 569.0
 text = "Wall jumping practice!
 Think Megaman X or 
 Hollow Knight (post claws)."
-metadata/_edit_use_anchors_ = true
+editable = false
 
 [node name="LevelObjective_02" type="TextEdit" parent="." unique_id=778533617]
 offset_left = 961.0
@@ -82,6 +82,7 @@ offset_top = 128.0
 offset_right = 1211.0
 offset_bottom = 169.0
 text = "You still have to run and jump."
+editable = false
 
 [node name="LevelEnd" type="TextEdit" parent="." unique_id=1625177850]
 offset_left = 1421.0
@@ -89,6 +90,7 @@ offset_top = 324.0
 offset_right = 1571.0
 offset_bottom = 365.0
 text = "You're improving."
+editable = false
 
 [node name="Death" parent="." unique_id=1296578022 instance=ExtResource("4_ydpeq")]
 position = Vector2(920, 750)
